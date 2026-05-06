@@ -3,1402 +3,1250 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BuffetBot — 50K to 100K</title>
+<title>Portfolio — BuffetBot</title>
 <style>
 :root {
-  --bg:          #08090f;
-  --bg-2:        #0e1117;
-  --card:        #111520;
-  --card-2:      #181e2e;
-  --border:      rgba(255,255,255,0.07);
-  --border-hi:   rgba(255,255,255,0.13);
-  --ink:         #e2e8f4;
-  --muted:       #5f6d87;
-  --muted-2:     #8896b0;
-  --green:       #00d68f;
-  --green-soft:  rgba(0,214,143,0.12);
-  --red:         #ff5757;
-  --red-soft:    rgba(255,87,87,0.12);
-  --blue:        #4d7cfe;
-  --blue-soft:   rgba(77,124,254,0.12);
-  --gold:        #f0b429;
-  --gold-soft:   rgba(240,180,41,0.12);
-  --violet:      #9f6ef5;
-  --violet-soft: rgba(159,110,245,0.12);
-  --shadow:      0 4px 24px rgba(0,0,0,0.5);
-  --shadow-lg:   0 16px 56px rgba(0,0,0,0.7);
-  --radius:      12px;
-  --radius-sm:   8px;
+  --white:   #ffffff;
+  --bg:      #f7f7f7;
+  --ink:     #000000;
+  --sub:     #8a8a8a;
+  --line:    #e8e8e8;
+  --green:   #00c805;
+  --red:     #ff5000;
+  --blue:    #4a90d9;
+  --gold:    #f0a500;
+  --purple:  #9b74db;
+  --pink:    #e07070;
+  --cash-c:  #f0a500;
+  --stock-c: #4a90d9;
+  --crypto-c:#e07070;
+  --etf-c:   #9b74db;
+  --radius:  16px;
+  --radius-sm: 10px;
 }
 
-* { box-sizing: border-box; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  line-height: 1.5;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Inter, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
+a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
 
-/* ── Hero ──────────────────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(140deg, #080c18 0%, #0b1124 45%, #0a0e1a 100%);
-  color: #fff;
-  padding-bottom: 80px;
+/* ── Page shell ────────────────────────────────────────────────── */
+.page { max-width: 420px; margin: 0 auto; background: var(--white); min-height: 100vh; }
+
+@media (min-width: 900px) {
+  .page { max-width: 100%; }
+  .page-inner { max-width: 960px; margin: 0 auto; padding: 0 24px; }
 }
 
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -40%;
-  left: -10%;
-  width: 55%;
-  height: 160%;
-  background: radial-gradient(ellipse, rgba(77,124,254,0.18) 0%, transparent 65%);
-  pointer-events: none;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  right: -5%;
-  width: 50%;
-  height: 130%;
-  background: radial-gradient(ellipse, rgba(159,110,245,0.12) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  width: min(1200px, calc(100vw - 40px));
-  margin: 0 auto;
-  padding-top: 20px;
-}
-
-/* ── Nav ──────────────────────────────────────────────────────────── */
-.nav {
+/* ── Nav bar ───────────────────────────────────────────────────── */
+.rh-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  border-bottom: 1px solid var(--line);
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: center;
-  padding: 24px 0;
+  padding: 16px 20px;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
+.rh-nav-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
-.brand-dot {
-  width: 8px;
-  height: 8px;
+.rh-nav-dot {
+  width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--green);
-  box-shadow: 0 0 0 5px rgba(0,214,143,0.2);
+  box-shadow: 0 0 0 4px rgba(0,200,5,0.15);
 }
 
-.status-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 99px;
-  padding: 6px 14px;
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.65);
-  backdrop-filter: blur(12px);
+/* ── Portfolio hero ────────────────────────────────────────────── */
+.rh-hero {
+  padding: 28px 20px 20px;
+  background: var(--white);
 }
 
-/* ── Hero copy ────────────────────────────────────────────────────── */
-.hero-copy {
-  padding: 48px 0 40px;
-  max-width: 740px;
-}
-
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(77,124,254,0.14);
-  border: 1px solid rgba(77,124,254,0.3);
-  color: #7fa8ff;
-  font-size: 0.72rem;
+.rh-total {
+  font-size: 2.8rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 5px 12px;
-  border-radius: 99px;
-  margin-bottom: 20px;
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
-h1 {
-  font-size: clamp(2.6rem, 7vw, 5.5rem);
-  line-height: 0.94;
-  margin: 0 0 18px;
-  letter-spacing: -0.02em;
-  font-weight: 900;
-  background: linear-gradient(135deg, #fff 30%, rgba(255,255,255,0.6));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.hero-sub {
-  color: rgba(255,255,255,0.5);
+.rh-gain {
+  margin-top: 6px;
   font-size: 1rem;
-  max-width: 560px;
-  margin: 0;
-}
-
-.hero-metrics {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-top: 36px;
-}
-
-.hero-metric {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  backdrop-filter: blur(20px);
-  padding: 14px 20px;
-  border-radius: var(--radius);
-  min-width: 148px;
-  transition: border-color 0.2s;
-}
-
-.hero-metric:hover { border-color: rgba(255,255,255,0.22); }
-
-.hero-metric span {
-  display: block;
-  color: rgba(255,255,255,0.45);
-  font-size: 0.7rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
   font-weight: 600;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.hero-metric strong {
-  display: block;
-  margin-top: 5px;
-  font-size: 1.2rem;
-  font-weight: 750;
-  color: #fff;
+.rh-gain.down { color: var(--red); }
+
+/* ── Allocation bar ────────────────────────────────────────────── */
+.rh-alloc {
+  padding: 20px 20px 0;
+  background: var(--white);
 }
 
-/* ── Main container ───────────────────────────────────────────────── */
-.main {
-  width: min(1200px, calc(100vw - 40px));
-  margin: -48px auto 80px;
+.rh-alloc-blocks {
+  display: flex;
+  gap: 4px;
+  height: 28px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.rh-alloc-block {
+  border-radius: 6px;
+  transition: flex 0.4s ease;
   position: relative;
 }
 
-/* ── Controls band ────────────────────────────────────────────────── */
-.controls-band {
-  background: var(--card);
-  border: 1px solid var(--border-hi);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-lg);
-  padding: 18px 22px;
+.rh-alloc-block::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  border-radius: 6px;
+}
+
+.rh-alloc-legend {
   display: flex;
-  gap: 18px;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 14px;
+  padding-bottom: 4px;
+}
+
+.rh-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--sub);
+}
+
+.rh-legend-dot {
+  width: 8px; height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+/* ── Section divider ───────────────────────────────────────────── */
+.rh-divider {
+  height: 8px;
+  background: var(--bg);
+  margin: 20px 0 0;
+}
+
+/* ── Category header ───────────────────────────────────────────── */
+.rh-category {
+  background: var(--white);
+}
+
+.rh-cat-header {
+  display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  padding: 18px 20px 12px;
+  border-bottom: 1px solid var(--line);
 }
 
-.mode-tabs {
-  display: inline-grid;
-  grid-template-columns: repeat(3, 1fr);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: 4px;
-  gap: 4px;
+.rh-cat-left { display: flex; align-items: center; gap: 10px; }
+
+.rh-cat-pip {
+  width: 10px; height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
 }
 
-.mode-tabs button {
-  border: 0;
-  background: transparent;
-  color: var(--muted);
-  padding: 9px 18px;
-  min-width: 100px;
-  border-radius: 6px;
+.rh-cat-name {
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.rh-cat-count {
+  color: var(--sub);
+  font-size: 0.82rem;
+  margin-top: 1px;
+}
+
+.rh-cat-right { text-align: right; }
+
+.rh-cat-pct {
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.rh-cat-val {
+  color: var(--sub);
+  font-size: 0.82rem;
+  margin-top: 1px;
+}
+
+/* ── Holding row ───────────────────────────────────────────────── */
+.rh-holding {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+  gap: 12px;
+}
+
+.rh-holding:last-child { border-bottom: none; }
+
+.rh-h-left { flex: 1; min-width: 0; }
+
+.rh-h-ticker {
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: 0.01em;
+}
+
+.rh-h-shares {
+  color: var(--sub);
+  font-size: 0.82rem;
+  margin-top: 3px;
+}
+
+.rh-h-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--line);
+  border-radius: 99px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.rh-h-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.rh-h-right { text-align: right; flex-shrink: 0; }
+
+.rh-h-pct {
+  font-weight: 700;
+  font-size: 0.98rem;
+  letter-spacing: -0.01em;
+}
+
+.rh-h-val {
+  color: var(--sub);
+  font-size: 0.82rem;
+  margin-top: 3px;
+}
+
+/* ── Planning section ──────────────────────────────────────────── */
+.plan-section {
+  background: var(--white);
+  margin-top: 8px;
+}
+
+.plan-header {
+  padding: 20px 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.plan-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.plan-sub {
+  color: var(--sub);
+  font-size: 0.82rem;
+  padding: 6px 20px 16px;
+}
+
+.plan-tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 20px 16px;
+}
+
+.plan-tab {
+  flex: 1;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--sub);
+  padding: 10px 0;
   cursor: pointer;
-  font-weight: 600;
   font-size: 0.88rem;
-  transition: all 0.18s;
+  font-weight: 600;
+  border-right-width: 0;
+  transition: all 0.15s;
 }
 
-.mode-tabs button:hover { color: var(--ink); }
+.plan-tab:first-child { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+.plan-tab:last-child  { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; border-right-width: 1px; }
 
-.mode-tabs button.active {
-  background: var(--blue);
-  color: #fff;
-  box-shadow: 0 2px 12px rgba(77,124,254,0.35);
+.plan-tab.active {
+  background: var(--ink);
+  color: var(--white);
+  border-color: var(--ink);
 }
 
-.capital-control {
+.capital-row {
   display: flex;
   align-items: center;
   gap: 10px;
-  color: var(--muted);
+  padding: 0 20px 16px;
+  color: var(--sub);
   font-size: 0.86rem;
-  font-weight: 500;
 }
 
-.capital-control input {
-  width: 140px;
-  border: 1px solid var(--border-hi);
-  background: rgba(255,255,255,0.04);
+.capital-row input {
+  border: 1px solid var(--line);
+  background: var(--bg);
   color: var(--ink);
   padding: 9px 13px;
   border-radius: var(--radius-sm);
+  width: 140px;
   outline: none;
-  transition: border-color 0.18s;
+  font-size: 0.9rem;
 }
 
-.capital-control input:focus { border-color: var(--blue); }
+.capital-row input:focus { border-color: var(--ink); }
 
-/* ── Dashboard grid ───────────────────────────────────────────────── */
-.dashboard {
+/* ── Buy list ──────────────────────────────────────────────────── */
+.buy-list {
+  padding: 0 20px 20px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 360px;
-  gap: 20px;
-  align-items: start;
+  gap: 8px;
 }
 
-/* ── Panel base ───────────────────────────────────────────────────── */
-.panel {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  transition: border-color 0.2s;
-}
-
-.panel:hover { border-color: var(--border-hi); }
-
-/* ── Summary ──────────────────────────────────────────────────────── */
-.summary { padding: 28px; }
-
-.summary-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+.buy-row {
+  display: flex;
+  align-items: center;
   gap: 12px;
-}
-
-.metric {
-  background: var(--card-2);
-  border: 1px solid var(--border);
+  padding: 14px;
+  background: var(--bg);
   border-radius: var(--radius-sm);
-  padding: 18px;
-  transition: border-color 0.2s;
 }
 
-.metric:hover { border-color: var(--border-hi); }
-
-.label {
-  color: var(--muted);
-  font-size: 0.69rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  font-weight: 700;
-}
-
-.value {
+.buy-badge {
+  font-size: 0.76rem;
   font-weight: 800;
-  font-size: 1.55rem;
-  margin-top: 8px;
-  letter-spacing: -0.02em;
+  color: var(--white);
+  padding: 6px 8px;
+  border-radius: 6px;
+  min-width: 52px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
 }
 
-.sub {
-  color: var(--muted);
-  font-size: 0.78rem;
-  margin-top: 5px;
+.badge-green  { background: #2a7a50; }
+.badge-blue   { background: #2d5fa8; }
+.badge-gold   { background: #a0720f; }
+.badge-red    { background: #b83030; }
+.badge-violet { background: #6040a8; }
+
+.buy-info { flex: 1; min-width: 0; }
+.buy-name { font-size: 0.88rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.buy-thesis { font-size: 0.76rem; color: var(--sub); margin-top: 2px; line-height: 1.4; }
+
+.buy-numbers { text-align: right; flex-shrink: 0; }
+.buy-amount { font-size: 0.92rem; font-weight: 700; }
+.buy-pct    { font-size: 0.76rem; color: var(--sub); margin-top: 2px; }
+
+/* ── Goal bar ──────────────────────────────────────────────────── */
+.goal-bar-wrap {
+  padding: 16px 20px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  margin: 0 20px 16px;
 }
 
-/* ── Goal tracker ─────────────────────────────────────────────────── */
-.goal { margin-top: 24px; }
-
-.goal-track {
+.goal-bar-track {
   height: 6px;
+  background: var(--line);
   border-radius: 99px;
-  background: rgba(255,255,255,0.07);
   overflow: hidden;
 }
 
-.goal-fill {
+.goal-bar-fill {
   height: 100%;
-  width: 0%;
   background: linear-gradient(90deg, var(--blue), var(--green));
   border-radius: 99px;
-  transition: width 400ms ease;
-  box-shadow: 0 0 12px rgba(0,214,143,0.4);
+  transition: width 0.4s ease;
 }
 
-.goal-copy {
+.goal-bar-labels {
   display: flex;
   justify-content: space-between;
-  gap: 12px;
-  color: var(--muted-2);
-  font-size: 0.8rem;
   margin-top: 10px;
-  font-weight: 500;
+  font-size: 0.78rem;
+  color: var(--sub);
 }
 
-/* ── Allocations ──────────────────────────────────────────────────── */
-.allocations {
-  margin-top: 20px;
-  padding: 28px;
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  align-items: flex-end;
-  margin-bottom: 20px;
-}
-
-.section-head h2 {
-  margin: 0;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.section-head p {
-  margin: 5px 0 0;
-  color: var(--muted);
-  font-size: 0.84rem;
-}
-
-.allocation-list { display: grid; gap: 10px; }
-
-.allocation-row {
-  display: grid;
-  grid-template-columns: 60px minmax(0, 1fr) 140px 124px 100px;
-  gap: 16px;
-  align-items: center;
-  padding: 14px 18px;
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  background: var(--card-2);
-  transition: border-color 0.18s, background 0.18s;
-}
-
-.allocation-row:hover {
-  border-color: var(--border-hi);
-  background: rgba(255,255,255,0.03);
-}
-
-.ticker {
-  min-width: 0;
-  font-weight: 800;
-  color: #fff;
-  text-align: center;
-  padding: 8px 6px;
-  border-radius: var(--radius-sm);
-  font-size: 0.84rem;
-  letter-spacing: 0.02em;
-}
-
-.ticker.green  { background: linear-gradient(135deg, #00a36c, #007a51); }
-.ticker.blue   { background: linear-gradient(135deg, #3d6cde, #2a54b8); }
-.ticker.gold   { background: linear-gradient(135deg, #d4921c, #b07514); }
-.ticker.red    { background: linear-gradient(135deg, #e04040, #c02828); }
-.ticker.violet { background: linear-gradient(135deg, #8055e0, #6035b8); }
-
-.asset h3 { margin: 0; font-size: 0.92rem; font-weight: 600; color: var(--ink); }
-.asset p  { margin: 4px 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.4; }
-
-.bar {
-  height: 6px;
-  border-radius: 99px;
-  background: rgba(255,255,255,0.06);
-  overflow: hidden;
-}
-
-.bar i {
-  display: block;
-  height: 100%;
-  border-radius: 99px;
-}
-
-.amount {
-  text-align: right;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: var(--ink);
-}
-
-.shares {
-  color: var(--muted);
-  font-size: 0.76rem;
-  text-align: right;
-}
-
-.shares strong {
-  display: block;
-  color: var(--muted-2);
-  font-size: 0.86rem;
-  font-weight: 600;
-}
-
-/* ── Sidebar ──────────────────────────────────────────────────────── */
-.side { display: grid; gap: 20px; }
-
-.donut-panel { padding: 26px; }
-
-.donut-wrap {
-  display: grid;
-  place-items: center;
-  padding: 10px 0 18px;
-}
-
-.donut {
-  width: min(240px, 66vw);
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: relative;
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 8px 32px rgba(0,0,0,0.4);
-}
-
-.donut::after {
-  content: '';
-  position: absolute;
-  inset: 24%;
-  border-radius: 50%;
-  background: var(--card);
-  border: 1px solid rgba(255,255,255,0.07);
-}
-
-.donut-center {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  text-align: center;
-  z-index: 1;
-}
-
-.donut-center strong {
-  display: block;
-  font-size: 1.5rem;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
-
-.donut-center span {
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-/* ── Rules & review panels ────────────────────────────────────────── */
-.rules, .review { padding: 26px; }
-
-.rule-list, .review-list {
-  display: grid;
-  gap: 0;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.rule-list li, .review-list li {
-  border-top: 1px solid var(--border);
-  padding: 12px 0;
-  color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.55;
-}
-
-.rule-list li:first-child, .review-list li:first-child { border-top: none; padding-top: 0; }
-
-.rule-list strong, .review-list strong {
-  color: var(--ink);
-  font-weight: 700;
-}
-
-/* ── Scenario band ────────────────────────────────────────────────── */
-.scenario-band {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.scenario {
-  padding: 24px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
-
-.scenario:hover { border-color: var(--border-hi); }
-
-.scenario::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 3px;
-  background: var(--blue);
-  border-radius: var(--radius) var(--radius) 0 0;
-}
-
-.scenario:nth-child(2)::before { background: var(--green); }
-.scenario:nth-child(3)::before { background: var(--red); }
-
-.scenario strong {
-  display: block;
-  font-size: 0.95rem;
-  font-weight: 700;
-}
-
-.scenario p {
-  color: var(--muted);
-  margin: 8px 0 0;
-  font-size: 0.84rem;
-  line-height: 1.5;
-}
-
-.scenario .num {
-  font-size: 1.7rem;
-  font-weight: 900;
-  margin-top: 18px;
-  letter-spacing: -0.03em;
-}
-
-.scenario:nth-child(2) .num { color: var(--green); }
-.scenario:nth-child(3) .num { color: var(--red); }
-
-/* ── Options grid ─────────────────────────────────────────────────── */
-.options-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-}
-
-.option-card {
-  border: 1px solid var(--border);
-  background: var(--card-2);
-  padding: 18px;
-  border-radius: var(--radius-sm);
-  transition: border-color 0.2s;
-}
-
-.option-card:hover { border-color: var(--border-hi); }
-
-.option-card .tag {
-  display: inline-flex;
-  background: var(--violet-soft);
-  border: 1px solid rgba(159,110,245,0.3);
-  color: var(--violet);
-  font-weight: 700;
-  font-size: 0.68rem;
-  padding: 4px 9px;
-  border-radius: 99px;
-  margin-bottom: 12px;
-  letter-spacing: 0.06em;
-}
-
-.option-card h3 { margin: 0; font-size: 0.92rem; font-weight: 700; }
-
-.option-card p {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.5;
-}
-
-.option-meta {
+/* ── Metric grid ───────────────────────────────────────────────── */
+.metric-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8px;
-  margin-top: 14px;
+  padding: 0 20px 20px;
 }
 
-.option-meta div {
-  border-top: 1px solid var(--border);
-  padding-top: 9px;
-  color: var(--muted);
-  font-size: 0.74rem;
+.metric-card {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px;
 }
 
-.option-meta strong {
-  display: block;
-  color: var(--ink);
-  font-size: 0.88rem;
+.metric-label {
+  font-size: 0.7rem;
   font-weight: 700;
-  margin-bottom: 2px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--sub);
 }
 
-/* ── Research grid ────────────────────────────────────────────────── */
-.research-grid {
+.metric-value {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-top: 6px;
+  letter-spacing: -0.02em;
+}
+
+.metric-sub {
+  font-size: 0.76rem;
+  color: var(--sub);
+  margin-top: 4px;
+}
+
+/* ── Section panel ─────────────────────────────────────────────── */
+.panel-section {
+  background: var(--white);
+  margin-top: 8px;
+  padding: 20px;
+}
+
+.panel-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.panel-sub {
+  color: var(--sub);
+  font-size: 0.82rem;
+  margin: -8px 0 14px;
+}
+
+/* ── Research list ─────────────────────────────────────────────── */
+.research-list {
+  list-style: none;
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
+  gap: 0;
+}
+
+.research-list li {
+  border-top: 1px solid var(--line);
+  padding: 12px 0;
+  font-size: 0.84rem;
+  color: var(--sub);
+  line-height: 1.5;
+}
+
+.research-list li:first-child { border-top: none; padding-top: 0; }
+.research-list strong { color: var(--ink); font-weight: 600; }
+
+/* ── Scenario cards ────────────────────────────────────────────── */
+.scenario-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.scenario-card {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+}
+
+.scenario-card h3 {
+  font-size: 0.84rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.scenario-card p {
+  font-size: 0.76rem;
+  color: var(--sub);
+  line-height: 1.4;
+}
+
+.scenario-card .num {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin-top: 12px;
+  letter-spacing: -0.02em;
+}
+
+.scenario-card:nth-child(2) .num { color: var(--green); }
+.scenario-card:nth-child(3) .num { color: var(--red); }
+
+/* ── Options grid ──────────────────────────────────────────────── */
+.options-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.option-card {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+}
+
+.option-tag {
+  display: inline-block;
+  background: rgba(155,116,219,0.15);
+  color: var(--purple);
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  padding: 3px 8px;
+  border-radius: 99px;
+  margin-bottom: 8px;
+}
+
+.option-card h3 { font-size: 0.9rem; font-weight: 700; }
+.option-card p  { font-size: 0.8rem; color: var(--sub); margin-top: 6px; line-height: 1.45; }
+
+.option-meta {
+  display: flex;
+  gap: 16px;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.option-meta-item { font-size: 0.76rem; color: var(--sub); }
+.option-meta-item strong { display: block; color: var(--ink); font-size: 0.88rem; font-weight: 700; margin-bottom: 1px; }
+
+/* ── Research 2-col ────────────────────────────────────────────── */
+.research-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
 .research-card {
-  border: 1px solid var(--border);
-  background: var(--card-2);
-  padding: 18px;
+  background: var(--bg);
   border-radius: var(--radius-sm);
-  min-height: 180px;
-  transition: border-color 0.2s;
+  padding: 14px;
 }
 
-.research-card:hover { border-color: var(--border-hi); }
-
-.research-card h3 {
-  margin: 0 0 14px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: var(--muted-2);
+.research-card-title {
+  font-size: 0.7rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  color: var(--sub);
+  margin-bottom: 12px;
 }
 
 .research-card ul {
-  margin: 0;
-  padding: 0;
   list-style: none;
   display: grid;
   gap: 0;
 }
 
 .research-card li {
-  border-top: 1px solid var(--border);
-  padding: 10px 0;
-  color: var(--muted);
-  font-size: 0.82rem;
-  line-height: 1.5;
+  border-top: 1px solid var(--line);
+  padding: 9px 0;
+  font-size: 0.8rem;
+  color: var(--sub);
+  line-height: 1.45;
 }
 
 .research-card li:first-child { border-top: none; padding-top: 0; }
-
 .research-card strong { color: var(--ink); font-weight: 600; }
 
-.warning-card {
-  border-color: rgba(255,87,87,0.22);
-  background: rgba(255,87,87,0.06);
-}
+.warning-card { background: rgba(255,80,0,0.05); }
+.warning-card li { color: rgba(180,60,0,0.75); }
+.warning-card strong { color: #c03000; }
+.warning-card .research-card-title { color: var(--red); }
 
-.warning-card li { color: rgba(255,150,150,0.8); }
-.warning-card strong { color: #ff9090; }
-
-.queue-meta {
-  border: 1px solid rgba(77,124,254,0.25);
-  background: rgba(77,124,254,0.08);
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  font-size: 0.78rem;
-  color: rgba(150,185,255,0.75);
-  border-radius: var(--radius-sm);
-  line-height: 1.6;
-}
-
-.queue-meta strong { color: #90b8ff; }
-
-/* ── Live grid ────────────────────────────────────────────────────── */
-.live-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-}
-
+/* ── Live grid ─────────────────────────────────────────────────── */
 .live-note {
-  color: var(--muted);
-  margin: 18px 0 0;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
+  color: var(--sub);
+  margin-top: 16px;
+  line-height: 1.5;
 }
 
-/* ── Footer ───────────────────────────────────────────────────────── */
-.footer-note {
-  color: var(--muted);
-  font-size: 0.78rem;
-  margin-top: 24px;
+/* ── Footer ────────────────────────────────────────────────────── */
+.rh-footer {
   padding: 20px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--line);
+  margin-top: 8px;
+  background: var(--white);
+  font-size: 0.76rem;
+  color: var(--sub);
   line-height: 1.6;
 }
 
-/* ── Spacer ───────────────────────────────────────────────────────── */
-.mt { margin-top: 20px; }
+/* ── Responsive desktop ─────────────────────────────────────────── */
+@media (min-width: 900px) {
+  .page { max-width: none; }
 
-/* ── Scrollbar ────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 99px; }
-
-/* ── Responsive ───────────────────────────────────────────────────── */
-@media (max-width: 1060px) {
-  .dashboard { grid-template-columns: 1fr; }
-  .side { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 820px) {
-  .live-grid,
-  .options-grid,
-  .research-grid,
-  .scenario-band { grid-template-columns: 1fr; }
-
-  .summary-grid { grid-template-columns: repeat(2, 1fr); }
-
-  .controls-band { flex-direction: column; align-items: stretch; }
-
-  .mode-tabs { width: 100%; }
-
-  .side { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 600px) {
-  h1 { font-size: 2.4rem; }
-
-  .hero-metric { min-width: calc(50% - 6px); flex: 1; }
-
-  .summary, .allocations, .donut-panel, .rules, .review, .scenario {
-    padding: 18px;
+  .desktop-grid {
+    display: grid;
+    grid-template-columns: 440px 1fr;
+    gap: 0;
+    align-items: start;
   }
 
-  .summary-grid { grid-template-columns: 1fr; }
+  .desktop-left {
+    border-right: 1px solid var(--line);
+    position: sticky;
+    top: 57px;
+    max-height: calc(100vh - 57px);
+    overflow-y: auto;
+  }
 
-  .allocation-row { grid-template-columns: 50px minmax(0, 1fr); }
+  .research-2col { grid-template-columns: repeat(3, 1fr); }
+  .scenario-row  { grid-template-columns: repeat(3, 1fr); }
+  .options-grid  { grid-template-columns: repeat(3, 1fr); }
+}
 
-  .bar, .shares, .amount { grid-column: 2; }
-
-  .shares, .amount { text-align: left; }
+@media (max-width: 560px) {
+  .scenario-row  { grid-template-columns: 1fr; }
+  .research-2col { grid-template-columns: 1fr; }
+  .metric-grid   { grid-template-columns: 1fr 1fr; }
 }
 </style>
 </head>
 <body>
+<div class="page">
 
-<section class="hero">
-  <div class="hero-inner">
-    <nav class="nav">
-      <div class="brand">
-        <span class="brand-dot"></span>
-        BuffetBot
+  <!-- Nav -->
+  <nav class="rh-nav">
+    <span class="rh-nav-title">Portfolio overview</span>
+    <div class="rh-nav-dot" id="agent-dot" title="Agent offline"></div>
+  </nav>
+
+  <div class="desktop-grid">
+
+    <!-- ── Left column: real portfolio ── -->
+    <div class="desktop-left">
+
+      <!-- Hero: total + gain -->
+      <div class="rh-hero">
+        <div class="rh-total" id="rh-total">$66,968.42</div>
+        <div class="rh-gain" id="rh-gain">▲ $136.41 (0.20%)</div>
       </div>
-      <div class="status-pill">Paper mode · not financial advice</div>
-    </nav>
 
-    <div class="hero-copy">
-      <div class="eyebrow">Age 31 &nbsp;·&nbsp; Capital $50,000 &nbsp;·&nbsp; Goal $100,000</div>
-      <h1>50K to 100K</h1>
-      <p class="hero-sub">An AI paper-trading research agent that scans markets daily, tracks alpha vs SPY, and alerts only when confidence rules are met.</p>
-      <div class="hero-metrics">
-        <div class="hero-metric"><span>Starting capital</span><strong id="hero-capital">$50,000</strong></div>
-        <div class="hero-metric"><span>Target</span><strong id="hero-target">$100,000</strong></div>
-        <div class="hero-metric"><span>Risk posture</span><strong id="hero-mode">Aggressive</strong></div>
-        <div class="hero-metric"><span>Review cadence</span><strong>Weekly</strong></div>
+      <!-- Allocation bar -->
+      <div class="rh-alloc">
+        <div class="rh-alloc-blocks" id="alloc-bar">
+          <div class="rh-alloc-block" style="flex:64.97;background:var(--cash-c)"></div>
+          <div class="rh-alloc-block" style="flex:21.53;background:var(--stock-c)"></div>
+          <div class="rh-alloc-block" style="flex:8.41;background:var(--crypto-c)"></div>
+          <div class="rh-alloc-block" style="flex:5.09;background:var(--etf-c)"></div>
+        </div>
+        <div class="rh-alloc-legend">
+          <div class="rh-legend-item"><div class="rh-legend-dot" style="background:var(--cash-c)"></div>Cash 64.97%</div>
+          <div class="rh-legend-item"><div class="rh-legend-dot" style="background:var(--stock-c)"></div>Stocks 21.53%</div>
+          <div class="rh-legend-item"><div class="rh-legend-dot" style="background:var(--crypto-c)"></div>Crypto 8.41%</div>
+          <div class="rh-legend-item"><div class="rh-legend-dot" style="background:var(--etf-c)"></div>ETFs 5.09%</div>
+        </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<main class="main">
-  <section class="controls-band">
-    <div class="mode-tabs" aria-label="Portfolio mode">
-      <button type="button" data-mode="steady">Steady</button>
-      <button type="button" data-mode="aggressive" class="active">Aggressive</button>
-      <button type="button" data-mode="sprint">Sprint</button>
-    </div>
-    <label class="capital-control">
-      Capital
-      <input id="capital" type="number" min="1000" step="500" value="50000">
-    </label>
-  </section>
-
-  <div class="dashboard">
-    <div>
-      <section class="panel summary">
-        <div class="summary-grid">
-          <div class="metric">
-            <div class="label">Core assets</div>
-            <div class="value" id="core-pct">70%</div>
-            <div class="sub">Broad equity plus cash</div>
+      <!-- Cash -->
+      <div class="rh-divider"></div>
+      <div class="rh-category">
+        <div class="rh-cat-header">
+          <div class="rh-cat-left">
+            <div class="rh-cat-pip" style="background:var(--cash-c)"></div>
+            <div>
+              <div class="rh-cat-name">Cash</div>
+              <div class="rh-cat-count">1 holding</div>
+            </div>
           </div>
-          <div class="metric">
-            <div class="label">Upside sleeve</div>
-            <div class="value" id="upside-pct">15%</div>
-            <div class="sub">Growth, crypto, options</div>
-          </div>
-          <div class="metric">
-            <div class="label">Cash buffer</div>
-            <div class="value" id="cash-pct">15%</div>
-            <div class="sub">Dry powder and defense</div>
-          </div>
-          <div class="metric">
-            <div class="label">Needed gain</div>
-            <div class="value">100%</div>
-            <div class="sub">From start to target</div>
+          <div class="rh-cat-right">
+            <div class="rh-cat-pct">64.97%</div>
+            <div class="rh-cat-val" id="cash-val">$43,501.52</div>
           </div>
         </div>
-        <div class="goal">
-          <div class="goal-track"><div class="goal-fill" id="goal-fill"></div></div>
-          <div class="goal-copy">
-            <span id="goal-left">$50,000 to go</span>
+        <div class="rh-holding">
+          <div class="rh-h-left">
+            <div class="rh-h-ticker">USD</div>
+            <div class="rh-h-shares">Uninvested cash</div>
+            <div class="rh-h-bar"><div class="rh-h-bar-fill" style="width:100%;background:var(--cash-c)"></div></div>
+          </div>
+          <div class="rh-h-right">
+            <div class="rh-h-pct">64.97%</div>
+            <div class="rh-h-val" id="cash-val-2">$43,501.52</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stocks -->
+      <div class="rh-divider"></div>
+      <div class="rh-category" id="stocks-section">
+        <div class="rh-cat-header">
+          <div class="rh-cat-left">
+            <div class="rh-cat-pip" style="background:var(--stock-c)"></div>
+            <div>
+              <div class="rh-cat-name">Stocks</div>
+              <div class="rh-cat-count">10 holdings</div>
+            </div>
+          </div>
+          <div class="rh-cat-right">
+            <div class="rh-cat-pct">21.53%</div>
+            <div class="rh-cat-val">$14,411.83</div>
+          </div>
+        </div>
+        <div id="stocks-list">
+          <!-- seeded below via JS -->
+        </div>
+      </div>
+
+      <!-- Crypto -->
+      <div class="rh-divider"></div>
+      <div class="rh-category" id="crypto-section">
+        <div class="rh-cat-header">
+          <div class="rh-cat-left">
+            <div class="rh-cat-pip" style="background:var(--crypto-c)"></div>
+            <div>
+              <div class="rh-cat-name">Crypto</div>
+              <div class="rh-cat-count">2 holdings</div>
+            </div>
+          </div>
+          <div class="rh-cat-right">
+            <div class="rh-cat-pct">8.41%</div>
+            <div class="rh-cat-val">$5,629.24</div>
+          </div>
+        </div>
+        <div id="crypto-list"></div>
+      </div>
+
+      <!-- ETFs -->
+      <div class="rh-divider"></div>
+      <div class="rh-category" id="etf-section">
+        <div class="rh-cat-header">
+          <div class="rh-cat-left">
+            <div class="rh-cat-pip" style="background:var(--etf-c)"></div>
+            <div>
+              <div class="rh-cat-name">ETFs</div>
+              <div class="rh-cat-count">3 holdings</div>
+            </div>
+          </div>
+          <div class="rh-cat-right">
+            <div class="rh-cat-pct">5.09%</div>
+            <div class="rh-cat-val">$3,410.83</div>
+          </div>
+        </div>
+        <div id="etf-list"></div>
+      </div>
+
+    </div><!-- /desktop-left -->
+
+    <!-- ── Right column: analysis + agent ── -->
+    <div class="desktop-right">
+
+      <!-- Live agent record -->
+      <div class="panel-section">
+        <div class="panel-title">Agent Performance</div>
+        <div class="panel-sub">Paper trading vs SPY. Real trades still require your approval.</div>
+        <div class="metric-grid" id="live-grid">
+          <div class="metric-card"><div class="metric-label">Status</div><div class="metric-value">Offline</div><div class="metric-sub">Run python agent.py</div></div>
+          <div class="metric-card"><div class="metric-label">Paper NAV</div><div class="metric-value">—</div><div class="metric-sub">Starts at $66,968</div></div>
+          <div class="metric-card"><div class="metric-label">Alpha vs SPY</div><div class="metric-value">—</div><div class="metric-sub">Needs positive alpha</div></div>
+          <div class="metric-card"><div class="metric-label">Beta</div><div class="metric-value">—</div><div class="metric-sub">Risk vs market</div></div>
+        </div>
+        <p class="live-note" id="live-note">Start the agent with <code>python agent.py</code> to begin paper trading from your real portfolio baseline.</p>
+      </div>
+
+      <!-- Portfolio plan tabs -->
+      <div class="plan-section">
+        <div class="plan-header">
+          <div class="plan-title">Portfolio Plan</div>
+        </div>
+        <p class="plan-sub">Model allocations — adjust capital and mode to explore scenarios.</p>
+        <div class="plan-tabs">
+          <button class="plan-tab" data-mode="steady">Steady</button>
+          <button class="plan-tab active" data-mode="aggressive">Aggressive</button>
+          <button class="plan-tab" data-mode="sprint">Sprint</button>
+        </div>
+        <div class="capital-row">
+          Capital
+          <input id="capital" type="number" min="1000" step="500" value="66968">
+        </div>
+
+        <!-- Goal bar -->
+        <div class="goal-bar-wrap">
+          <div class="goal-bar-track"><div class="goal-bar-fill" id="goal-fill" style="width:0%"></div></div>
+          <div class="goal-bar-labels">
+            <span id="goal-left">to go</span>
             <span id="goal-progress">0% of the way to 2×</span>
           </div>
         </div>
-      </section>
 
-      <section class="panel allocations mt">
-        <div class="section-head">
-          <div>
-            <h2>Exact Buy List</h2>
-            <p id="mode-copy">Balanced for speed without letting the speculative sleeve dominate.</p>
-          </div>
+        <!-- Mode summary metrics -->
+        <div class="metric-grid" style="padding: 0 20px 16px;">
+          <div class="metric-card"><div class="metric-label">Core</div><div class="metric-value" id="core-pct">70%</div><div class="metric-sub">Broad equity + cash</div></div>
+          <div class="metric-card"><div class="metric-label">Upside</div><div class="metric-value" id="upside-pct">15%</div><div class="metric-sub">Growth + crypto</div></div>
+          <div class="metric-card"><div class="metric-label">Cash buffer</div><div class="metric-value" id="cash-pct">15%</div><div class="metric-sub">Dry powder</div></div>
+          <div class="metric-card"><div class="metric-label">Needed gain</div><div class="metric-value">100%</div><div class="metric-sub">To reach 2×</div></div>
         </div>
-        <div class="allocation-list" id="allocation-list"></div>
-      </section>
-    </div>
 
-    <aside class="side">
-      <section class="panel donut-panel">
-        <div class="section-head">
-          <div>
-            <h2>Shape</h2>
-            <p id="shape-copy">Most of the money compounds; some of it takes real shots.</p>
-          </div>
-        </div>
-        <div class="donut-wrap">
-          <div class="donut" id="donut">
-            <div class="donut-center">
-              <div>
-                <strong id="donut-total">$50k</strong>
-                <span>allocated</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        <div style="padding: 0 20px 8px; font-size: 0.82rem; color: var(--sub);" id="mode-copy"></div>
 
-      <section class="panel rules">
-        <div class="section-head">
-          <div>
-            <h2>Guardrails</h2>
-            <p>Rules before trades.</p>
+        <div class="buy-list" id="buy-list"></div>
+      </div>
+
+      <!-- Options sleeve -->
+      <div class="panel-section">
+        <div class="panel-title">Options Paper Sleeve</div>
+        <p class="panel-sub" id="options-copy">Paper-only until the agent earns trust. Max loss defined at entry.</p>
+        <div class="options-grid" id="options-grid"></div>
+      </div>
+
+      <!-- Scenarios -->
+      <div class="panel-section">
+        <div class="panel-title">Scenarios</div>
+        <div class="scenario-row">
+          <div class="scenario-card">
+            <h3>Base Case</h3>
+            <p>Markets grind higher, growth participates, cash earns yield.</p>
+            <div class="num">+8% to +18%</div>
+          </div>
+          <div class="scenario-card">
+            <h3>Upside Case</h3>
+            <p>Growth and crypto rally; broad equities stay firm.</p>
+            <div class="num">+25% to +55%</div>
+          </div>
+          <div class="scenario-card">
+            <h3>Stress Case</h3>
+            <p>Risk assets sell off; the large cash sleeve becomes useful.</p>
+            <div class="num">-15% to -35%</div>
           </div>
         </div>
-        <ul class="rule-list">
+      </div>
+
+      <!-- Guardrails -->
+      <div class="panel-section">
+        <div class="panel-title">Guardrails</div>
+        <ul class="research-list">
           <li><strong>No margin.</strong> Borrowed money turns volatility into forced selling.</li>
-          <li><strong>No weekly options.</strong> Treat short-dated options like lottery tickets, not a plan.</li>
-          <li><strong>Options are defined-risk.</strong> Prefer LEAPS or debit spreads; never naked short options.</li>
-          <li><strong>Use ETFs first.</strong> They reduce single-company blowup risk while still giving targeted exposure.</li>
-          <li><strong>Fractional shares are fine.</strong> If your broker only allows whole shares, round down and leave the extra in SGOV.</li>
-          <li><strong>Rebalance winners.</strong> If a risky sleeve doubles, harvest part of it.</li>
+          <li><strong>No weekly options.</strong> Short-dated options are lottery tickets, not a plan.</li>
+          <li><strong>Options are defined-risk.</strong> Prefer LEAPS or debit spreads; never naked short.</li>
+          <li><strong>SQQQ + QQQ cancel each other.</strong> Review whether the hedge is intentional or legacy.</li>
+          <li><strong>BITI + BTC cancel each other.</strong> Holding both simultaneously neutralises Bitcoin exposure.</li>
+          <li><strong>65% cash is an opportunity.</strong> $43k idle — agent will prioritise finding quality entries.</li>
+          <li><strong>Rebalance winners.</strong> If a risky sleeve doubles, harvest part of it back into core.</li>
         </ul>
-      </section>
-    </aside>
-  </div>
-
-  <section class="panel review mt">
-    <div class="section-head">
-      <div>
-        <h2>Options Paper Sleeve</h2>
-        <p id="options-copy">Options are paper-only until the agent earns trust. Max loss must be known before entry.</p>
       </div>
-    </div>
-    <div class="options-grid" id="options-grid"></div>
-  </section>
 
-  <div class="scenario-band">
-    <div class="scenario">
-      <strong>Base Case</strong>
-      <p>Markets grind higher, growth participates, cash earns modest yield.</p>
-      <div class="num">+8% to +18%</div>
-    </div>
-    <div class="scenario">
-      <strong>Upside Case</strong>
-      <p>Growth and crypto rally while broad equities stay firm.</p>
-      <div class="num">+25% to +55%</div>
-    </div>
-    <div class="scenario">
-      <strong>Stress Case</strong>
-      <p>Risk assets sell off; the cash sleeve becomes useful.</p>
-      <div class="num">-15% to -35%</div>
-    </div>
-  </div>
-
-  <section class="panel review mt">
-    <div class="section-head">
-      <div>
-        <h2>Weekly Retrospective</h2>
-        <p>Friday after market close: update prices, ask what changed, and resize only when the thesis or risk changes.</p>
-      </div>
-    </div>
-    <ul class="review-list">
-      <li><strong>What worked?</strong> Which sleeve carried returns, and was that skill or market beta?</li>
-      <li><strong>What hurt?</strong> Which drawdown was expected, and which one exposed a bad assumption?</li>
-      <li><strong>What changed?</strong> Earnings, rates, valuation, liquidity, sentiment, or nothing meaningful?</li>
-      <li><strong>What action?</strong> Hold, trim, add, or move risk back into the core.</li>
-    </ul>
-  </section>
-
-  <section class="panel review mt">
-    <div class="section-head">
-      <div>
-        <h2>Research Desk</h2>
-        <p>Where the agent tracks what it is studying, what it learned, why it changed its mind, and what it refuses to touch yet.</p>
-      </div>
-    </div>
-    <div class="research-grid">
-      <div class="research-card">
-        <h3>Stock Research Queue</h3>
-        <div class="queue-meta">
-          <strong>Refresh:</strong> morning scan at 06:35 PT, midday at 10:00 PT, and end-of-day at 13:05 PT — 3 price reads per day. Queue membership changes as signals, risk, alpha, and thesis quality evolve.
+      <!-- Research desk -->
+      <div class="panel-section">
+        <div class="panel-title">Research Desk</div>
+        <div class="research-2col" style="margin-top:4px">
+          <div class="research-card">
+            <div class="research-card-title">Research Queue</div>
+            <ul id="research-queue">
+              <li><strong>MU</strong> — top position (4.46%); validate memory cycle timing and AI datacenter demand.</li>
+              <li><strong>AVGO / MRVL / ALAB</strong> — semi networking cluster; watch AI custom silicon thesis.</li>
+              <li><strong>PLTR / SMCI</strong> — high beta AI names; monitor government contract flow and margins.</li>
+              <li><strong>SQQQ + BITI</strong> — inverse ETFs held alongside longs; review whether hedge is still the intent.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">Strategy Lab</div>
+            <ul>
+              <li><strong>Momentum + quality</strong> — buy only when trend and fundamentals agree.</li>
+              <li><strong>Deploy cash gradually</strong> — $43k idle; agent hunts high-confidence entries.</li>
+              <li><strong>Alpha gate</strong> — no strong alerts until paper performance beats SPY.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">What I Learned</div>
+            <ul id="learned-list">
+              <li><strong>Portfolio is AI-heavy</strong> — MU, AVGO, ALAB, MRVL, SMCI, PLTR all move with the AI cycle.</li>
+              <li><strong>Large cash = optionality</strong> — useful in a drawdown; costly in a rally.</li>
+              <li><strong>Contradictory hedges</strong> — SQQQ vs QQQ and BITI vs BTC reduce net exposure unexpectedly.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">Why I Changed My Mind</div>
+            <ul id="mind-change-list">
+              <li><strong>From static plan to agent</strong> — shifted to a measurable learning loop vs SPY.</li>
+              <li><strong>From return to alpha</strong> — performance is judged against benchmark, not just dollar gain.</li>
+              <li><strong>From paper positions to real baseline</strong> — agent now seeded from real Robinhood portfolio.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">Current Best Ideas</div>
+            <ul id="best-ideas">
+              <li><strong>Real portfolio loaded</strong> — agent positions seeded from Robinhood screenshot as of May 6, 2026.</li>
+            </ul>
+          </div>
+          <div class="research-card warning-card">
+            <div class="research-card-title">Warnings</div>
+            <ul id="warning-list">
+              <li><strong>No new real trades yet</strong> — paper evidence must build before acting on signals.</li>
+              <li><strong>Naked longs + inverse ETFs</strong> — review SQQQ, BITI positions before next buy.</li>
+              <li><strong>Concentration risk</strong> — 6 of 10 stocks are AI/semi; one sector downturn hits the whole book.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">External Research</div>
+            <ul id="external-research">
+              <li><strong>芯片与存储板块投资研究报告</strong> — reference only; agent still verifies with live data.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">Daily News Feed</div>
+            <ul id="research-feed">
+              <li><strong>Waiting</strong> — daily research watcher will populate this after market close.</li>
+            </ul>
+          </div>
+          <div class="research-card">
+            <div class="research-card-title">Agent Memory</div>
+            <ul id="agent-memory">
+              <li><strong>SQLite</strong> — stored in data/agent_memory.db; append-only per session.</li>
+            </ul>
+          </div>
         </div>
-        <ul id="research-queue">
-          <li><strong>NVDA</strong> — in queue because AI/chip momentum is strong and it is a paper holding; validate demand, margins, valuation, and stop discipline.</li>
-          <li><strong>CSX</strong> — in queue because the rule scan produced a high-confidence paper buy; compare railroad trend strength against industrial/cyclical risk.</li>
-          <li><strong>QQQ / SMH</strong> — in queue because they may express growth/semiconductor exposure with less single-stock risk.</li>
-          <li><strong>Exit rule</strong> — leave the queue if confidence falls below 55%, thesis is invalidated, stop is hit, data quality is weak, or a cleaner expression replaces it.</li>
-        </ul>
       </div>
-      <div class="research-card">
-        <h3>Strategy Lab</h3>
-        <ul>
-          <li><strong>Momentum + quality</strong> — buy only when trend strength and business quality agree.</li>
-          <li><strong>Options overlays</strong> — paper test debit spreads separately from stock signals.</li>
-          <li><strong>Alpha gate</strong> — no stronger alerts unless paper performance beats SPY.</li>
-        </ul>
-      </div>
-      <div class="research-card">
-        <h3>What I Learned</h3>
-        <ul id="learned-list">
-          <li><strong>Baseline first</strong> — absolute gains do not prove skill if SPY did better.</li>
-          <li><strong>Risk budget matters</strong> — options need premium caps, not vibes.</li>
-          <li><strong>Rule-only mode is limited</strong> — qualitative research needs filings, earnings, and transcripts.</li>
-        </ul>
-      </div>
-      <div class="research-card">
-        <h3>Why I Changed My Mind</h3>
-        <ul id="mind-change-list">
-          <li><strong>From static portfolio to agent</strong> — the goal shifted from allocation plan to measurable learning loop.</li>
-          <li><strong>From return to alpha</strong> — performance is judged against SPY, not just dollar gains.</li>
-          <li><strong>From options as speed to options as experiment</strong> — paper-only until evidence improves.</li>
-          <li><strong>From fixed queue to dynamic queue</strong> — queue membership changes when signals, risk, alpha, or thesis quality changes.</li>
-        </ul>
-      </div>
-      <div class="research-card">
-        <h3>Current Best Ideas</h3>
-        <ul id="best-ideas">
-          <li><strong>Waiting for agent data</strong> — paper positions will appear after status loads.</li>
-        </ul>
-      </div>
-      <div class="research-card warning-card">
-        <h3>Do Not Trade Yet Warnings</h3>
-        <ul id="warning-list">
-          <li><strong>No real trades from one scan</strong> — paper evidence is too thin.</li>
-          <li><strong>No naked options</strong> — undefined risk is outside the system.</li>
-          <li><strong>No trade without a review note</strong> — every alert needs thesis, risk, stop, and invalidation.</li>
-        </ul>
-      </div>
-      <div class="research-card">
-        <h3>External Research Input</h3>
-        <ul id="external-research">
-          <li><strong>芯片与存储板块投资研究报告</strong> — loaded as context; not treated as a trade instruction.</li>
-        </ul>
-      </div>
-      <div class="research-card">
-        <h3>Daily News &amp; Reports Watch</h3>
-        <ul id="research-feed">
-          <li><strong>Waiting</strong> — after the agent runs daily research, Yahoo news and financial snapshot takeaways will appear here.</li>
-        </ul>
-      </div>
-      <div class="research-card">
-        <h3>Agent Memory</h3>
-        <ul id="agent-memory">
-          <li><strong>Memory model</strong> — visible queue can stay curated; long-term memory is append-only underneath.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
 
-  <section class="panel review mt">
-    <div class="section-head">
-      <div>
-        <h2>Live Agent Record</h2>
-        <p>When the day-and-night agent runs, it writes local paper-trading results here from data/status.json.</p>
+      <!-- Weekly retrospective -->
+      <div class="panel-section">
+        <div class="panel-title">Weekly Retrospective</div>
+        <ul class="research-list">
+          <li><strong>What worked?</strong> Which sleeve carried returns — was that skill or AI beta?</li>
+          <li><strong>What hurt?</strong> Which drawdown was expected, and which exposed a bad assumption?</li>
+          <li><strong>What changed?</strong> Earnings, rates, valuation, sector rotation, or nothing meaningful?</li>
+          <li><strong>What action?</strong> Hold, trim, add, or move risk back into the large cash sleeve?</li>
+        </ul>
       </div>
-    </div>
-    <div class="live-grid" id="live-grid">
-      <div class="metric"><div class="label">Agent status</div><div class="value">Waiting</div><div class="sub">No run recorded yet</div></div>
-      <div class="metric"><div class="label">Paper NAV</div><div class="value">—</div><div class="sub">Starts at $50k</div></div>
-      <div class="metric"><div class="label">Alpha vs SPY</div><div class="value">—</div><div class="sub">Needs positive alpha</div></div>
-      <div class="metric"><div class="label">Beta</div><div class="value">—</div><div class="sub">Risk vs SPY</div></div>
-    </div>
-    <p class="live-note" id="live-note">Start the agent with <code>python agent.py</code>. It will paper trade, compare itself to SPY, reflect weekly, and alert only when confidence rules are met.</p>
-  </section>
 
-  <p class="footer-note">This dashboard is a planning and education view, not investment advice. Fast doubling requires concentration, and concentration can produce large losses. Reference prices and fund details are from Vanguard, iShares/BlackRock, VanEck, Invesco, and StockAnalysis snapshots checked in early May 2026.</p>
-</main>
+      <p class="rh-footer">Paper trading only — not investment advice. Real portfolio data sourced from Robinhood as of May 6, 2026. Contradictory positions (SQQQ+QQQ, BITI+BTC) noted above for review.</p>
+
+    </div><!-- /desktop-right -->
+  </div><!-- /desktop-grid -->
+</div><!-- /page -->
 
 <script>
+// ── Real portfolio snapshot (from screenshots) ──────────────────
+const REAL_PORTFOLIO = {
+  total: 66968.42,
+  gain: 136.41,
+  gainPct: 0.20,
+  cash: 43501.52,
+  stocks: [
+    { ticker: "MU",   shares: 4.541876,  val: 2986.06,  pct: 4.46 },
+    { ticker: "CHYM", shares: 100,       val: 2118.00,  pct: 3.16 },
+    { ticker: "MSFT", shares: 5.023547,  val: 2083.34,  pct: 3.11 },
+    { ticker: "AVGO", shares: 4.591262,  val: 1942.70,  pct: 2.90 },
+    { ticker: "ADBE", shares: 5.48486,   val: 1384.01,  pct: 2.07 },
+    { ticker: "ALAB", shares: 6.503078,  val: 1360.57,  pct: 2.03 },
+    { ticker: "PLTR", shares: 7.494004,  val: 1000.22,  pct: 1.49 },
+    { ticker: "MRVL", shares: 5.774839,  val: 975.49,   pct: 1.46 },
+    { ticker: "SMCI", shares: 17.53909,  val: 562.13,   pct: 0.84 },
+    { ticker: "KLAR", shares: 1,         val: 14.31,    pct: 0.02 },
+  ],
+  crypto: [
+    { ticker: "BTC",  shares: 0.06905757, val: 5627.73, pct: 8.40 },
+    { ticker: "XRP",  shares: 1.065,      val: 1.52,    pct: 0.00 },
+  ],
+  etfs: [
+    { ticker: "QQQ",  shares: 3.364656,  val: 2326.79, pct: 3.47 },
+    { ticker: "SQQQ", shares: 17.794928, val: 826.75,  pct: 1.23 },
+    { ticker: "BITI", shares: 12,        val: 257.28,  pct: 0.38 },
+  ],
+};
+
+function currency(v) {
+  return v.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
+}
+function currencyFull(v) {
+  return v.toLocaleString("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2, maximumFractionDigits: 2 });
+}
+function compact(v) {
+  return v >= 1000 ? "$" + Math.round(v / 1000) + "k" : currency(v);
+}
+function pctFmt(v) {
+  if (v == null || Number.isNaN(Number(v))) return "—";
+  return (Number(v) * 100).toFixed(2) + "%";
+}
+function numFmt(v, d = 2) {
+  if (v == null || Number.isNaN(Number(v))) return "—";
+  return Number(v).toFixed(d);
+}
+
+function holdingRow(h, color) {
+  const maxPct = 9; // scale bar relative to ~9% max
+  const barW = Math.min(100, (h.pct / maxPct) * 100);
+  return `
+    <div class="rh-holding">
+      <div class="rh-h-left">
+        <div class="rh-h-ticker">${h.ticker}</div>
+        <div class="rh-h-shares">${Number(h.shares).toLocaleString(undefined, { maximumFractionDigits: 6 })} shares</div>
+        <div class="rh-h-bar"><div class="rh-h-bar-fill" style="width:${barW}%;background:${color}"></div></div>
+      </div>
+      <div class="rh-h-right">
+        <div class="rh-h-pct">${h.pct.toFixed(2)}%</div>
+        <div class="rh-h-val">${currencyFull(h.val)}</div>
+      </div>
+    </div>`;
+}
+
+// Render static real portfolio lists
+document.getElementById("stocks-list").innerHTML =
+  REAL_PORTFOLIO.stocks.map(h => holdingRow(h, "var(--stock-c)")).join("");
+document.getElementById("crypto-list").innerHTML =
+  REAL_PORTFOLIO.crypto.map(h => holdingRow(h, "var(--crypto-c)")).join("");
+document.getElementById("etf-list").innerHTML =
+  REAL_PORTFOLIO.etfs.map(h => holdingRow(h, "var(--etf-c)")).join("");
+
+// ── Portfolio plan modes ─────────────────────────────────────────
 const modes = {
   steady: {
     name: "Steady",
-    copy: "A calmer version: slower path to 2x, better odds of staying in the game.",
-    shape: "Heavier defense, smaller turbo sleeve.",
+    copy: "Slower path to 2×, better odds of staying in the game. Prioritises the large cash sleeve.",
     optionsCopy: "Steady mode keeps options tiny and long-dated. The goal is learning, not forcing speed.",
     allocations: [
-      ["VTI", "Vanguard Total Stock Market ETF", "Buy the whole U.S. market at low cost; this is the compounding engine.", 45, "green"],
-      ["VXUS", "Vanguard Total International Stock ETF", "Own non-U.S. markets because leadership rotates and valuations differ.", 15, "blue"],
-      ["SGOV", "iShares 0-3 Month Treasury Bond ETF", "Keep dry powder earning Treasury yield; useful if growth sells off.", 25, "gold"],
-      ["QQQM", "Invesco Nasdaq 100 ETF", "Add large-cap growth exposure without picking one megacap winner.", 10, "red"],
-      ["SMH", "VanEck Semiconductor ETF", "Small AI/chip cycle tilt with ETF diversification.", 3, "red"],
-      ["IBIT", "iShares Bitcoin Trust ETF", "Tiny asymmetric sleeve; volatile enough that small sizing matters.", 2, "violet"]
+      ["VTI",  "Vanguard Total Stock Market ETF", "Compounding engine — buy the whole U.S. market.", 45, "green"],
+      ["VXUS", "Vanguard Total International",    "Own non-U.S. markets; leadership rotates.", 15, "blue"],
+      ["SGOV", "iShares 0-3M Treasury Bond ETF",  "Cash earning Treasury yield; dry powder.", 25, "gold"],
+      ["QQQM", "Invesco Nasdaq 100 ETF",          "Large-cap growth without picking one winner.", 10, "red"],
+      ["SMH",  "VanEck Semiconductor ETF",        "AI/chip cycle tilt with ETF diversification.", 3, "red"],
+      ["IBIT", "iShares Bitcoin Trust ETF",       "Tiny asymmetric sleeve.", 2, "violet"],
     ],
     options: [
-      ["QQQ LEAPS call", "Paper buy 1 deep ITM call, 9-18 months out", 2, "Defined max loss: premium paid. Use only if trend is above 200-day moving average."],
-      ["SPY put spread hedge", "Paper buy a 3-6 month put debit spread", 1, "Insurance sleeve for broad-market drawdown; do not expect it to make money most weeks."],
-      ["Cash reserve", "No trade unless volatility/payoff is favorable", 0, "Most weeks the right options trade is no trade."]
+      ["QQQ LEAPS call", "Deep ITM call, 9-18 months out", 2, "Defined max loss. Only above 200-day MA."],
+      ["SPY put spread", "3-6 month put debit spread", 1, "Insurance; don't expect profit most weeks."],
+      ["Cash reserve", "No trade unless payoff is compelling", 0, "Most weeks the right trade is no trade."],
     ]
   },
   aggressive: {
     name: "Aggressive",
-    copy: "This is my default specific version: enough growth exposure to matter, enough ballast to avoid going fully reckless.",
-    shape: "Core plus defined turbo: 50% broad markets, 35% growth/crypto, 15% Treasury ballast.",
-    optionsCopy: "Aggressive mode allows a 5% paper options sleeve, mostly long-dated calls or debit spreads.",
+    copy: "Enough growth to matter, enough ballast to avoid recklessness. Core 50% / Growth 35% / Cash 15%.",
+    optionsCopy: "5% paper options sleeve — long-dated calls or debit spreads only.",
     allocations: [
-      ["VTI", "Vanguard Total Stock Market ETF", "Buy the whole U.S. market at low cost; this is the compounding engine.", 40, "green"],
-      ["QQQM", "Invesco Nasdaq 100 ETF", "Tilt toward profitable, dominant growth companies and AI-adjacent platforms.", 20, "red"],
-      ["VXUS", "Vanguard Total International Stock ETF", "Diversify away from U.S.-only valuation and currency risk.", 10, "blue"],
-      ["SGOV", "iShares 0-3 Month Treasury Bond ETF", "Cash-like Treasury exposure for stability and opportunistic buying.", 15, "gold"],
-      ["SMH", "VanEck Semiconductor ETF", "Target the AI compute supply chain: Nvidia, TSMC, Broadcom, equipment makers.", 10, "red"],
-      ["IBIT", "iShares Bitcoin Trust ETF", "Asymmetric Bitcoin exposure without self-custody; cap it because drawdowns are brutal.", 5, "violet"]
+      ["VTI",  "Vanguard Total Stock Market ETF", "Compounding engine.", 40, "green"],
+      ["QQQM", "Invesco Nasdaq 100 ETF",          "Profitable dominant growth + AI platforms.", 20, "red"],
+      ["VXUS", "Vanguard Total International",    "Diversify away from U.S.-only valuation.", 10, "blue"],
+      ["SGOV", "iShares 0-3M Treasury Bond ETF",  "Treasury cash for stability and dry powder.", 15, "gold"],
+      ["SMH",  "VanEck Semiconductor ETF",        "AI compute supply chain — NVDA/TSMC/AVGO/ASML.", 10, "red"],
+      ["IBIT", "iShares Bitcoin Trust ETF",       "Capped Bitcoin sleeve; drawdowns are brutal.", 5, "violet"],
     ],
     options: [
-      ["NVDA call debit spread", "Paper buy 3-6 month call spread after confirmed pullback", 2, "Use spreads so premium is capped; thesis is AI momentum without unlimited premium burn."],
-      ["QQQ LEAPS call", "Paper buy 1 deep ITM call, 9-18 months out", 2, "Longer duration gives the thesis time; exit if QQQ loses the 200-day trend."],
-      ["SPY put spread hedge", "Paper buy 2-4 month put debit spread", 1, "Offsets part of growth/semiconductor drawdown risk."]
+      ["NVDA call spread", "3-6 month call spread after pullback", 2, "Capped premium; AI momentum thesis."],
+      ["QQQ LEAPS call",   "Deep ITM call, 9-18 months out", 2, "Exit if QQQ loses the 200-day trend."],
+      ["SPY put spread",   "2-4 month put debit spread", 1, "Offsets growth/semi drawdown risk."],
     ]
   },
   sprint: {
     name: "Sprint",
-    copy: "The fastest version shown here, with visibly higher drawdown risk.",
-    shape: "More upside, less shock absorption.",
-    optionsCopy: "Sprint mode is the maximum-risk dashboard. Options are still paper-only and never naked.",
+    copy: "Maximum growth attempt — visibly higher drawdown risk. Only run this if you accept large swings.",
+    optionsCopy: "Maximum-risk dashboard. All positions are paper-only and never naked.",
     allocations: [
-      ["VTI", "Vanguard Total Stock Market ETF", "Still keep a U.S. market anchor so the account is not all theme risk.", 35, "green"],
-      ["QQQM", "Invesco Nasdaq 100 ETF", "Aggressive large-cap growth tilt for faster compounding attempts.", 20, "red"],
-      ["SMH", "VanEck Semiconductor ETF", "High-conviction AI hardware and semiconductor supply-chain exposure.", 15, "red"],
-      ["IBIT", "iShares Bitcoin Trust ETF", "High-volatility upside sleeve; this can also hurt fast.", 15, "violet"],
-      ["VXUS", "Vanguard Total International Stock ETF", "Small diversification sleeve outside U.S. winners.", 10, "blue"],
-      ["SGOV", "iShares 0-3 Month Treasury Bond ETF", "Minimum dry powder only.", 5, "gold"]
+      ["VTI",  "Vanguard Total Stock Market ETF", "Market anchor — not all theme risk.", 35, "green"],
+      ["QQQM", "Invesco Nasdaq 100 ETF",          "Aggressive large-cap growth.", 20, "red"],
+      ["SMH",  "VanEck Semiconductor ETF",        "High-conviction AI hardware.", 15, "red"],
+      ["IBIT", "iShares Bitcoin Trust ETF",       "High-volatility upside; can also hurt fast.", 15, "violet"],
+      ["VXUS", "Vanguard Total International",    "Small diversification sleeve.", 10, "blue"],
+      ["SGOV", "iShares 0-3M Treasury Bond ETF",  "Minimum dry powder only.", 5, "gold"],
     ],
     options: [
-      ["NVDA call debit spread", "Paper buy 2-5 month call spread only after signal confirmation", 4, "Fast upside attempt, but max loss must be capped at entry."],
-      ["QQQ call debit spread", "Paper buy 2-4 month call spread on broad tech breakout", 3, "Avoids single-name earnings risk while keeping growth beta."],
-      ["SPY put spread hedge", "Paper hedge when portfolio beta is high", 2, "Required shock absorber for sprint mode."]
+      ["NVDA call spread", "2-5 month call spread after signal", 4, "Max loss capped at entry — no exceptions."],
+      ["QQQ call spread",  "2-4 month call on broad tech breakout", 3, "Avoids single-name earnings risk."],
+      ["SPY put hedge",    "Required shock absorber for sprint mode", 2, "Must hold this when portfolio beta is high."],
     ]
   }
 };
 
 const referencePrices = {
-  VTI:  { price: 350.21, note: "Apr 20 close" },
-  QQQM: { price: 260.15, note: "Apr 15 quote" },
-  VXUS: { price:  77.97, note: "Apr 6 close"  },
-  SGOV: { price: 100.52, note: "Apr 15 NAV"   },
-  SMH:  { price: 477.17, note: "Apr 22 NAV"   },
-  IBIT: { price:  43.94, note: "Apr 17 close" }
+  VTI:  { price: 350.21, note: "Apr 20" },
+  QQQM: { price: 260.15, note: "Apr 15" },
+  VXUS: { price:  77.97, note: "Apr 6"  },
+  SGOV: { price: 100.52, note: "Apr 15" },
+  SMH:  { price: 477.17, note: "Apr 22" },
+  IBIT: { price:  43.94, note: "Apr 17" },
 };
 
-const colorMap = {
-  green:  "var(--green)",
-  blue:   "var(--blue)",
-  gold:   "var(--gold)",
-  red:    "var(--red)",
-  violet: "var(--violet)"
-};
+const colorClass = { green:"badge-green", blue:"badge-blue", gold:"badge-gold", red:"badge-red", violet:"badge-violet" };
+const colorVar   = { green:"var(--green)", blue:"var(--blue)", gold:"var(--gold)", red:"var(--red)", violet:"var(--purple)" };
 
 let activeMode = "aggressive";
 
-function currency(value) {
-  return value.toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 });
-}
-
-function compact(value) {
-  if (value >= 1000) return "$" + Math.round(value / 1000) + "k";
-  return currency(value);
-}
-
 function render() {
-  const capitalInput = document.getElementById("capital");
-  const capital = Math.max(1000, Number(capitalInput.value || 50000));
-  const target = capital * 2;
+  const cap  = Math.max(1000, Number(document.getElementById("capital").value || 66968));
   const mode = modes[activeMode];
-  const core = mode.allocations.filter(a => ["VTI", "VXUS", "SGOV"].includes(a[0])).reduce((sum, a) => sum + a[3], 0);
+  const core = mode.allocations.filter(a => ["VTI","VXUS","SGOV"].includes(a[0])).reduce((s,a)=>s+a[3],0);
   const cash = mode.allocations.find(a => a[0] === "SGOV")[3];
-  const upside = 100 - core;
 
-  document.getElementById("hero-capital").textContent  = currency(capital);
-  document.getElementById("hero-target").textContent   = currency(target);
-  document.getElementById("hero-mode").textContent     = mode.name;
-  document.getElementById("core-pct").textContent      = core + "%";
-  document.getElementById("upside-pct").textContent    = upside + "%";
-  document.getElementById("cash-pct").textContent      = cash + "%";
-  document.getElementById("goal-left").textContent     = currency(target - capital) + " to go";
+  document.getElementById("core-pct").textContent    = core + "%";
+  document.getElementById("upside-pct").textContent  = (100 - core) + "%";
+  document.getElementById("cash-pct").textContent    = cash + "%";
+  document.getElementById("mode-copy").textContent   = mode.copy;
+  document.getElementById("options-copy").textContent = mode.optionsCopy;
+  document.getElementById("goal-left").textContent   = currency(cap * 2 - cap) + " to go";
   document.getElementById("goal-progress").textContent = "0% of the way to 2×";
-  document.getElementById("goal-fill").style.width     = "0%";
-  document.getElementById("mode-copy").textContent     = mode.copy;
-  document.getElementById("shape-copy").textContent    = mode.shape;
-  document.getElementById("options-copy").textContent  = mode.optionsCopy;
-  document.getElementById("donut-total").textContent   = compact(capital);
+  document.getElementById("goal-fill").style.width   = "0%";
 
-  const list = document.getElementById("allocation-list");
-  list.innerHTML = mode.allocations.map(([ticker, name, thesis, pct, color]) => {
-    const amount = capital * pct / 100;
+  document.getElementById("buy-list").innerHTML = mode.allocations.map(([ticker, name, thesis, pct, color]) => {
+    const amt = cap * pct / 100;
     const ref = referencePrices[ticker];
-    const shares = ref ? amount / ref.price : 0;
+    const shares = ref ? (amt / ref.price).toFixed(2) : "—";
     return `
-      <div class="allocation-row">
-        <div class="ticker ${color}">${ticker}</div>
-        <div class="asset">
-          <h3>${name}</h3>
-          <p>${thesis}</p>
+      <div class="buy-row">
+        <div class="buy-badge ${colorClass[color]}">${ticker}</div>
+        <div class="buy-info">
+          <div class="buy-name">${name}</div>
+          <div class="buy-thesis">${thesis}</div>
         </div>
-        <div class="bar"><i style="width:${pct}%;background:${colorMap[color]}"></i></div>
-        <div class="shares"><strong>${shares.toFixed(2)} shares</strong>@ $${ref.price.toFixed(2)} <span class="sub">${ref.note}</span></div>
-        <div class="amount">${currency(amount)}<div class="sub">${pct}%</div></div>
-      </div>
-    `;
+        <div class="buy-numbers">
+          <div class="buy-amount">${currency(amt)}</div>
+          <div class="buy-pct">${pct}% · ${shares} sh</div>
+        </div>
+      </div>`;
   }).join("");
 
-  const optionsGrid = document.getElementById("options-grid");
-  optionsGrid.innerHTML = mode.options.map(([name, structure, pct, thesis]) => {
-    const riskBudget = capital * pct / 100;
+  document.getElementById("options-grid").innerHTML = mode.options.map(([name, structure, pct, thesis]) => {
+    const risk = cap * pct / 100;
     return `
       <div class="option-card">
-        <span class="tag">PAPER OPTION</span>
+        <div class="option-tag">PAPER OPTION</div>
         <h3>${name}</h3>
         <p>${structure}</p>
         <div class="option-meta">
-          <div><strong>${currency(riskBudget)}</strong>max premium/risk</div>
-          <div><strong>${pct}%</strong>of portfolio cap</div>
+          <div class="option-meta-item"><strong>${currency(risk)}</strong>max risk</div>
+          <div class="option-meta-item"><strong>${pct}%</strong>of portfolio</div>
         </div>
         <p>${thesis}</p>
-      </div>
-    `;
+      </div>`;
   }).join("");
 
-  let degrees = 0;
-  const stops = mode.allocations.map((allocation) => {
-    const color = colorMap[allocation[4]];
-    const start = degrees;
-    degrees += allocation[3] * 3.6;
-    return `${color} ${start}deg ${degrees}deg`;
-  });
-  document.getElementById("donut").style.background = `conic-gradient(${stops.join(", ")})`;
-
-  document.querySelectorAll(".mode-tabs button").forEach(button => {
-    button.classList.toggle("active", button.dataset.mode === activeMode);
-  });
+  document.querySelectorAll(".plan-tab").forEach(b =>
+    b.classList.toggle("active", b.dataset.mode === activeMode));
 }
 
-function pct(value) {
-  if (value == null || Number.isNaN(Number(value))) return "—";
-  return (Number(value) * 100).toFixed(2) + "%";
-}
-
-function num(value, digits = 2) {
-  if (value == null || Number.isNaN(Number(value))) return "—";
-  return Number(value).toFixed(digits);
-}
-
-function renderResearchDesk(status) {
-  const positions = status?.positions || [];
-  const trades = status?.trade_history || [];
-  const summary = status?.summary || {};
-  const tickers = positions.map(position => position.ticker);
-
-  if (positions.length) {
-    document.getElementById("best-ideas").innerHTML = positions.map(position => {
-      const cost = Number(position.avg_cost || 0);
-      const last = Number(position.last_price || cost);
-      const move = cost ? ((last - cost) / cost) : 0;
-      return `<li><strong>${position.ticker}</strong> — paper holding, confidence ${(Number(position.confidence || 0) * 100).toFixed(0)}%, entry $${cost.toFixed(2)}, stop $${Number(position.stop_loss || 0).toFixed(2)}, target $${Number(position.take_profit || 0).toFixed(2)}, move ${pct(move)}.</li>`;
-    }).join("");
-
-    document.getElementById("research-queue").innerHTML = positions.map(position => {
-      const confidence = (Number(position.confidence || 0) * 100).toFixed(0);
-      return `<li><strong>${position.ticker}</strong> — entered because it is an active paper holding from a high-confidence scan (${confidence}%). Research checklist: moat, earnings quality, valuation, trend durability, stop/target logic, and what would invalidate the trade.</li>`;
-    }).join("") + `
-      <li><strong>Next refresh</strong> — prices updated 3× per day: 06:35, 10:00, and 13:05 PT. Next morning scan compares against ${tickers.join(", ")}.</li>
-      <li><strong>Move up</strong> — stronger confidence, improving trend, better alpha contribution, or confirmed thesis.</li>
-      <li><strong>Move down / exit</strong> — confidence below 55%, stop hit, thesis invalidated, weak data quality, or ETF/options replacement is cleaner.</li>
-    `;
-  }
-
-  document.getElementById("learned-list").innerHTML = `
-    <li><strong>Current alpha</strong> — ${pct(summary.alpha_pct)} vs ${summary.benchmark_symbol || "SPY"}; alerts stay restrained until this is convincingly positive.</li>
-    <li><strong>Beta check</strong> — portfolio beta is ${num(summary.portfolio_beta, 2)}; beta-adjusted alpha is ${pct(summary.beta_adjusted_alpha_pct)}.</li>
-    <li><strong>Cash matters</strong> — ${currency(summary.cash || 0)} remains available for better setups or drawdown defense.</li>
-    <li><strong>Trade count</strong> — ${trades.length} paper trades logged; still too early for real-money confidence.</li>
-  `;
-
-  const latestTrade = trades[trades.length - 1];
-  if (latestTrade) {
-    document.getElementById("mind-change-list").innerHTML = `
-      <li><strong>Latest action</strong> — ${latestTrade.action} ${latestTrade.ticker} at $${Number(latestTrade.price || 0).toFixed(2)} in paper mode.</li>
-      <li><strong>Position sizing</strong> — the agent is using capped allocations instead of all-in conviction.</li>
-      <li><strong>Evidence threshold</strong> — future changes need alpha, repeatability, and a written invalidation condition.</li>
-    `;
-  }
-
-  const warnings = [
-    ["Real trade lock", "Do not copy paper trades until the agent has weeks of SPY-relative evidence."],
-    ["Options lock", "Do not trade options live until paper spreads have tracked entry, exit, max loss, and thesis outcome."],
-    ["Single scan risk", "One good-looking scan can be luck; require repeated signal quality."]
-  ];
-
-  if (summary.alpha_pct != null && summary.alpha_pct <= 0) {
-    warnings.unshift(["Alpha not proven", `Current alpha is ${pct(summary.alpha_pct)}, so the agent has not earned stronger trade alerts.`]);
-  }
-
-  if (summary.portfolio_beta != null && summary.portfolio_beta > 1.3) {
-    warnings.unshift(["Beta too hot", `Portfolio beta is ${num(summary.portfolio_beta, 2)}. If returns are only from extra market risk, reduce position size or hedge.`]);
-  }
-
-  if (summary.beta_adjusted_alpha_pct != null && summary.beta_adjusted_alpha_pct <= 0) {
-    warnings.unshift(["Beta-adjusted alpha not proven", `After adjusting for beta, alpha is ${pct(summary.beta_adjusted_alpha_pct)}.`]);
-  }
-
-  document.getElementById("warning-list").innerHTML = warnings.map(([title, body]) => `<li><strong>${title}</strong> — ${body}</li>`).join("");
-}
-
-document.querySelectorAll(".mode-tabs button").forEach(button => {
-  button.addEventListener("click", () => {
-    activeMode = button.dataset.mode;
-    render();
-  });
-});
-
+document.querySelectorAll(".plan-tab").forEach(b =>
+  b.addEventListener("click", () => { activeMode = b.dataset.mode; render(); }));
 document.getElementById("capital").addEventListener("input", render);
 render();
 
+// ── Load live agent status ───────────────────────────────────────
 async function loadAgentStatus() {
   try {
-    const [response, researchResponse, feedResponse, memoryResponse] = await Promise.all([
+    const [res, researchRes, feedRes, memRes] = await Promise.all([
       fetch("data/status.json?ts=" + Date.now()),
       fetch("data/research_notes.json?ts=" + Date.now()).catch(() => null),
       fetch("data/research_feed.json?ts=" + Date.now()).catch(() => null),
-      fetch("data/memory_summary.json?ts=" + Date.now()).catch(() => null)
+      fetch("data/memory_summary.json?ts=" + Date.now()).catch(() => null),
     ]);
-    if (!response.ok) return;
-    const status = await response.json();
-    if (researchResponse && researchResponse.ok) {
-      const research = await researchResponse.json();
-      renderExternalResearch(research);
-    }
-    if (feedResponse && feedResponse.ok) {
-      const feed = await feedResponse.json();
-      renderResearchFeed(feed);
-    }
-    if (memoryResponse && memoryResponse.ok) {
-      const memory = await memoryResponse.json();
-      renderAgentMemory(memory);
-    }
+    if (!res.ok) return;
+    const status  = await res.json();
     const summary = status.summary || {};
-    const alpha = summary.alpha_pct;
-    const benchmark = summary.benchmark_return_pct;
-    const total = summary.total_return_pct;
-    const beta = summary.portfolio_beta;
-    const betaAlpha = summary.beta_adjusted_alpha_pct;
-    renderResearchDesk(status);
+
+    // Agent dot
+    document.getElementById("agent-dot").style.background = "#00c805";
+    document.getElementById("agent-dot").title = "Agent online";
+
+    // Live metrics
+    const alpha = summary.alpha_pct, bench = summary.benchmark_return_pct;
+    const total = summary.total_return_pct, beta = summary.portfolio_beta;
     document.getElementById("live-grid").innerHTML = `
-      <div class="metric"><div class="label">Agent status</div><div class="value">Running</div><div class="sub">Updated ${new Date(status.updated_at).toLocaleString()}</div></div>
-      <div class="metric"><div class="label">Paper NAV</div><div class="value">${currency(summary.nav || status.starting_capital || 50000)}</div><div class="sub">Return ${total == null ? "—" : (total * 100).toFixed(2) + "%"}</div></div>
-      <div class="metric"><div class="label">Alpha vs ${summary.benchmark_symbol || "SPY"}</div><div class="value">${alpha == null ? "—" : (alpha * 100).toFixed(2) + "%"}</div><div class="sub">Benchmark ${benchmark == null ? "—" : (benchmark * 100).toFixed(2) + "%"}</div></div>
-      <div class="metric"><div class="label">Beta</div><div class="value">${num(beta, 2)}</div><div class="sub">Beta-adjusted alpha ${pct(betaAlpha)}</div></div>
+      <div class="metric-card"><div class="metric-label">Status</div><div class="metric-value" style="font-size:1rem">Running</div><div class="metric-sub">${new Date(status.updated_at).toLocaleString()}</div></div>
+      <div class="metric-card"><div class="metric-label">Paper NAV</div><div class="metric-value">${compact(summary.nav||66968)}</div><div class="metric-sub">Return ${total==null?"—":(total*100).toFixed(2)+"%"}</div></div>
+      <div class="metric-card"><div class="metric-label">Alpha vs ${summary.benchmark_symbol||"SPY"}</div><div class="metric-value" style="color:${alpha>0?"var(--green)":alpha<0?"var(--red)":"inherit"}">${alpha==null?"—":(alpha*100).toFixed(2)+"%"}</div><div class="metric-sub">Bench ${bench==null?"—":(bench*100).toFixed(2)+"%"}</div></div>
+      <div class="metric-card"><div class="metric-label">Beta</div><div class="metric-value">${numFmt(beta,2)}</div><div class="metric-sub">vs market</div></div>
     `;
-    document.getElementById("live-note").textContent = "This is paper performance only. Real trades still require your approval.";
-  } catch (error) {
-    document.getElementById("live-note").textContent = "Live status will appear after the agent creates data/status.json.";
+    document.getElementById("live-note").textContent = "Paper performance only. Real trades still require your approval.";
+
+    // Update best ideas from live positions
+    const positions = status.positions || [];
+    if (positions.length) {
+      document.getElementById("best-ideas").innerHTML = positions.map(p => {
+        const move = p.avg_cost ? ((p.last_price - p.avg_cost) / p.avg_cost) : 0;
+        return `<li><strong>${p.ticker}</strong> — ${(+(p.confidence||0)*100).toFixed(0)}% conf, entry $${+(p.avg_cost||0).toFixed(2)}, move ${(move*100).toFixed(2)}%</li>`;
+      }).join("");
+    }
+
+    // Learned
+    document.getElementById("learned-list").innerHTML = `
+      <li><strong>Alpha</strong> — ${pctFmt(summary.alpha_pct)} vs ${summary.benchmark_symbol||"SPY"}.</li>
+      <li><strong>Beta</strong> — ${numFmt(summary.portfolio_beta,2)}; beta-adjusted alpha ${pctFmt(summary.beta_adjusted_alpha_pct)}.</li>
+      <li><strong>Cash available</strong> — ${currencyFull(summary.cash||0)} for new entries.</li>
+      <li><strong>Trades logged</strong> — ${(status.trade_history||[]).length} paper trades so far.</li>
+    `;
+
+    // Warnings
+    const warnings = [
+      ["Real trade lock", "Do not copy paper trades until weeks of positive alpha are confirmed."],
+      ["Concentration", "AI/semi cluster dominates — one sector move hits the whole book."],
+    ];
+    if (alpha != null && alpha <= 0) warnings.unshift(["Alpha not proven", `Current alpha is ${pctFmt(alpha)}.`]);
+    if (beta != null && beta > 1.3)  warnings.unshift(["Beta too hot", `Portfolio beta ${numFmt(beta,2)} — returns may be leveraged market risk.`]);
+    document.getElementById("warning-list").innerHTML =
+      warnings.map(([t,b]) => `<li><strong>${t}</strong> — ${b}</li>`).join("");
+
+    if (researchRes?.ok) renderExternalResearch(await researchRes.json());
+    if (feedRes?.ok)     renderResearchFeed(await feedRes.json());
+    if (memRes?.ok)      renderAgentMemory(await memRes.json());
+
+  } catch (_) {
+    document.getElementById("live-note").textContent =
+      "Live data will appear after the agent creates data/status.json.";
   }
 }
 
-function renderExternalResearch(research) {
-  const core = (research.preferred_core_watchlist || []).slice(0, 6).map(item => {
-    return `<li><strong>${item.ticker}</strong> — ${item.why}</li>`;
-  }).join("");
-  const tactical = (research.tactical_high_beta_watchlist || []).slice(0, 4).map(item => {
-    return `<li><strong>${item.ticker}</strong> — tactical/high beta: ${item.why}</li>`;
-  }).join("");
-  const risks = (research.risk_flags || []).slice(0, 3).map(flag => {
-    return `<li><strong>Risk</strong> — ${flag}</li>`;
-  }).join("");
-
-  document.getElementById("external-research").innerHTML = `
-    <li><strong>${research.source || "User research report"}</strong> — reference only; live scan still must verify price, beta, valuation, alpha, and invalidation.</li>
-    ${(research.core_thesis || []).slice(0, 2).map(thesis => `<li><strong>Thesis</strong> — ${thesis}</li>`).join("")}
-    ${core}
-    ${tactical}
-    ${risks}
-  `;
+function renderExternalResearch(r) {
+  const items = [
+    ...(r.core_thesis||[]).slice(0,2).map(t => `<li><strong>Thesis</strong> — ${t}</li>`),
+    ...(r.preferred_core_watchlist||[]).slice(0,4).map(i => `<li><strong>${i.ticker}</strong> — ${i.why}</li>`),
+    ...(r.risk_flags||[]).slice(0,2).map(f => `<li><strong>Risk</strong> — ${f}</li>`),
+  ];
+  document.getElementById("external-research").innerHTML =
+    `<li><strong>${r.source||"Research report"}</strong> — reference; agent verifies with live data.</li>` + items.join("");
 }
 
-function renderResearchFeed(feed) {
-  const takeaways = (feed.takeaways || []).slice(0, 6).map(item => {
-    return `<li><strong>Takeaway</strong> — ${item}</li>`;
-  }).join("");
-  const risks = (feed.risk_flags || []).slice(0, 4).map(item => {
-    return `<li><strong>Risk</strong> — ${item}</li>`;
-  }).join("");
-  const headlines = (feed.items || []).slice(0, 5).flatMap(item => {
-    return (item.latest_news || []).slice(0, 1).map(news => {
-      const url = news.url ? ` <a href="${news.url}" target="_blank" rel="noopener">source</a>` : "";
-      return `<li><strong>${item.ticker}</strong> — ${news.title}${url}</li>`;
-    });
-  }).join("");
-
-  document.getElementById("research-feed").innerHTML = `
-    <li><strong>Updated</strong> — ${new Date(feed.updated_at).toLocaleString()}; watches Yahoo Finance news and yfinance financial snapshots.</li>
-    ${takeaways || "<li><strong>Takeaway</strong> — No strong financial snapshot takeaways yet.</li>"}
-    ${risks}
-    ${headlines}
-  `;
+function renderResearchFeed(f) {
+  const items = [
+    ...(f.takeaways||[]).slice(0,4).map(t => `<li><strong>Takeaway</strong> — ${t}</li>`),
+    ...(f.risk_flags||[]).slice(0,2).map(t => `<li><strong>Risk</strong> — ${t}</li>`),
+    ...(f.items||[]).slice(0,4).flatMap(i =>
+      (i.latest_news||[]).slice(0,1).map(n => {
+        const url = n.url ? ` <a href="${n.url}" target="_blank" rel="noopener">↗</a>` : "";
+        return `<li><strong>${i.ticker}</strong> — ${n.title}${url}</li>`;
+      })
+    ),
+  ];
+  document.getElementById("research-feed").innerHTML =
+    `<li><strong>Updated</strong> — ${new Date(f.updated_at).toLocaleString()}</li>` + items.join("");
 }
 
-function renderAgentMemory(memory) {
-  const counts = memory.counts_by_type || {};
-  const countRows = Object.entries(counts).map(([kind, count]) => {
-    return `<li><strong>${kind}</strong> — ${count} memories stored.</li>`;
-  }).join("");
-  const recent = (memory.recent_entries || []).slice(-4).reverse().map(entry => {
-    return `<li><strong>${entry.type}</strong> — remembered at ${new Date(entry.at).toLocaleString()}.</li>`;
-  }).join("");
-
-  document.getElementById("agent-memory").innerHTML = `
-    <li><strong>Updated</strong> — ${new Date(memory.updated_at).toLocaleString()}.</li>
-    <li><strong>Purpose</strong> — keep all research/signal/outcome memories even when the visible queue is curated.</li>
-    ${countRows || "<li><strong>Empty</strong> — no memory entries yet.</li>"}
-    ${recent}
-  `;
+function renderAgentMemory(m) {
+  const counts = Object.entries(m.counts_by_type||{}).map(([k,v]) => `<li><strong>${k}</strong> — ${v} entries</li>`).join("");
+  document.getElementById("agent-memory").innerHTML =
+    `<li><strong>DB</strong> — ${m.db_file||"data/agent_memory.db"}</li>` +
+    (counts || "<li><strong>Empty</strong> — no entries yet.</li>");
 }
 
 loadAgentStatus();
