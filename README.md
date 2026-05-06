@@ -139,6 +139,7 @@ These are Los Angeles local times for U.S. market hours.
 |-----------|-------------|
 | 06:35 Mon–Fri | Morning scan — scores all stocks, executes paper trades |
 | Every 15 minutes during market hours | Price refresh, stop-loss/take-profit monitoring, beta/alpha/status update |
+| Every 3 hours while running | Research digest — dashboard link, latest paper prices, NAV/alpha/beta, research takeaways, memory counts |
 | 13:05 Mon–Fri | EOD summary — daily P&L, SPY comparison, portfolio snapshot, Yahoo/news/financial research watcher |
 | 13:30 Friday | Weekly reflection — self-critique, strategy adjustment |
 
@@ -185,6 +186,15 @@ To publish once daily after close, set:
 ```bash
 DAILY_PUBLISH_DASHBOARD=true
 ```
+
+To send the dashboard and research/price digest every 3 hours, set:
+
+```bash
+DIGEST_EVERY_HOURS=3
+DASHBOARD_URL=https://yuqing19118.github.io/stock-portfolio/
+```
+
+The digest refreshes local prices first, then sends the GitHub Pages dashboard link, paper NAV, SPY alpha, portfolio beta, top positions, research takeaways, risk flags, and memory counts. It is a research alert, not permission to place a real trade.
 
 The older `AUTO_PUBLISH_DASHBOARD=true` flag is still recognized for manual compatibility, but daily publishing is preferred.
 

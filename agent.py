@@ -9,6 +9,7 @@ import schedule
 import time
 import logging
 import os
+import json
 import subprocess
 from pathlib import Path
 from datetime import datetime, time as dt_time
@@ -38,6 +39,8 @@ log = logging.getLogger("BuffetBot")
 
 MARKET_OPEN_PT = dt_time(6, 30)
 MARKET_CLOSE_PT = dt_time(13, 5)
+DIGEST_EVERY_HOURS = int(os.getenv("DIGEST_EVERY_HOURS", "3"))
+DEFAULT_DASHBOARD_URL = "https://yuqing19118.github.io/stock-portfolio/"
 
 
 def morning_scan():
@@ -186,6 +189,34 @@ def daily_research():
         log.error(f"Daily research watcher failed: {e}", exc_info=True)
 
 
+def periodic_digest():
+    """Every few hours — send dashboard, current prices, and latest research state."""
+    log.info("--- 3-hour research digest ---")
+    try:
+        portfolio = PaperPortfolio()
+        notifier = Notifier()
+
+        portfolio.refresh_prices()
+        portfolio.write_status()
+
+        status = _load_json(Path("data/status.json"), {})
+        research_feed = _load_json(Path("data/research_feed.json"), {})
+        memory_summary = AgentMemory().write_summary()
+        dashboard_url = os.getenv("DASHBOARD_URL", DEFAULT_DASHBOARD_URL)
+
+        notifier.send_digest(status, research_feed, memory_summary, dashboard_url)
+        AgentMemory().remember("periodic_digest", {
+            "dashboard_url": dashboard_url,
+            "nav": status.get("summary", {}).get("nav"),
+            "alpha_pct": status.get("summary", {}).get("alpha_pct"),
+            "portfolio_beta": status.get("summary", {}).get("portfolio_beta"),
+            "positions": status.get("summary", {}).get("positions"),
+            "research_items": len(research_feed.get("items", [])),
+        })
+    except Exception as e:
+        log.error(f"3-hour digest failed: {e}", exc_info=True)
+
+
 def weekly_reflection():
     """Every Friday — agent writes a self-critique and decides if it's ready to guide you."""
     log.info("=== WEEKLY REFLECTION ===")
@@ -248,6 +279,17 @@ def _publish_dashboard():
         log.debug(f"Dashboard publish skipped: {e}")
 
 
+def _load_json(path: Path, default):
+    try:
+        if not path.exists():
+            return default
+        with path.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except Exception as e:
+        log.debug(f"Could not read {path}: {e}")
+        return default
+
+
 def _fmt_pct(value) -> str:
     if value is None:
         return "—"
@@ -263,9 +305,14 @@ def setup_schedule():
         getattr(schedule.every(), day_name).at("13:05").do(evening_review)
 
     schedule.every(15).minutes.do(intraday_monitor)
+    schedule.every(DIGEST_EVERY_HOURS).hours.do(periodic_digest)
     schedule.every().friday.at("13:30").do(weekly_reflection)
 
-    log.info("Schedule armed in America/Los_Angeles market time. 15-minute monitor active during market hours.")
+    log.info(
+        "Schedule armed in America/Los_Angeles market time. "
+        "15-minute monitor active during market hours; digest every %s hours.",
+        DIGEST_EVERY_HOURS,
+    )
 
 
 if __name__ == "__main__":

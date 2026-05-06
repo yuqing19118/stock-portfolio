@@ -83,6 +83,71 @@ class Notifier:
         )
         self._send(msg)
 
+    def send_digest(
+        self,
+        status: dict,
+        research_feed: dict = None,
+        memory_summary: dict = None,
+        dashboard_url: str = None,
+    ):
+        """Every few hours: dashboard link, prices, paper portfolio, and research context."""
+        research_feed = research_feed or {}
+        memory_summary = memory_summary or {}
+        summary = status.get("summary", {})
+        positions = status.get("positions", [])
+
+        lines = [
+            "*BuffetBot — 3-Hour Research Digest*",
+            f"Dashboard: {dashboard_url or 'local dashboard'}",
+            f"Updated: {status.get('updated_at', '—')}",
+            "",
+            f"Paper NAV: ${summary.get('nav', 0):,.0f}",
+            f"Paper return: {self._fmt_pct(summary.get('total_return_pct'))}",
+            f"Benchmark ({summary.get('benchmark_symbol', 'SPY')}): {self._fmt_pct(summary.get('benchmark_return_pct'))}",
+            f"Alpha: {self._fmt_pct(summary.get('alpha_pct'))}",
+            f"Beta: {summary.get('portfolio_beta') if summary.get('portfolio_beta') is not None else '—'}",
+            f"Beta-adjusted alpha: {self._fmt_pct(summary.get('beta_adjusted_alpha_pct'))}",
+            "",
+            "Top paper positions / latest prices:",
+        ]
+
+        if positions:
+            for p in positions[:12]:
+                last_price = p.get("current_price", p.get("last_price", 0)) or 0
+                avg_price = p.get("avg_price", p.get("avg_cost", 0)) or 0
+                pnl_pct = p.get("unrealized_pnl_pct")
+                if pnl_pct is None and avg_price:
+                    pnl_pct = (last_price - avg_price) / avg_price
+                lines.append(
+                    f"- {p.get('ticker', '—')}: last ${last_price:.2f}, "
+                    f"avg ${avg_price:.2f}, "
+                    f"P&L {self._fmt_pct(pnl_pct)}, "
+                    f"stop ${p.get('stop_loss', 0):.2f}, target ${p.get('take_profit', 0):.2f}"
+                )
+        else:
+            lines.append("- No open paper positions.")
+
+        takeaways = research_feed.get("takeaways", [])
+        if takeaways:
+            lines.extend(["", "Latest research takeaways:"])
+            lines.extend(f"- {item}" for item in takeaways[:5])
+
+        risk_flags = research_feed.get("risk_flags", [])
+        if risk_flags:
+            lines.extend(["", "Do Not Trade Yet / risk flags:"])
+            lines.extend(f"- {item}" for item in risk_flags[:5])
+
+        counts = memory_summary.get("counts_by_type", {})
+        if counts:
+            memory_line = ", ".join(f"{k}: {v}" for k, v in sorted(counts.items())[:8])
+            lines.extend(["", f"Agent memory counts: {memory_line}"])
+
+        lines.extend([
+            "",
+            "Research only. No real trade is placed unless you decide and approve it.",
+        ])
+        self._send("\n".join(lines))
+
     def send_weekly_report(self, report: dict, maturity: float):
         """Friday: weekly reflection report."""
         msg = (
@@ -208,3 +273,8 @@ class Notifier:
             .replace("🟡", "[WATCH]")
             .replace("🛑", "[STOP]")
         )
+
+    def _fmt_pct(self, value) -> str:
+        if value is None:
+            return "—"
+        return f"{value:+.2%}"
