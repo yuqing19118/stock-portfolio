@@ -14,6 +14,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import yfinance as yf
+from core.memory import AgentMemory
 
 log = logging.getLogger("ResearchWatcher")
 
@@ -54,6 +55,7 @@ class ResearchWatcher:
 
         RESEARCH_FEED_FILE.parent.mkdir(exist_ok=True)
         RESEARCH_FEED_FILE.write_text(json.dumps(feed, indent=2, ensure_ascii=False))
+        self._remember(feed)
         log.info(f"Research feed updated for {len(feed['items'])} tickers")
         return feed
 
@@ -176,3 +178,24 @@ class ResearchWatcher:
             return json.loads(RESEARCH_NOTES_FILE.read_text())
         except Exception:
             return {}
+
+    def _remember(self, feed: dict):
+        memory = AgentMemory()
+        memory.remember("daily_research_feed", {
+            "updated_at": feed.get("updated_at"),
+            "tickers": feed.get("tickers", []),
+            "takeaways": feed.get("takeaways", []),
+            "risk_flags": feed.get("risk_flags", []),
+        })
+        for item in feed.get("items", []):
+            memory.remember("ticker_research_snapshot", {
+                "ticker": item.get("ticker"),
+                "company": item.get("company"),
+                "beta": item.get("beta"),
+                "trailing_pe": item.get("trailing_pe"),
+                "forward_pe": item.get("forward_pe"),
+                "profit_margin": item.get("profit_margin"),
+                "revenue_growth": item.get("revenue_growth"),
+                "recommendation": item.get("recommendation"),
+                "news_titles": [n.get("title") for n in item.get("latest_news", [])],
+            })

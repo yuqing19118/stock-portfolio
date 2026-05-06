@@ -1,0 +1,174 @@
+{
+  "updated_at": "2026-05-05T23:28:14.709102",
+  "memory_file": "data/agent_memory.jsonl",
+  "total_recent_entries_counted": 7,
+  "counts_by_type": {
+    "daily_research_feed": 1,
+    "ticker_research_snapshot": 6
+  },
+  "latest_by_type": {
+    "daily_research_feed": "2026-05-05T23:28:14.704806",
+    "ticker_research_snapshot": "2026-05-05T23:28:14.708744"
+  },
+  "recent_entries": [
+    {
+      "at": "2026-05-05T23:28:14.704806",
+      "type": "daily_research_feed",
+      "payload": {
+        "updated_at": "2026-05-05T23:28:12.536096",
+        "tickers": [
+          "CSX",
+          "NVDA",
+          "MU",
+          "TSM",
+          "WDC",
+          "SIMO"
+        ],
+        "takeaways": [
+          "CSX: Yahoo recommendation key is 'buy'; treat as context, not proof.",
+          "NVDA: high beta (2.24); returns must be judged on beta-adjusted alpha.",
+          "NVDA: revenue growth is strong (73.2%); verify whether valuation already prices it in.",
+          "NVDA: high profit margin (55.6%); research moat durability.",
+          "NVDA: Yahoo recommendation key is 'strong_buy'; treat as context, not proof.",
+          "MU: high beta (1.92); returns must be judged on beta-adjusted alpha.",
+          "MU: revenue growth is strong (196.3%); verify whether valuation already prices it in.",
+          "MU: high profit margin (41.5%); research moat durability.",
+          "MU: Yahoo recommendation key is 'strong_buy'; treat as context, not proof.",
+          "TSM: revenue growth is strong (35.1%); verify whether valuation already prices it in.",
+          "TSM: high profit margin (46.5%); research moat durability.",
+          "TSM: Yahoo recommendation key is 'strong_buy'; treat as context, not proof."
+        ],
+        "risk_flags": [
+          "NVDA: beta above 2; position size and options exposure must stay capped.",
+          "WDC: beta above 2; position size and options exposure must stay capped."
+        ]
+      }
+    },
+    {
+      "at": "2026-05-05T23:28:14.706229",
+      "type": "ticker_research_snapshot",
+      "payload": {
+        "ticker": "CSX",
+        "company": "CSX Corporation",
+        "beta": 1.238,
+        "trailing_pe": 27.625767,
+        "forward_pe": 20.922386,
+        "profit_margin": 0.21553,
+        "revenue_growth": 0.017,
+        "recommendation": "buy",
+        "news_titles": [
+          "How The CSX (CSX) Investment Story Is Shifting With New Targets And Freight Signals",
+          "3 S&P 500 Stocks We Steer Clear Of",
+          "What Are Wall Street Analysts' Target Price for CSX Corporation Stock?",
+          "CSX sees volume uptick from spike in truck-to-rail conversions",
+          "Stock Market Holds Near Highs As Intel Leads Chip Surge; Apple, Tesla, ServiceNow In Focus: Weekly Review"
+        ]
+      }
+    },
+    {
+      "at": "2026-05-05T23:28:14.707038",
+      "type": "ticker_research_snapshot",
+      "payload": {
+        "ticker": "NVDA",
+        "company": "NVIDIA Corporation",
+        "beta": 2.244,
+        "trailing_pe": 40.18405,
+        "forward_pe": 17.483482,
+        "profit_margin": 0.55603004,
+        "revenue_growth": 0.732,
+        "recommendation": "strong_buy",
+        "news_titles": [
+          "AMD Q1 earnings: What the chipmaker's growth could mean for Nvidia",
+          "The chip trade is no longer just about Nvidia",
+          "AMD earnings on deck: Why we might see a stock sell-off",
+          "Prediction: Sandisk Stock Is Going to $4,000 in 1 Year",
+          "Thinking of Buying Pinterest? Stop and Do This Instead."
+        ]
+      }
+    },
+    {
+      "at": "2026-05-05T23:28:14.707487",
+      "type": "ticker_research_snapshot",
+      "payload": {
+        "ticker": "MU",
+        "company": "Micron Technology, Inc.",
+        "beta": 1.919,
+        "trailing_pe": 30.183878,
+        "forward_pe": 6.3093038,
+        "profit_margin": 0.41486,
+        "revenue_growth": 1.963,
+        "recommendation": "strong_buy",
+        "news_titles": [
+          "Micron stock is surging, hitting a new intraday record high. Why?",
+          "Micron stock surges on booming memory chip demand",
+          "Still Time to Pay Up for Micron & Sandisk Stock?",
+          "Stock Market Today, May 5: Stocks Rebound as U.S.-Iran Truce Holds",
+          "These Stocks Are Today’s Movers: Intel, PayPal, Palantir, Shopify, Micron, Duolingo, and More"
+        ]
+      }
+    },
+    {
+      "at": "2026-05-05T23:28:14.708082",
+      "type": "ticker_research_snapshot",
+      "payload": {
+        "ticker": "TSM",
+        "company": "Taiwan Semiconductor Manufactur",
+        "beta": 1.264,
+        "trailing_pe": 34.000862,
+        "forward_pe": 20.444036,
+        "profit_margin": 0.46505,
+        "revenue_growth": 0.351,
+        "recommendation": "strong_buy",
+        "news_titles": [
+          "AI infrastructure: Is it time to trade in the Mag 7 for the Air 7?",
+          "The chip trade is no longer just about Nvidia",
+          "Samsung’s Market Value Hits $1 Trillion",
+          "Samsung Electronics' market cap surpasses $1 trln after US AI chip stocks surge",
+          "Apple Talks Put Intel Foundry Ambitions And Investor Hopes In Focus"
+        ]
+      }
+    },
+    {
+      "at": "2026-05-05T23:28:14.708441",
+      "type": "ticker_research_snapshot",
+      "payload": {
+        "ticker": "WDC",
+        "company": "Western Digital Corporation",
+        "beta": 2.158,
+        "trailing_pe": 27.826557,
+        "forward_pe": 26.727146,
+        "profit_margin": 0.55286,
+        "revenue_growth": 0.455,
+        "recommendation": "strong_buy",
+        "news_titles": [
+          "Still Time to Pay Up for Micron & Sandisk Stock?",
+          "Sandisk Spun Off From Western Digital Last Year. Now It’s a $200 Billion Company.",
+          "A $6 Billion Reason to Buy SanDisk Stock Here",
+          "Western Digital (WDC) Valuation Check As Strong AI Storage Demand And Dividend Hike Lift Investor Interest",
+          "SanDisk’s Latest Results Reset Expectations Again"
+        ]
+      }
+    },
+    {
+      "at": "2026-05-05T23:28:14.708744",
+      "type": "ticker_research_snapshot",
+      "payload": {
+        "ticker": "SIMO",
+        "company": "Silicon Motion Technology Corpo",
+        "beta": 1.668,
+        "trailing_pe": 53.21652,
+        "forward_pe": 24.651493,
+        "profit_margin": 0.16016,
+        "revenue_growth": 1.055,
+        "recommendation": "strong_buy",
+        "news_titles": [
+          "Are You Looking for a Top Momentum Pick? Why Silicon Motion (SIMO) is a Great Choice",
+          "Silicon Motion Technology Corporation (SIMO) is Attracting Investor Attention: Here is What You Should Know",
+          "Surging Earnings Estimates Signal Upside for Silicon Motion (SIMO) Stock",
+          "Best Momentum Stock to Buy for May 4th",
+          "If You Invested $1000 in Silicon Motion 10 Years Ago, This Is How Much You'd Have Now"
+        ]
+      }
+    }
+  ]
+}

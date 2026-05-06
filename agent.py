@@ -16,6 +16,7 @@ from core.portfolio import PaperPortfolio
 from core.brain import AgentBrain
 from core.reflection import WeeklyReflection
 from core.research_watcher import ResearchWatcher
+from core.memory import AgentMemory
 from notifications.notifier import Notifier
 
 load_dotenv()
@@ -53,6 +54,11 @@ def morning_scan():
         # 2. Score each candidate
         signals = brain.score_candidates(candidates, portfolio)
         strong = [s for s in signals if abs(s["confidence"]) >= 0.70]
+        AgentMemory().remember("morning_scan", {
+            "candidates_scanned": len(candidates),
+            "signals_analyzed": len(signals),
+            "strong_signals": strong,
+        })
 
         # 3. Execute paper trades
         for sig in strong:
@@ -88,6 +94,7 @@ def midday_check():
             for a in alerts:
                 log.warning(f"ALERT: {a['ticker']} hit {a['type']} at ${a['price']:.2f}")
             notifier.send_alerts(alerts)
+            AgentMemory().remember("risk_alert", {"alerts": alerts})
 
         # Update unrealized P&L
         portfolio.refresh_prices()
@@ -124,6 +131,13 @@ def intraday_monitor():
             summary.get("portfolio_beta", "—"),
             summary.get("positions", 0),
         )
+        AgentMemory().remember("intraday_monitor", {
+            "nav": summary.get("nav"),
+            "alpha_pct": summary.get("alpha_pct"),
+            "portfolio_beta": summary.get("portfolio_beta"),
+            "positions": summary.get("positions"),
+            "tickers": summary.get("tickers", []),
+        })
 
     except Exception as e:
         log.error(f"15-minute monitor failed: {e}", exc_info=True)
@@ -140,6 +154,7 @@ def evening_review():
         portfolio.refresh_prices()
         summary = portfolio.daily_summary()
         brain.record_day(summary)
+        AgentMemory().remember("daily_outcome", summary)
 
         msg = (
             f"Day complete. NAV: ${summary['nav']:,.0f} | "
@@ -181,6 +196,7 @@ def weekly_reflection():
 
         report = reflection.generate(brain.history(), portfolio.weekly_stats())
         brain.save_reflection(report)
+        AgentMemory().remember("weekly_reflection", report)
 
         # The maturity check — is the agent ready to guide real trades?
         maturity = brain.maturity_score()

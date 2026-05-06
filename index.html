@@ -919,6 +919,12 @@ h1 {
             <li><strong>Waiting</strong> — after the agent runs daily research, Yahoo news and financial snapshot takeaways will appear here.</li>
           </ul>
         </div>
+        <div class="research-card">
+          <h3>Agent Memory</h3>
+          <ul id="agent-memory">
+            <li><strong>Memory model</strong> — visible queue can stay curated; long-term memory is append-only underneath.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -1191,10 +1197,11 @@ render();
 
 async function loadAgentStatus() {
   try {
-    const [response, researchResponse, feedResponse] = await Promise.all([
+    const [response, researchResponse, feedResponse, memoryResponse] = await Promise.all([
       fetch("data/status.json?ts=" + Date.now()),
       fetch("data/research_notes.json?ts=" + Date.now()).catch(() => null),
-      fetch("data/research_feed.json?ts=" + Date.now()).catch(() => null)
+      fetch("data/research_feed.json?ts=" + Date.now()).catch(() => null),
+      fetch("data/memory_summary.json?ts=" + Date.now()).catch(() => null)
     ]);
     if (!response.ok) return;
     const status = await response.json();
@@ -1205,6 +1212,10 @@ async function loadAgentStatus() {
     if (feedResponse && feedResponse.ok) {
       const feed = await feedResponse.json();
       renderResearchFeed(feed);
+    }
+    if (memoryResponse && memoryResponse.ok) {
+      const memory = await memoryResponse.json();
+      renderAgentMemory(memory);
     }
     const summary = status.summary || {};
     const alpha = summary.alpha_pct;
@@ -1264,6 +1275,23 @@ function renderResearchFeed(feed) {
     ${takeaways || "<li><strong>Takeaway</strong> — No strong financial snapshot takeaways yet.</li>"}
     ${risks}
     ${headlines}
+  `;
+}
+
+function renderAgentMemory(memory) {
+  const counts = memory.counts_by_type || {};
+  const countRows = Object.entries(counts).map(([kind, count]) => {
+    return `<li><strong>${kind}</strong> — ${count} memories stored.</li>`;
+  }).join("");
+  const recent = (memory.recent_entries || []).slice(-4).reverse().map(entry => {
+    return `<li><strong>${entry.type}</strong> — remembered at ${new Date(entry.at).toLocaleString()}.</li>`;
+  }).join("");
+
+  document.getElementById("agent-memory").innerHTML = `
+    <li><strong>Updated</strong> — ${new Date(memory.updated_at).toLocaleString()}.</li>
+    <li><strong>Purpose</strong> — keep all research/signal/outcome memories even when the visible queue is curated.</li>
+    ${countRows || "<li><strong>Empty</strong> — no memory entries yet.</li>"}
+    ${recent}
   `;
 }
 

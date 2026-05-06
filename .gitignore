@@ -12,3 +12,4 @@ reports/
 data/agent.pid
 data/portfolio.json
 data/snapshots.json
+data/agent_memory.jsonl

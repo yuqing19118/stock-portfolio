@@ -200,6 +200,25 @@ After the close, the agent updates `data/research_feed.json` with:
 
 This develops the agent's own research memory. It is not a direct trade trigger.
 
+### Long-term memory
+
+The visible watch queue can be curated, but the agent keeps broader memory underneath:
+
+- `data/agent_memory.jsonl` — append-only local memory log
+- `data/memory_summary.json` — compact dashboard-safe summary
+
+Memory types include:
+
+- morning scans and strong signals
+- intraday monitor snapshots
+- risk alerts
+- daily outcomes
+- daily research feeds
+- per-ticker research snapshots
+- weekly reflections
+
+The full JSONL memory is ignored by git by default so it can grow large without making every dashboard publish huge.
+
 ### Beta rules
 
 Alpha alone is not enough. If the portfolio has beta above 1.0, it should beat SPY by more than the extra market risk it is taking.
