@@ -553,6 +553,47 @@ h1 {
   font-size: 0.9rem;
 }
 
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.research-card {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 16px;
+  min-height: 188px;
+}
+
+.research-card h3 {
+  margin: 0 0 12px;
+  font-size: 0.98rem;
+}
+
+.research-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.research-card li {
+  border-top: 1px solid var(--line);
+  padding-top: 9px;
+  color: var(--muted);
+  font-size: 0.84rem;
+}
+
+.research-card strong {
+  color: var(--ink);
+}
+
+.warning-card {
+  background: var(--red-soft);
+}
+
 .footer-note {
   color: var(--muted);
   font-size: 0.82rem;
@@ -564,6 +605,7 @@ h1 {
   .dashboard,
   .live-grid,
   .options-grid,
+  .research-grid,
   .scenario-band {
     grid-template-columns: 1fr;
   }
@@ -796,6 +838,63 @@ h1 {
     <section class="panel review" style="margin-top:18px">
       <div class="section-head">
         <div>
+          <h2>Research Desk</h2>
+          <p>Where the agent tracks what it is studying, what it learned, why it changed its mind, and what it refuses to touch yet.</p>
+        </div>
+      </div>
+      <div class="research-grid">
+        <div class="research-card">
+          <h3>Stock Research Queue</h3>
+          <ul id="research-queue">
+            <li><strong>NVDA</strong> — validate AI demand, margins, and valuation before sizing up.</li>
+            <li><strong>CSX</strong> — compare railroad strength against industrial/cyclical risk.</li>
+            <li><strong>QQQ / SMH</strong> — check whether ETF exposure is cleaner than single-name concentration.</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>Strategy Lab</h3>
+          <ul>
+            <li><strong>Momentum + quality</strong> — buy only when trend strength and business quality agree.</li>
+            <li><strong>Options overlays</strong> — paper test debit spreads separately from stock signals.</li>
+            <li><strong>Alpha gate</strong> — no stronger alerts unless paper performance beats SPY.</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>What I Learned</h3>
+          <ul id="learned-list">
+            <li><strong>Baseline first</strong> — absolute gains do not prove skill if SPY did better.</li>
+            <li><strong>Risk budget matters</strong> — options need premium caps, not vibes.</li>
+            <li><strong>Rule-only mode is limited</strong> — qualitative research needs filings, earnings, and transcripts.</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>Why I Changed My Mind</h3>
+          <ul id="mind-change-list">
+            <li><strong>From static portfolio to agent</strong> — the goal shifted from allocation plan to measurable learning loop.</li>
+            <li><strong>From return to alpha</strong> — performance is judged against SPY, not just dollar gains.</li>
+            <li><strong>From options as speed to options as experiment</strong> — paper-only until evidence improves.</li>
+          </ul>
+        </div>
+        <div class="research-card">
+          <h3>Current Best Ideas</h3>
+          <ul id="best-ideas">
+            <li><strong>Waiting for agent data</strong> — paper positions will appear after status loads.</li>
+          </ul>
+        </div>
+        <div class="research-card warning-card">
+          <h3>Do Not Trade Yet Warnings</h3>
+          <ul id="warning-list">
+            <li><strong>No real trades from one scan</strong> — paper evidence is too thin.</li>
+            <li><strong>No naked options</strong> — undefined risk is outside the system.</li>
+            <li><strong>No trade without a review note</strong> — every alert needs thesis, risk, stop, and invalidation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel review" style="margin-top:18px">
+      <div class="section-head">
+        <div>
           <h2>Live Agent Record</h2>
           <p>When the day-and-night agent runs, it writes local paper-trading results here from data/status.json.</p>
         </div>
@@ -979,6 +1078,58 @@ function render() {
   });
 }
 
+function pct(value) {
+  if (value == null || Number.isNaN(Number(value))) return "—";
+  return (Number(value) * 100).toFixed(2) + "%";
+}
+
+function renderResearchDesk(status) {
+  const positions = status?.positions || [];
+  const trades = status?.trade_history || [];
+  const summary = status?.summary || {};
+  const tickers = positions.map(position => position.ticker);
+
+  if (positions.length) {
+    document.getElementById("best-ideas").innerHTML = positions.map(position => {
+      const cost = Number(position.avg_cost || 0);
+      const last = Number(position.last_price || cost);
+      const move = cost ? ((last - cost) / cost) : 0;
+      return `<li><strong>${position.ticker}</strong> — paper holding, confidence ${(Number(position.confidence || 0) * 100).toFixed(0)}%, entry $${cost.toFixed(2)}, stop $${Number(position.stop_loss || 0).toFixed(2)}, target $${Number(position.take_profit || 0).toFixed(2)}, move ${pct(move)}.</li>`;
+    }).join("");
+
+    document.getElementById("research-queue").innerHTML = positions.map(position => {
+      return `<li><strong>${position.ticker}</strong> — research moat, earnings quality, valuation, trend durability, and what would invalidate the paper trade.</li>`;
+    }).join("") + `<li><strong>Watchlist refresh</strong> — compare next scan winners against ${tickers.join(", ")} before adding risk.</li>`;
+  }
+
+  document.getElementById("learned-list").innerHTML = `
+    <li><strong>Current alpha</strong> — ${pct(summary.alpha_pct)} vs ${summary.benchmark_symbol || "SPY"}; alerts stay restrained until this is convincingly positive.</li>
+    <li><strong>Cash matters</strong> — ${currency(summary.cash || 0)} remains available for better setups or drawdown defense.</li>
+    <li><strong>Trade count</strong> — ${trades.length} paper trades logged; still too early for real-money confidence.</li>
+  `;
+
+  const latestTrade = trades[trades.length - 1];
+  if (latestTrade) {
+    document.getElementById("mind-change-list").innerHTML = `
+      <li><strong>Latest action</strong> — ${latestTrade.action} ${latestTrade.ticker} at $${Number(latestTrade.price || 0).toFixed(2)} in paper mode.</li>
+      <li><strong>Position sizing</strong> — the agent is using capped allocations instead of all-in conviction.</li>
+      <li><strong>Evidence threshold</strong> — future changes need alpha, repeatability, and a written invalidation condition.</li>
+    `;
+  }
+
+  const warnings = [
+    ["Real trade lock", "Do not copy paper trades until the agent has weeks of SPY-relative evidence."],
+    ["Options lock", "Do not trade options live until paper spreads have tracked entry, exit, max loss, and thesis outcome."],
+    ["Single scan risk", "One good-looking scan can be luck; require repeated signal quality."]
+  ];
+
+  if (summary.alpha_pct != null && summary.alpha_pct <= 0) {
+    warnings.unshift(["Alpha not proven", `Current alpha is ${pct(summary.alpha_pct)}, so the agent has not earned stronger trade alerts.`]);
+  }
+
+  document.getElementById("warning-list").innerHTML = warnings.map(([title, body]) => `<li><strong>${title}</strong> — ${body}</li>`).join("");
+}
+
 document.querySelectorAll(".mode-tabs button").forEach(button => {
   button.addEventListener("click", () => {
     activeMode = button.dataset.mode;
@@ -998,6 +1149,7 @@ async function loadAgentStatus() {
     const alpha = summary.alpha_pct;
     const benchmark = summary.benchmark_return_pct;
     const total = summary.total_return_pct;
+    renderResearchDesk(status);
     document.getElementById("live-grid").innerHTML = `
       <div class="metric"><div class="label">Agent status</div><div class="value">Running</div><div class="sub">Updated ${new Date(status.updated_at).toLocaleString()}</div></div>
       <div class="metric"><div class="label">Paper NAV</div><div class="value">${currency(summary.nav || status.starting_capital || 50000)}</div><div class="sub">Return ${total == null ? "—" : (total * 100).toFixed(2) + "%"}</div></div>
