@@ -1,6 +1,6 @@
 """
-Notifier — sends alerts via Telegram (primary) and email (fallback).
-Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in your .env to activate.
+Notifier — sends alerts via Telegram, Twilio SMS, email, or logs.
+Set notification environment variables in .env to activate.
 """
 
 import os
@@ -26,9 +26,17 @@ class Notifier:
         self.email_from = os.getenv("ALERT_EMAIL_FROM")
         self.email_to = os.getenv("ALERT_EMAIL_TO")
         self.smtp_pass = os.getenv("SMTP_PASSWORD")
+        self.twilio_account_sid = os.getenv("TWILIO_ACCOUNT_SID")
+        self.twilio_auth_token = os.getenv("TWILIO_AUTH_TOKEN")
+        self.twilio_api_key_sid = os.getenv("TWILIO_API_KEY_SID")
+        self.twilio_api_key_secret = os.getenv("TWILIO_API_KEY_SECRET")
+        self.twilio_from = os.getenv("TWILIO_FROM_NUMBER")
+        self.twilio_to = os.getenv("TWILIO_TO_NUMBER")
 
         if self.tg_token and self.tg_chat:
             log.info("Telegram notifications active")
+        elif self._twilio_ready():
+            log.info("Twilio SMS notifications active")
         elif self.email_to:
             log.info("Email notifications active")
         else:
@@ -109,6 +117,9 @@ class Notifier:
         if self.tg_token and self.tg_chat and REQUESTS_OK:
             sent = self._send_telegram(message)
 
+        if not sent and self._twilio_ready() and REQUESTS_OK:
+            sent = self._send_twilio_sms(message)
+
         if not sent and self.email_to:
             self._send_email(message)
 
@@ -134,6 +145,38 @@ class Notifier:
             log.error(f"Telegram error: {e}")
             return False
 
+    def _twilio_ready(self) -> bool:
+        has_auth = bool(self.twilio_auth_token) or bool(self.twilio_api_key_sid and self.twilio_api_key_secret)
+        return bool(self.twilio_account_sid and has_auth and self.twilio_from and self.twilio_to)
+
+    def _send_twilio_sms(self, text: str) -> bool:
+        try:
+            plain = self._plain_text(text)
+            if len(plain) > 1500:
+                plain = plain[:1490] + "\n...[truncated]"
+
+            url = f"https://api.twilio.com/2010-04-01/Accounts/{self.twilio_account_sid}/Messages.json"
+            if self.twilio_api_key_sid and self.twilio_api_key_secret:
+                auth = (self.twilio_api_key_sid, self.twilio_api_key_secret)
+            else:
+                auth = (self.twilio_account_sid, self.twilio_auth_token)
+
+            resp = __import__("requests").post(url, data={
+                "From": self.twilio_from,
+                "To": self.twilio_to,
+                "Body": plain,
+            }, auth=auth, timeout=10)
+
+            if 200 <= resp.status_code < 300:
+                log.info("Twilio SMS sent")
+                return True
+
+            log.warning(f"Twilio SMS failed: {resp.status_code} {resp.text[:300]}")
+            return False
+        except Exception as e:
+            log.error(f"Twilio SMS error: {e}")
+            return False
+
     def _send_email(self, text: str):
         try:
             plain = text.replace("*", "").replace("_", "")
@@ -148,3 +191,20 @@ class Notifier:
             log.info("Email notification sent")
         except Exception as e:
             log.error(f"Email error: {e}")
+
+    def _plain_text(self, text: str) -> str:
+        return (
+            text.replace("*", "")
+            .replace("_", "")
+            .replace("✅", "[OK]")
+            .replace("❌", "[FAIL]")
+            .replace("🔄", "[ADJUST]")
+            .replace("📊", "[STATS]")
+            .replace("🧠", "[BRAIN]")
+            .replace("🎓", "[MATURE]")
+            .replace("⚠️", "[WARN]")
+            .replace("🟢", "[BUY]")
+            .replace("🔴", "[SELL]")
+            .replace("🟡", "[WATCH]")
+            .replace("🛑", "[STOP]")
+        )
