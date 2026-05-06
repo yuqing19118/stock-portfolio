@@ -859,12 +859,13 @@ h1 {
         <div class="research-card">
           <h3>Stock Research Queue</h3>
           <div class="queue-meta">
-            <strong>Refresh:</strong> every market day at 06:35 PT after the morning scan; risk/status refresh at 09:30 PT; performance review at 13:05 PT. A name enters the queue when it is held in paper, appears in the top rule-score scan, triggers a high-confidence signal, or needs review because risk/alpha changed.
+            <strong>Refresh:</strong> every market day at 06:35 PT after the morning scan; risk/status refresh at 09:30 PT; performance review at 13:05 PT. This is a dynamic queue: names can enter, move up, move down, or leave as price action, alpha, risk, and thesis quality change.
           </div>
           <ul id="research-queue">
             <li><strong>NVDA</strong> — in queue because AI/chip momentum is strong and it is a paper holding; validate demand, margins, valuation, and stop discipline.</li>
             <li><strong>CSX</strong> — in queue because the rule scan produced a high-confidence paper buy; compare railroad trend strength against industrial/cyclical risk.</li>
             <li><strong>QQQ / SMH</strong> — in queue because they may express growth/semiconductor exposure with less single-stock risk.</li>
+            <li><strong>Exit rule</strong> — leave the queue if confidence falls below 55%, thesis is invalidated, stop is hit, data quality is weak, or a cleaner expression replaces it.</li>
           </ul>
         </div>
         <div class="research-card">
@@ -889,6 +890,7 @@ h1 {
             <li><strong>From static portfolio to agent</strong> — the goal shifted from allocation plan to measurable learning loop.</li>
             <li><strong>From return to alpha</strong> — performance is judged against SPY, not just dollar gains.</li>
             <li><strong>From options as speed to options as experiment</strong> — paper-only until evidence improves.</li>
+            <li><strong>From fixed queue to dynamic queue</strong> — queue membership changes when signals, risk, alpha, or thesis quality changes.</li>
           </ul>
         </div>
         <div class="research-card">
@@ -1116,7 +1118,11 @@ function renderResearchDesk(status) {
     document.getElementById("research-queue").innerHTML = positions.map(position => {
       const confidence = (Number(position.confidence || 0) * 100).toFixed(0);
       return `<li><strong>${position.ticker}</strong> — entered because it is an active paper holding from a high-confidence scan (${confidence}%). Research checklist: moat, earnings quality, valuation, trend durability, stop/target logic, and what would invalidate the trade.</li>`;
-    }).join("") + `<li><strong>Next refresh</strong> — at the next 06:35 PT market-day scan, compare new top rule-score names against ${tickers.join(", ")} before adding risk.</li>`;
+    }).join("") + `
+      <li><strong>Next refresh</strong> — at the next 06:35 PT market-day scan, compare new top rule-score names against ${tickers.join(", ")} before adding risk.</li>
+      <li><strong>Move up</strong> — stronger confidence, improving trend, better alpha contribution, or confirmed thesis.</li>
+      <li><strong>Move down / exit</strong> — confidence below 55%, stop hit, thesis invalidated, weak data quality, or ETF/options replacement is cleaner.</li>
+    `;
   }
 
   document.getElementById("learned-list").innerHTML = `

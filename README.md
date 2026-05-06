@@ -153,6 +153,12 @@ A ticker enters the queue when:
 - it needs review because alpha, stop-loss risk, target progress, or thesis quality changed
 - it is a cleaner ETF/options expression of a current single-stock thesis
 
+Queue membership is dynamic. A ticker can move up, move down, or leave:
+
+- **Move up:** confidence improves, trend strengthens, thesis is confirmed, or it contributes positive alpha
+- **Move down:** confidence weakens, valuation/risk worsens, or market regime shifts against the setup
+- **Leave:** stop-loss is hit, confidence falls below 55%, the thesis is invalidated, data quality is poor, or a cleaner ETF/options expression replaces the stock
+
 The queue is not a trade instruction. It means: "research this before considering more risk."
 
 ---
