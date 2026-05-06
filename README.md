@@ -139,7 +139,7 @@ These are Los Angeles local times for U.S. market hours.
 |-----------|-------------|
 | 06:35 Mon–Fri | Morning scan — scores all stocks, executes paper trades |
 | Every 15 minutes during market hours | Price refresh, stop-loss/take-profit monitoring, beta/alpha/status update |
-| 13:05 Mon–Fri | EOD summary — daily P&L, SPY comparison, portfolio snapshot |
+| 13:05 Mon–Fri | EOD summary — daily P&L, SPY comparison, portfolio snapshot, Yahoo/news/financial research watcher |
 | 13:30 Friday | Weekly reflection — self-critique, strategy adjustment |
 
 ### Stock Research Queue rules
@@ -176,15 +176,29 @@ This file is used as context for watchlist expansion and thesis/risk framing. It
 - thesis invalidation conditions
 - whether ETF/options exposure is cleaner than single-stock risk
 
-### Optional auto-publish to GitHub Pages
+### Dashboard publishing
 
-By default, the 15-minute monitor updates local `data/status.json`. To also push every monitor update to GitHub Pages, set:
+By default, the 15-minute monitor updates local `data/status.json`. The dashboard should be published once per day after the EOD research pass, not every 15 minutes.
+
+To publish once daily after close, set:
 
 ```bash
-AUTO_PUBLISH_DASHBOARD=true
+DAILY_PUBLISH_DASHBOARD=true
 ```
 
-Use this only if you are comfortable with frequent GitHub commits during market hours.
+The older `AUTO_PUBLISH_DASHBOARD=true` flag is still recognized for manual compatibility, but daily publishing is preferred.
+
+### Daily research watcher
+
+After the close, the agent updates `data/research_feed.json` with:
+
+- Yahoo Finance / yfinance headlines
+- latest financial snapshot fields available through yfinance
+- beta, valuation, margin, growth, recommendation metadata
+- risk flags
+- agent takeaways
+
+This develops the agent's own research memory. It is not a direct trade trigger.
 
 ### Beta rules
 

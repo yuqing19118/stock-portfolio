@@ -913,6 +913,12 @@ h1 {
             <li><strong>芯片与存储板块投资研究报告</strong> — loaded as context; not treated as a trade instruction.</li>
           </ul>
         </div>
+        <div class="research-card">
+          <h3>Daily News & Reports Watch</h3>
+          <ul id="research-feed">
+            <li><strong>Waiting</strong> — after the agent runs daily research, Yahoo news and financial snapshot takeaways will appear here.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -1185,15 +1191,20 @@ render();
 
 async function loadAgentStatus() {
   try {
-    const [response, researchResponse] = await Promise.all([
+    const [response, researchResponse, feedResponse] = await Promise.all([
       fetch("data/status.json?ts=" + Date.now()),
-      fetch("data/research_notes.json?ts=" + Date.now()).catch(() => null)
+      fetch("data/research_notes.json?ts=" + Date.now()).catch(() => null),
+      fetch("data/research_feed.json?ts=" + Date.now()).catch(() => null)
     ]);
     if (!response.ok) return;
     const status = await response.json();
     if (researchResponse && researchResponse.ok) {
       const research = await researchResponse.json();
       renderExternalResearch(research);
+    }
+    if (feedResponse && feedResponse.ok) {
+      const feed = await feedResponse.json();
+      renderResearchFeed(feed);
     }
     const summary = status.summary || {};
     const alpha = summary.alpha_pct;
@@ -1231,6 +1242,28 @@ function renderExternalResearch(research) {
     ${core}
     ${tactical}
     ${risks}
+  `;
+}
+
+function renderResearchFeed(feed) {
+  const takeaways = (feed.takeaways || []).slice(0, 6).map(item => {
+    return `<li><strong>Takeaway</strong> — ${item}</li>`;
+  }).join("");
+  const risks = (feed.risk_flags || []).slice(0, 4).map(item => {
+    return `<li><strong>Risk</strong> — ${item}</li>`;
+  }).join("");
+  const headlines = (feed.items || []).slice(0, 5).flatMap(item => {
+    return (item.latest_news || []).slice(0, 1).map(news => {
+      const url = news.url ? ` <a href="${news.url}" target="_blank" rel="noopener">source</a>` : "";
+      return `<li><strong>${item.ticker}</strong> — ${news.title}${url}</li>`;
+    });
+  }).join("");
+
+  document.getElementById("research-feed").innerHTML = `
+    <li><strong>Updated</strong> — ${new Date(feed.updated_at).toLocaleString()}; watches Yahoo Finance news and yfinance financial snapshots.</li>
+    ${takeaways || "<li><strong>Takeaway</strong> — No strong financial snapshot takeaways yet.</li>"}
+    ${risks}
+    ${headlines}
   `;
 }
 

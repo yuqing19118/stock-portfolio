@@ -1,0 +1,629 @@
+{
+  "updated_at": "2026-05-05T23:25:39.841738",
+  "source_policy": "Yahoo Finance/yfinance plus user-provided research notes. Reference only; not a trade instruction.",
+  "tickers": [
+    "CSX",
+    "NVDA",
+    "MU",
+    "TSM",
+    "WDC",
+    "SIMO",
+    "AVGO",
+    "ASML",
+    "ARM",
+    "SMH",
+    "QQQ",
+    "SPY"
+  ],
+  "items": [
+    {
+      "ticker": "CSX",
+      "company": "CSX Corporation",
+      "sector": "Industrials",
+      "industry": "Railroads",
+      "market_cap": 83671990272,
+      "beta": 1.238,
+      "trailing_pe": 27.625767,
+      "forward_pe": 20.922386,
+      "profit_margin": 0.21553,
+      "revenue_growth": 0.017,
+      "earnings_growth": 0.265,
+      "recommendation": "buy",
+      "target_mean_price": 45.54348,
+      "current_price": 45.03,
+      "latest_news": [
+        {
+          "title": "How The CSX (CSX) Investment Story Is Shifting With New Targets And Freight Signals",
+          "publisher": "Simply Wall St.",
+          "published_at": "2026-05-05T12:14:11Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/csx-csx-investment-story-shifting-121411155.html"
+        },
+        {
+          "title": "3 S&P 500 Stocks We Steer Clear Of",
+          "publisher": "StockStory",
+          "published_at": "2026-05-05T09:24:55Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-steer-092455209.html"
+        },
+        {
+          "title": "What Are Wall Street Analysts' Target Price for CSX Corporation Stock?",
+          "publisher": "Barchart",
+          "published_at": "2026-05-04T18:38:23Z",
+          "url": "https://www.barchart.com/story/news/1690908/what-are-wall-street-analysts-target-price-for-csx-corporation-stock"
+        },
+        {
+          "title": "CSX sees volume uptick from spike in truck-to-rail conversions",
+          "publisher": "Supply Chain Dive",
+          "published_at": "2026-05-04T12:23:00Z",
+          "url": "https://www.supplychaindive.com/news/csx-sees-volume-uptick-from-spike-in-truck-to-rail-conversions/818728/"
+        },
+        {
+          "title": "Stock Market Holds Near Highs As Intel Leads Chip Surge; Apple, Tesla, ServiceNow In Focus: Weekly Review",
+          "publisher": "Investor's Business Daily",
+          "published_at": "2026-04-24T15:36:01Z",
+          "url": "https://www.investors.com/news/stock-market-highs-intel-leads-chip-surge-apple-tesla-servicenow/?src=A00220&yptr=yahoo"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:40.405706"
+    },
+    {
+      "ticker": "NVDA",
+      "company": "NVIDIA Corporation",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 4775932329984,
+      "beta": 2.244,
+      "trailing_pe": 40.18405,
+      "forward_pe": 17.483482,
+      "profit_margin": 0.55603004,
+      "revenue_growth": 0.732,
+      "earnings_growth": 0.956,
+      "recommendation": "strong_buy",
+      "target_mean_price": 269.16544,
+      "current_price": 196.5,
+      "latest_news": [
+        {
+          "title": "AMD Q1 earnings: What the chipmaker's growth could mean for Nvidia",
+          "publisher": "Yahoo Finance Video",
+          "published_at": "2026-05-05T20:42:03Z",
+          "url": "https://finance.yahoo.com/video/amd-q1-earnings-what-the-chipmakers-growth-could-mean-for-nvidia-204203602.html"
+        },
+        {
+          "title": "The chip trade is no longer just about Nvidia",
+          "publisher": "Yahoo Finance",
+          "published_at": "2026-05-05T17:59:00Z",
+          "url": "https://finance.yahoo.com/markets/article/the-chip-trade-is-no-longer-just-about-nvidia-175900816.html"
+        },
+        {
+          "title": "AMD earnings on deck: Why we might see a stock sell-off",
+          "publisher": "Yahoo Finance Video",
+          "published_at": "2026-05-05T14:17:30Z",
+          "url": "https://finance.yahoo.com/video/amd-earnings-deck-why-might-141730992.html"
+        },
+        {
+          "title": "Prediction: Sandisk Stock Is Going to $4,000 in 1 Year",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-06T06:11:00Z",
+          "url": "https://www.fool.com/investing/2026/05/06/prediction-sandisk-stock-is-going-to-4000-in-1-yea/"
+        },
+        {
+          "title": "Thinking of Buying Pinterest? Stop and Do This Instead.",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-06T02:35:00Z",
+          "url": "https://www.fool.com/investing/2026/05/05/thinking-of-buying-pinterest-stop-and-do-this-inst/"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:40.699001"
+    },
+    {
+      "ticker": "MU",
+      "company": "Micron Technology, Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 721975312384,
+      "beta": 1.919,
+      "trailing_pe": 30.183878,
+      "forward_pe": 6.3093038,
+      "profit_margin": 0.41486,
+      "revenue_growth": 1.963,
+      "earnings_growth": 7.56,
+      "recommendation": "strong_buy",
+      "target_mean_price": 551.4048,
+      "current_price": 640.2,
+      "latest_news": [
+        {
+          "title": "Micron stock is surging, hitting a new intraday record high. Why?",
+          "publisher": "Yahoo Finance Video",
+          "published_at": "2026-05-05T19:52:11Z",
+          "url": "https://finance.yahoo.com/video/micron-stock-is-surging-hitting-a-new-intraday-record-high-why-195211594.html"
+        },
+        {
+          "title": "Micron stock surges on booming memory chip demand",
+          "publisher": "Yahoo Finance",
+          "published_at": "2026-05-05T14:39:46Z",
+          "url": "https://finance.yahoo.com/markets/stocks/article/micron-stock-surges-on-booming-memory-chip-demand-143946553.html"
+        },
+        {
+          "title": "Still Time to Pay Up for Micron & Sandisk Stock?",
+          "publisher": "Zacks",
+          "published_at": "2026-05-05T22:43:00Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/still-time-pay-micron-sandisk-224300490.html"
+        },
+        {
+          "title": "Stock Market Today, May 5: Stocks Rebound as U.S.-Iran Truce Holds",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-05T21:37:02Z",
+          "url": "https://www.fool.com/coverage/stock-market-today/2026/05/05/stock-market-today-may-5-stocks-rebound-as-u-s-iran-truce-holds/"
+        },
+        {
+          "title": "These Stocks Are Today’s Movers: Intel, PayPal, Palantir, Shopify, Micron, Duolingo, and More",
+          "publisher": "Barrons.com",
+          "published_at": "2026-05-05T21:12:00Z",
+          "url": "https://www.barrons.com/articles/stock-movers-8b3b686f?siteid=yhoof2&yptr=yahoo"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:41.045806"
+    },
+    {
+      "ticker": "TSM",
+      "company": "Taiwan Semiconductor Manufactur",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 2045568090112,
+      "beta": 1.264,
+      "trailing_pe": 34.000862,
+      "forward_pe": 20.444036,
+      "profit_margin": 0.46505,
+      "revenue_growth": 0.351,
+      "earnings_growth": 0.584,
+      "recommendation": "strong_buy",
+      "target_mean_price": 463.4514,
+      "current_price": 394.41,
+      "latest_news": [
+        {
+          "title": "AI infrastructure: Is it time to trade in the Mag 7 for the Air 7?",
+          "publisher": "Yahoo Finance Video",
+          "published_at": "2026-05-05T19:24:56Z",
+          "url": "https://finance.yahoo.com/video/ai-infrastructure-is-it-time-to-trade-in-the-mag-7-for-the-air-7-192456740.html"
+        },
+        {
+          "title": "The chip trade is no longer just about Nvidia",
+          "publisher": "Yahoo Finance",
+          "published_at": "2026-05-05T17:59:00Z",
+          "url": "https://finance.yahoo.com/markets/article/the-chip-trade-is-no-longer-just-about-nvidia-175900816.html"
+        },
+        {
+          "title": "Samsung’s Market Value Hits $1 Trillion",
+          "publisher": "The Wall Street Journal",
+          "published_at": "2026-05-06T04:40:00Z",
+          "url": "https://www.wsj.com/tech/samsungs-market-value-hits-1-trillion-2026ac80?siteid=yhoof2&yptr=yahoo"
+        },
+        {
+          "title": "Samsung Electronics' market cap surpasses $1 trln after US AI chip stocks surge",
+          "publisher": "Reuters",
+          "published_at": "2026-05-06T01:04:21Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/samsung-electronics-market-cap-surpasses-010421668.html"
+        },
+        {
+          "title": "Apple Talks Put Intel Foundry Ambitions And Investor Hopes In Focus",
+          "publisher": "Simply Wall St.",
+          "published_at": "2026-05-05T22:14:13Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-talks-put-intel-foundry-221413260.html"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:41.399437"
+    },
+    {
+      "ticker": "WDC",
+      "company": "Western Digital Corporation",
+      "sector": "Technology",
+      "industry": "Computer Hardware",
+      "market_cap": 160366821376,
+      "beta": 2.158,
+      "trailing_pe": 27.826557,
+      "forward_pe": 26.727146,
+      "profit_margin": 0.55286,
+      "revenue_growth": 0.455,
+      "earnings_growth": 4.829,
+      "recommendation": "strong_buy",
+      "target_mean_price": 492.04544,
+      "current_price": 465.26,
+      "latest_news": [
+        {
+          "title": "Still Time to Pay Up for Micron & Sandisk Stock?",
+          "publisher": "Zacks",
+          "published_at": "2026-05-05T22:43:00Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/still-time-pay-micron-sandisk-224300490.html"
+        },
+        {
+          "title": "Sandisk Spun Off From Western Digital Last Year. Now It’s a $200 Billion Company.",
+          "publisher": "Barrons.com",
+          "published_at": "2026-05-05T21:08:00Z",
+          "url": "https://www.barrons.com/articles/sandisk-stock-price-ai-memory-c5af95ae?siteid=yhoof2&yptr=yahoo"
+        },
+        {
+          "title": "A $6 Billion Reason to Buy SanDisk Stock Here",
+          "publisher": "Barchart",
+          "published_at": "2026-05-05T19:00:21Z",
+          "url": "https://www.barchart.com/story/news/1719314/a-6-billion-reason-to-buy-sandisk-stock-here"
+        },
+        {
+          "title": "Western Digital (WDC) Valuation Check As Strong AI Storage Demand And Dividend Hike Lift Investor Interest",
+          "publisher": "Simply Wall St.",
+          "published_at": "2026-05-05T18:17:19Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/western-digital-wdc-valuation-check-181719638.html"
+        },
+        {
+          "title": "SanDisk’s Latest Results Reset Expectations Again",
+          "publisher": "Trefis",
+          "published_at": "2026-05-05T17:51:58Z",
+          "url": "https://www.trefis.com/articles/598313/sandisks-latest-results-reset-expectations-again/2026-05-05"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:41.707974"
+    },
+    {
+      "ticker": "SIMO",
+      "company": "Silicon Motion Technology Corpo",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 8083967488,
+      "beta": 1.668,
+      "trailing_pe": 53.21652,
+      "forward_pe": 24.651493,
+      "profit_margin": 0.16016,
+      "revenue_growth": 1.055,
+      "earnings_growth": 2.387,
+      "recommendation": "strong_buy",
+      "target_mean_price": 237.5,
+      "current_price": 238.41,
+      "latest_news": [
+        {
+          "title": "Are You Looking for a Top Momentum Pick? Why Silicon Motion (SIMO) is a Great Choice",
+          "publisher": "Zacks",
+          "published_at": "2026-05-05T16:00:05Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/looking-top-momentum-pick-why-160005113.html"
+        },
+        {
+          "title": "Silicon Motion Technology Corporation (SIMO) is Attracting Investor Attention: Here is What You Should Know",
+          "publisher": "Zacks",
+          "published_at": "2026-05-05T13:00:02Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/silicon-motion-technology-corporation-simo-130002343.html"
+        },
+        {
+          "title": "Surging Earnings Estimates Signal Upside for Silicon Motion (SIMO) Stock",
+          "publisher": "Zacks",
+          "published_at": "2026-05-04T16:20:03Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/surging-earnings-estimates-signal-upside-162003074.html"
+        },
+        {
+          "title": "Best Momentum Stock to Buy for May 4th",
+          "publisher": "Zacks",
+          "published_at": "2026-05-04T14:05:00Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/best-momentum-stock-buy-may-140500076.html"
+        },
+        {
+          "title": "If You Invested $1000 in Silicon Motion 10 Years Ago, This Is How Much You'd Have Now",
+          "publisher": "Zacks",
+          "published_at": "2026-05-04T12:30:03Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/invested-1000-silicon-motion-10-123003103.html"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:42.003019"
+    },
+    {
+      "ticker": "AVGO",
+      "company": "Broadcom Inc.",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 2023407747072,
+      "beta": 1.44,
+      "trailing_pe": 83.30604,
+      "forward_pe": 23.587656,
+      "profit_margin": 0.36571997,
+      "revenue_growth": 0.295,
+      "earnings_growth": 0.316,
+      "recommendation": "strong_buy",
+      "target_mean_price": 475.49295,
+      "current_price": 427.36,
+      "latest_news": [
+        {
+          "title": "The chip trade is no longer just about Nvidia",
+          "publisher": "Yahoo Finance",
+          "published_at": "2026-05-05T17:59:00Z",
+          "url": "https://finance.yahoo.com/markets/article/the-chip-trade-is-no-longer-just-about-nvidia-175900816.html"
+        },
+        {
+          "title": "Dow Jones Futures Rise; Trump Hits Hormuz Pause; AMD, Lumentum, Arista Lead AI Earnings Movers",
+          "publisher": "Investor's Business Daily",
+          "published_at": "2026-05-06T03:05:17Z",
+          "url": "https://www.investors.com/market-trend/stock-market-today/dow-jones-futures-trump-hormuz-pause-amd-lumentum-arista-earnings/?src=A00220&yptr=yahoo"
+        },
+        {
+          "title": "Is It Too Late To Consider Broadcom (AVGO) After Its 115% One Year Rally?",
+          "publisher": "Simply Wall St.",
+          "published_at": "2026-05-06T00:23:40Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/too-consider-broadcom-avgo-115-002340884.html"
+        },
+        {
+          "title": "AMD Stock Soars on Strong Earnings and Growing Confidence About AI",
+          "publisher": "Barrons.com",
+          "published_at": "2026-05-05T22:07:00Z",
+          "url": "https://www.barrons.com/articles/advanced-micro-devices-earnings-stock-price-78a50ca6?siteid=yhoof2&yptr=yahoo"
+        },
+        {
+          "title": "Anthropic commits to spending $200 billion on Google's cloud and chips, the Information reports",
+          "publisher": "Reuters",
+          "published_at": "2026-05-05T20:37:22Z",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/anthropic-commits-spending-200-billion-203722528.html"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:42.304940"
+    },
+    {
+      "ticker": "ASML",
+      "company": "ASML Holding N.V. - New York Re",
+      "sector": "Technology",
+      "industry": "Semiconductor Equipment & Materials",
+      "market_cap": 556126896128,
+      "beta": 1.373,
+      "trailing_pe": 47.621124,
+      "forward_pe": 30.276571,
+      "profit_margin": 0.29713,
+      "revenue_growth": 0.132,
+      "earnings_growth": 0.192,
+      "recommendation": "strong_buy",
+      "target_mean_price": 1663.4836,
+      "current_price": 1442.92,
+      "latest_news": [
+        {
+          "title": "KLA’s AI Capacity Constraints Highlight Earnings Power And Buyback Commitment",
+          "publisher": "Simply Wall St.",
+          "published_at": "2026-05-06T04:38:31Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/kla-ai-capacity-constraints-highlight-043831881.html"
+        },
+        {
+          "title": "Is It Too Late To Consider ASML Holding (ENXTAM:ASML) After 106% One-Year Surge?",
+          "publisher": "Simply Wall St.",
+          "published_at": "2026-05-06T01:08:37Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/too-consider-asml-holding-enxtam-010837281.html"
+        },
+        {
+          "title": "ASML CEO Christophe Fouquet on his company’s monopoly: no one is coming for us",
+          "publisher": "TechCrunch",
+          "published_at": "2026-05-05T20:06:40Z",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/asml-ceo-christophe-fouquet-no-200640845.html"
+        },
+        {
+          "title": "European shares rise on positive earnings bump; focus on Mideast tensions",
+          "publisher": "Reuters",
+          "published_at": "2026-05-05T16:26:35Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/european-shares-rise-positive-earnings-162635505.html"
+        },
+        {
+          "title": "Forget AMD: 4 AI Stocks That Could Beat the Crowd",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T14:49:43Z",
+          "url": "https://247wallst.com/investing/2026/05/05/forget-amd-4-ai-stocks-that-could-beat-the-crowd/"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:42.675075"
+    },
+    {
+      "ticker": "ARM",
+      "company": "Arm Holdings plc",
+      "sector": "Technology",
+      "industry": "Semiconductors",
+      "market_cap": 221787783168,
+      "beta": 3.406,
+      "trailing_pe": 278.45334,
+      "forward_pe": 97.62391,
+      "profit_margin": 0.17148,
+      "revenue_growth": 0.263,
+      "earnings_growth": -0.123,
+      "recommendation": "buy",
+      "target_mean_price": 175.03307,
+      "current_price": 208.84,
+      "latest_news": [
+        {
+          "title": "Earnings live updates: Supermicro stock soars as AI server demand lifts outlook, Shopify tumbles",
+          "publisher": "Yahoo Finance",
+          "published_at": "2026-05-04T10:00:00Z",
+          "url": "https://finance.yahoo.com/markets/live/earnings-live-updates-sp-500-earnings-growth-trend-impresses-100000216.html"
+        },
+        {
+          "title": "How Much Is Arm Holdings Stock Expected to Move After Earnings?",
+          "publisher": "Investopedia",
+          "published_at": "2026-05-05T20:30:46Z",
+          "url": "https://www.investopedia.com/how-much-is-arm-holdings-stock-expected-to-move-after-earnings-11967230"
+        },
+        {
+          "title": "UBS: Agentic AI shift signals massive expansion for server CPU market",
+          "publisher": "Investing.com",
+          "published_at": "2026-05-05T19:55:28Z",
+          "url": "https://finance.yahoo.com/sectors/technology/articles/ubs-agentic-ai-shift-signals-195528399.html"
+        },
+        {
+          "title": "Why Arm Holdings Stock Jumped 39% in April",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-05T18:20:00Z",
+          "url": "https://www.fool.com/investing/2026/05/05/why-arm-holdings-stock-jumped-39-in-april/"
+        },
+        {
+          "title": "S&P 500, Nasdaq Climb Back to Record Highs. Earnings Are in Focus.",
+          "publisher": "Barrons.com",
+          "published_at": "2026-05-05T15:56:12Z",
+          "url": "https://www.barrons.com/livecoverage/stock-market-news-today-050526/card/s-p-500-nasdaq-climb-back-to-record-highs-earnings-are-in-focus--4sc2cxwwkoj0tBqWh76Q?siteid=yhoof2&yptr=yahoo"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:43.049024"
+    },
+    {
+      "ticker": "SMH",
+      "company": "VanEck Semiconductor ETF",
+      "sector": null,
+      "industry": null,
+      "market_cap": null,
+      "beta": null,
+      "trailing_pe": 51.292637,
+      "forward_pe": null,
+      "profit_margin": null,
+      "revenue_growth": null,
+      "earnings_growth": null,
+      "recommendation": null,
+      "target_mean_price": null,
+      "current_price": 522.69,
+      "latest_news": [
+        {
+          "title": "Why the VanEck Semiconductor ETF Rallied Over 30% in April",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-05T12:41:00Z",
+          "url": "https://www.fool.com/investing/2026/05/05/why-the-vaneck-semiconductor-etf-rallied-over-30-i/"
+        },
+        {
+          "title": "2 Semiconductor Stocks to Own in May",
+          "publisher": "Schaeffer's Investment Research",
+          "published_at": "2026-05-04T18:37:06Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/2-semiconductor-stocks-own-may-183706075.html"
+        },
+        {
+          "title": "XSD Delivers 1,138% in Ten Years, Yet Trails SOXX in the AI Boom",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-04T11:45:49Z",
+          "url": "https://247wallst.com/investing/2026/05/04/xsd-delivers-1138-in-ten-years-yet-trails-soxx-in-the-ai-boom/"
+        },
+        {
+          "title": "SMH Has Crushed the S&P 500 by 2,041% Over a Decade, But Recent 42% Rally Signals Dangerous Valuations",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-03T10:15:31Z",
+          "url": "https://247wallst.com/investing/2026/05/03/smh-has-crushed-the-sp-500-by-2041-over-a-decade-but-recent-42-rally-signals-dangerous-valuations/"
+        },
+        {
+          "title": "Semiconductor ETF SOXX Delivers 50% YTD—Reddit Retail Cautious Despite Record-Breaking Run",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-02T14:53:55Z",
+          "url": "https://247wallst.com/investing/2026/05/02/semiconductor-etf-soxx-delivers-50-ytd-reddit-retail-cautious-despite-record-breaking-run/"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:43.384718"
+    },
+    {
+      "ticker": "QQQ",
+      "company": "Invesco QQQ Trust, Series 1",
+      "sector": null,
+      "industry": null,
+      "market_cap": null,
+      "beta": null,
+      "trailing_pe": 36.009754,
+      "forward_pe": null,
+      "profit_margin": null,
+      "revenue_growth": null,
+      "earnings_growth": null,
+      "recommendation": null,
+      "target_mean_price": null,
+      "current_price": 681.61,
+      "latest_news": [
+        {
+          "title": "This ETF Is Are Outpacing Tech Stocks While Paying High Dividends",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T17:33:55Z",
+          "url": "https://247wallst.com/investing/2026/05/05/this-etf-is-are-outpacing-tech-stocks-while-paying-high-dividends/"
+        },
+        {
+          "title": "Exchange-Traded Funds Rise as US Equities Advance After Midday",
+          "publisher": "MT Newswires",
+          "published_at": "2026-05-05T17:13:08Z",
+          "url": "https://finance.yahoo.com/markets/stocks/articles/exchange-traded-funds-rise-us-171308787.html"
+        },
+        {
+          "title": "Gratus Wealth Trims QQEW Stake by $22 Million -- Is Equal-Weight Nasdaq Still Worth Holding?",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-05T15:29:54Z",
+          "url": "https://www.fool.com/coverage/filings/2026/05/05/gratus-wealth-trims-qqew-stake-by-usd22-million-is-equal-weight-nasdaq-still-worth-holding/"
+        },
+        {
+          "title": "The venture fund paying 8% yield while quietly liquidating in five years",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T15:04:19Z",
+          "url": "https://247wallst.com/investing/2026/05/05/the-venture-fund-paying-8-yield-while-quietly-liquidating-in-five-years/"
+        },
+        {
+          "title": "MAGS Is Up 181% Since Launch, but 2026 Reveals Its Hidden Weakness",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T15:00:57Z",
+          "url": "https://247wallst.com/investing/2026/05/05/mags-is-up-181-since-launch-but-2026-reveals-its-hidden-weakness/"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:43.692814"
+    },
+    {
+      "ticker": "SPY",
+      "company": "State Street SPDR S&P 500 ETF T",
+      "sector": null,
+      "industry": null,
+      "market_cap": null,
+      "beta": null,
+      "trailing_pe": 28.695543,
+      "forward_pe": null,
+      "profit_margin": null,
+      "revenue_growth": null,
+      "earnings_growth": null,
+      "recommendation": null,
+      "target_mean_price": null,
+      "current_price": 723.77,
+      "latest_news": [
+        {
+          "title": "BlueChip Exits Full International Equity ETF Stake Worth $4 Million",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-05T18:52:49Z",
+          "url": "https://www.fool.com/coverage/filings/2026/05/05/bluechip-exits-full-international-equity-etf-stake-worth-usd4-million/"
+        },
+        {
+          "title": "If Your Portfolio Is Too American, VXUS Is The Simple Fix",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T17:20:48Z",
+          "url": "https://247wallst.com/investing/2026/05/05/if-your-portfolio-is-too-american-vxus-is-the-simple-fix/"
+        },
+        {
+          "title": "Long-Term S&P 500 Holding or Greater Liquidity? VOO vs. SPY",
+          "publisher": "Motley Fool",
+          "published_at": "2026-05-05T15:52:49Z",
+          "url": "https://www.fool.com/coverage/etfs/2026/05/05/long-term-s-and-p-500-holding-or-greater-liquidity-voo-vs-spy/"
+        },
+        {
+          "title": "MAGS Is Up 181% Since Launch, but 2026 Reveals Its Hidden Weakness",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T15:00:57Z",
+          "url": "https://247wallst.com/investing/2026/05/05/mags-is-up-181-since-launch-but-2026-reveals-its-hidden-weakness/"
+        },
+        {
+          "title": "This Boring ETF Owns Some Of The Toughest Businesses In America",
+          "publisher": "24/7 Wall St.",
+          "published_at": "2026-05-05T14:45:46Z",
+          "url": "https://247wallst.com/investing/2026/05/05/this-boring-etf-owns-some-of-the-toughest-businesses-in-america/"
+        }
+      ],
+      "updated_at": "2026-05-05T23:25:44.012321"
+    }
+  ],
+  "takeaways": [
+    "CSX: Yahoo recommendation key is 'buy'; treat as context, not proof.",
+    "NVDA: high beta (2.24); returns must be judged on beta-adjusted alpha.",
+    "NVDA: revenue growth is strong (73.2%); verify whether valuation already prices it in.",
+    "NVDA: high profit margin (55.6%); research moat durability.",
+    "NVDA: Yahoo recommendation key is 'strong_buy'; treat as context, not proof.",
+    "MU: high beta (1.92); returns must be judged on beta-adjusted alpha.",
+    "MU: revenue growth is strong (196.3%); verify whether valuation already prices it in.",
+    "MU: high profit margin (41.5%); research moat durability.",
+    "MU: Yahoo recommendation key is 'strong_buy'; treat as context, not proof.",
+    "TSM: revenue growth is strong (35.1%); verify whether valuation already prices it in.",
+    "TSM: high profit margin (46.5%); research moat durability.",
+    "TSM: Yahoo recommendation key is 'strong_buy'; treat as context, not proof."
+  ],
+  "risk_flags": [
+    "NVDA: beta above 2; position size and options exposure must stay capped.",
+    "WDC: beta above 2; position size and options exposure must stay capped.",
+    "AVGO: valuation is rich (P/E 83.3); require stronger growth confirmation.",
+    "ARM: valuation is rich (P/E 278.5); require stronger growth confirmation.",
+    "ARM: beta above 2; position size and options exposure must stay capped."
+  ]
+}

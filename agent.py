@@ -15,6 +15,7 @@ from core.scanner import StockScanner
 from core.portfolio import PaperPortfolio
 from core.brain import AgentBrain
 from core.reflection import WeeklyReflection
+from core.research_watcher import ResearchWatcher
 from notifications.notifier import Notifier
 
 load_dotenv()
@@ -124,8 +125,6 @@ def intraday_monitor():
             summary.get("positions", 0),
         )
 
-        maybe_publish_dashboard()
-
     except Exception as e:
         log.error(f"15-minute monitor failed: {e}", exc_info=True)
 
@@ -151,8 +150,24 @@ def evening_review():
         log.info(msg)
         notifier.send_eod(summary)
 
+        daily_research()
+        maybe_publish_dashboard_daily()
+
     except Exception as e:
         log.error(f"Evening review failed: {e}", exc_info=True)
+
+
+def daily_research():
+    """After close — update the agent's research context and memory."""
+    log.info("--- Daily research watcher ---")
+    try:
+        portfolio = PaperPortfolio()
+        watcher = ResearchWatcher()
+        feed = watcher.run(portfolio)
+        for takeaway in feed.get("takeaways", [])[:5]:
+            log.info(f"Research takeaway: {takeaway}")
+    except Exception as e:
+        log.error(f"Daily research watcher failed: {e}", exc_info=True)
 
 
 def weekly_reflection():
@@ -196,10 +211,20 @@ def market_is_open(now: datetime | None = None) -> bool:
 
 
 def maybe_publish_dashboard():
-    """Optionally push status updates to GitHub Pages."""
+    """Deprecated compatibility wrapper for manual dashboard publishing."""
     if os.getenv("AUTO_PUBLISH_DASHBOARD", "false").lower() not in ("1", "true", "yes"):
         return
+    _publish_dashboard()
 
+
+def maybe_publish_dashboard_daily():
+    """Optionally push dashboard once daily after research/EOD updates."""
+    if os.getenv("DAILY_PUBLISH_DASHBOARD", "false").lower() not in ("1", "true", "yes"):
+        return
+    _publish_dashboard()
+
+
+def _publish_dashboard():
     try:
         subprocess.run(
             ["./publish_dashboard.sh"],
