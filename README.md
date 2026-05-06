@@ -141,6 +141,20 @@ These are Los Angeles local times for U.S. market hours.
 | 13:05 Mon–Fri | EOD summary — daily P&L, SPY comparison, portfolio snapshot |
 | 13:30 Friday | Weekly reflection — self-critique, strategy adjustment |
 
+### Stock Research Queue rules
+
+The dashboard research queue refreshes from the agent's local status after each run.
+
+A ticker enters the queue when:
+
+- it becomes an active paper holding
+- it appears in the top rule-score scan
+- it triggers a high-confidence paper BUY/SELL signal
+- it needs review because alpha, stop-loss risk, target progress, or thesis quality changed
+- it is a cleaner ETF/options expression of a current single-stock thesis
+
+The queue is not a trade instruction. It means: "research this before considering more risk."
+
 ---
 
 ## Maturity system

@@ -594,6 +594,19 @@ h1 {
   background: var(--red-soft);
 }
 
+.queue-meta {
+  border: 1px solid var(--line);
+  background: var(--blue-soft);
+  color: var(--muted);
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+}
+
+.queue-meta strong {
+  color: var(--ink);
+}
+
 .footer-note {
   color: var(--muted);
   font-size: 0.82rem;
@@ -845,10 +858,13 @@ h1 {
       <div class="research-grid">
         <div class="research-card">
           <h3>Stock Research Queue</h3>
+          <div class="queue-meta">
+            <strong>Refresh:</strong> every market day at 06:35 PT after the morning scan; risk/status refresh at 09:30 PT; performance review at 13:05 PT. A name enters the queue when it is held in paper, appears in the top rule-score scan, triggers a high-confidence signal, or needs review because risk/alpha changed.
+          </div>
           <ul id="research-queue">
-            <li><strong>NVDA</strong> — validate AI demand, margins, and valuation before sizing up.</li>
-            <li><strong>CSX</strong> — compare railroad strength against industrial/cyclical risk.</li>
-            <li><strong>QQQ / SMH</strong> — check whether ETF exposure is cleaner than single-name concentration.</li>
+            <li><strong>NVDA</strong> — in queue because AI/chip momentum is strong and it is a paper holding; validate demand, margins, valuation, and stop discipline.</li>
+            <li><strong>CSX</strong> — in queue because the rule scan produced a high-confidence paper buy; compare railroad trend strength against industrial/cyclical risk.</li>
+            <li><strong>QQQ / SMH</strong> — in queue because they may express growth/semiconductor exposure with less single-stock risk.</li>
           </ul>
         </div>
         <div class="research-card">
@@ -1098,8 +1114,9 @@ function renderResearchDesk(status) {
     }).join("");
 
     document.getElementById("research-queue").innerHTML = positions.map(position => {
-      return `<li><strong>${position.ticker}</strong> — research moat, earnings quality, valuation, trend durability, and what would invalidate the paper trade.</li>`;
-    }).join("") + `<li><strong>Watchlist refresh</strong> — compare next scan winners against ${tickers.join(", ")} before adding risk.</li>`;
+      const confidence = (Number(position.confidence || 0) * 100).toFixed(0);
+      return `<li><strong>${position.ticker}</strong> — entered because it is an active paper holding from a high-confidence scan (${confidence}%). Research checklist: moat, earnings quality, valuation, trend durability, stop/target logic, and what would invalidate the trade.</li>`;
+    }).join("") + `<li><strong>Next refresh</strong> — at the next 06:35 PT market-day scan, compare new top rule-score names against ${tickers.join(", ")} before adding risk.</li>`;
   }
 
   document.getElementById("learned-list").innerHTML = `
