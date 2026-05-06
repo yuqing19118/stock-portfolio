@@ -1,61 +1,391 @@
 {
-  "updated_at": "2026-05-05T23:11:47.573593",
+  "updated_at": "2026-05-06T12:57:06.437130",
   "starting_capital": 50000.0,
   "summary": {
-    "nav": 50000.0,
-    "cash": 41841.29,
-    "positions": 2,
+    "nav": 66908.81,
+    "cash": 8981.18,
+    "positions": 16,
     "tickers": [
+      "MU",
+      "MSFT",
+      "AVGO",
+      "ADBE",
+      "ALAB",
+      "PLTR",
+      "MRVL",
+      "SMCI",
+      "QQQ",
+      "ASML",
       "CSX",
-      "NVDA"
+      "TSM",
+      "WDC",
+      "MS",
+      "TXN",
+      "SIMO"
     ],
-    "total_return_pct": 0.0,
+    "total_return_pct": 0.3382,
     "benchmark_symbol": "SPY",
-    "benchmark_return_pct": 0.0,
-    "alpha_pct": 0.0,
-    "portfolio_beta": 0.269,
-    "beta_adjusted_alpha_pct": 0.0
+    "benchmark_return_pct": 0.0029,
+    "alpha_pct": 0.3353,
+    "portfolio_beta": 1.245,
+    "beta_adjusted_alpha_pct": 0.3346
   },
   "positions": [
     {
+      "ticker": "MU",
+      "shares": 4.541876,
+      "avg_cost": 657.73,
+      "last_price": 658.84,
+      "stop_loss": 611.69,
+      "take_profit": 822.16,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 1.919
+    },
+    {
+      "ticker": "MSFT",
+      "shares": 5.023547,
+      "avg_cost": 414.79,
+      "last_price": 415.48,
+      "stop_loss": 385.75,
+      "take_profit": 518.49,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 1.093
+    },
+    {
+      "ticker": "AVGO",
+      "shares": 4.591262,
+      "avg_cost": 423.13,
+      "last_price": 422.34,
+      "stop_loss": 393.51,
+      "take_profit": 528.91,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 1.44
+    },
+    {
+      "ticker": "ADBE",
+      "shares": 5.48486,
+      "avg_cost": 252.32,
+      "last_price": 252.08,
+      "stop_loss": 234.66,
+      "take_profit": 315.4,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 1.417
+    },
+    {
+      "ticker": "ALAB",
+      "shares": 6.503078,
+      "avg_cost": 209.22,
+      "last_price": 207.62,
+      "stop_loss": 194.57,
+      "take_profit": 261.52,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 3.363
+    },
+    {
+      "ticker": "PLTR",
+      "shares": 7.494004,
+      "avg_cost": 133.47,
+      "last_price": 133.07,
+      "stop_loss": 124.13,
+      "take_profit": 166.84,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 1.521
+    },
+    {
+      "ticker": "MRVL",
+      "shares": 5.774839,
+      "avg_cost": 168.93,
+      "last_price": 168.84,
+      "stop_loss": 157.1,
+      "take_profit": 211.16,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 2.251
+    },
+    {
+      "ticker": "SMCI",
+      "shares": 17.53909,
+      "avg_cost": 32.05,
+      "last_price": 31.9,
+      "stop_loss": 29.81,
+      "take_profit": 40.06,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "stock",
+      "beta": 1.684
+    },
+    {
+      "ticker": "QQQ",
+      "shares": 3.364656,
+      "avg_cost": 691.56,
+      "last_price": 691.67,
+      "stop_loss": 643.15,
+      "take_profit": 864.45,
+      "entered_at": "2026-05-06T08:11:00",
+      "confidence": 1.0,
+      "category": "etf"
+    },
+    {
+      "ticker": "ASML",
+      "shares": 5,
+      "avg_cost": 1536.56005859375,
+      "last_price": 1536.56005859375,
+      "stop_loss": 1429.0,
+      "take_profit": 1920.7,
+      "entered_at": "2026-05-06T09:15:04.711420",
+      "confidence": 0.9,
+      "beta": 1.373
+    },
+    {
       "ticker": "CSX",
-      "shares": 107,
-      "avg_cost": 45.029998779296875,
-      "last_price": 45.029998779296875,
-      "stop_loss": 41.88,
-      "take_profit": 56.29,
-      "entered_at": "2026-05-05T22:22:31.152489",
+      "shares": 182,
+      "avg_cost": 45.60499954223633,
+      "last_price": 45.60499954223633,
+      "stop_loss": 42.41,
+      "take_profit": 57.01,
+      "entered_at": "2026-05-06T09:15:04.712603",
       "confidence": 0.9,
       "beta": 1.238
     },
     {
-      "ticker": "NVDA",
-      "shares": 17,
-      "avg_cost": 196.5,
-      "last_price": 196.5,
-      "stop_loss": 182.74,
-      "take_profit": 245.62,
-      "entered_at": "2026-05-05T22:22:31.153285",
-      "confidence": 0.75,
-      "beta": 2.244
+      "ticker": "TSM",
+      "shares": 18,
+      "avg_cost": 417.5450134277344,
+      "last_price": 417.5450134277344,
+      "stop_loss": 388.32,
+      "take_profit": 521.93,
+      "entered_at": "2026-05-06T09:15:04.714276",
+      "confidence": 0.9,
+      "beta": 1.264
+    },
+    {
+      "ticker": "WDC",
+      "shares": 14,
+      "avg_cost": 468.7099914550781,
+      "last_price": 468.7099914550781,
+      "stop_loss": 435.9,
+      "take_profit": 585.89,
+      "entered_at": "2026-05-06T09:15:04.715316",
+      "confidence": 0.9,
+      "beta": 2.158
+    },
+    {
+      "ticker": "MS",
+      "shares": 35,
+      "avg_cost": 193.11000061035156,
+      "last_price": 193.11000061035156,
+      "stop_loss": 179.59,
+      "take_profit": 241.39,
+      "entered_at": "2026-05-06T09:15:04.716899",
+      "confidence": 0.9,
+      "beta": 1.207
+    },
+    {
+      "ticker": "TXN",
+      "shares": 20,
+      "avg_cost": 288.8399963378906,
+      "last_price": 288.8399963378906,
+      "stop_loss": 268.62,
+      "take_profit": 361.05,
+      "entered_at": "2026-05-06T09:15:04.718657",
+      "confidence": 0.85,
+      "beta": 1.298
+    },
+    {
+      "ticker": "SIMO",
+      "shares": 3,
+      "avg_cost": 240.30999755859375,
+      "last_price": 240.30999755859375,
+      "stop_loss": 223.49,
+      "take_profit": 300.39,
+      "entered_at": "2026-05-06T09:15:04.719708",
+      "confidence": 0.85,
+      "beta": 1.668
     }
   ],
   "trade_history": [
     {
-      "ticker": "CSX",
+      "ticker": "ASML",
       "action": "BUY",
-      "shares": 107,
-      "price": 45.029998779296875,
-      "total": 4818.21,
-      "at": "2026-05-05T22:22:31.152495"
+      "shares": 5,
+      "price": 1536.56005859375,
+      "total": 7682.8,
+      "at": "2026-05-06T09:15:04.711441"
     },
     {
-      "ticker": "NVDA",
+      "ticker": "CSX",
       "action": "BUY",
-      "shares": 17,
-      "price": 196.5,
-      "total": 3340.5,
-      "at": "2026-05-05T22:22:31.153292"
+      "shares": 182,
+      "price": 45.60499954223633,
+      "total": 8300.11,
+      "at": "2026-05-06T09:15:04.712611"
+    },
+    {
+      "ticker": "TSM",
+      "action": "BUY",
+      "shares": 18,
+      "price": 417.5450134277344,
+      "total": 7515.81,
+      "at": "2026-05-06T09:15:04.714286"
+    },
+    {
+      "ticker": "WDC",
+      "action": "BUY",
+      "shares": 14,
+      "price": 468.7099914550781,
+      "total": 6561.94,
+      "at": "2026-05-06T09:15:04.715325"
+    },
+    {
+      "ticker": "MS",
+      "action": "BUY",
+      "shares": 35,
+      "price": 193.11000061035156,
+      "total": 6758.85,
+      "at": "2026-05-06T09:15:04.716910"
+    },
+    {
+      "ticker": "TXN",
+      "action": "BUY",
+      "shares": 20,
+      "price": 288.8399963378906,
+      "total": 5776.8,
+      "at": "2026-05-06T09:15:04.718666"
+    },
+    {
+      "ticker": "SIMO",
+      "action": "BUY",
+      "shares": 3,
+      "price": 240.30999755859375,
+      "total": 720.93,
+      "at": "2026-05-06T09:15:04.719713"
+    },
+    {
+      "ticker": "CHYM",
+      "action": "SELL",
+      "shares": 100.0,
+      "price": 21.139999389648438,
+      "pnl": -4.0,
+      "pnl_pct": -0.0019,
+      "reason": "signal",
+      "at": "2026-05-06T09:15:04.720766"
+    },
+    {
+      "ticker": "CHYM",
+      "action": "SELL",
+      "shares": 100.0,
+      "price": 21.139999389648438,
+      "total": 2114.0,
+      "at": "2026-05-06T09:15:04.720772",
+      "pnl": -4.0
+    },
+    {
+      "ticker": "KLAR",
+      "action": "SELL",
+      "shares": 1.0,
+      "price": 14.140000343322754,
+      "pnl": -0.17,
+      "pnl_pct": -0.0119,
+      "reason": "signal",
+      "at": "2026-05-06T09:15:04.721559"
+    },
+    {
+      "ticker": "KLAR",
+      "action": "SELL",
+      "shares": 1.0,
+      "price": 14.140000343322754,
+      "total": 14.14,
+      "at": "2026-05-06T09:15:04.721564",
+      "pnl": -0.17
+    },
+    {
+      "ticker": "SQQQ",
+      "action": "SELL",
+      "shares": 17.794928,
+      "price": 46.20989990234375,
+      "pnl": -4.45,
+      "pnl_pct": -0.0054,
+      "reason": "signal",
+      "at": "2026-05-06T09:15:04.722612"
+    },
+    {
+      "ticker": "SQQQ",
+      "action": "SELL",
+      "shares": 17.794928,
+      "price": 46.20989990234375,
+      "total": 822.3,
+      "at": "2026-05-06T09:15:04.722621",
+      "pnl": -4.45
+    },
+    {
+      "ticker": "BITI",
+      "action": "SELL",
+      "shares": 12.0,
+      "price": 21.360300064086914,
+      "pnl": -0.96,
+      "pnl_pct": -0.0037,
+      "reason": "signal",
+      "at": "2026-05-06T09:15:04.723583"
+    },
+    {
+      "ticker": "BITI",
+      "action": "SELL",
+      "shares": 12.0,
+      "price": 21.360300064086914,
+      "total": 256.32,
+      "at": "2026-05-06T09:15:04.723589",
+      "pnl": -0.96
+    },
+    {
+      "ticker": "BTC-USD",
+      "action": "SELL",
+      "shares": 0.06905757,
+      "price": 80927.0546875,
+      "pnl": -39.15,
+      "pnl_pct": -0.007,
+      "reason": "signal",
+      "at": "2026-05-06T09:15:04.724789"
+    },
+    {
+      "ticker": "BTC-USD",
+      "action": "SELL",
+      "shares": 0.06905757,
+      "price": 80927.0546875,
+      "total": 5588.63,
+      "at": "2026-05-06T09:15:04.724799",
+      "pnl": -39.15
+    },
+    {
+      "ticker": "XRP-USD",
+      "action": "SELL",
+      "shares": 1.065,
+      "price": 1.4131489992141724,
+      "pnl": -0.02,
+      "pnl_pct": -0.0118,
+      "reason": "signal",
+      "at": "2026-05-06T09:15:04.725861"
+    },
+    {
+      "ticker": "XRP-USD",
+      "action": "SELL",
+      "shares": 1.065,
+      "price": 1.4131489992141724,
+      "total": 1.51,
+      "at": "2026-05-06T09:15:04.725867",
+      "pnl": -0.02
     }
   ],
   "snapshots": [
@@ -76,6 +406,66 @@
       "alpha_pct": 0.0,
       "portfolio_beta": 0.269,
       "beta_adjusted_alpha_pct": 0.0
+    },
+    {
+      "date": "2026-05-06T06:38:18.056162",
+      "nav": 50000.0,
+      "total_return_pct": 0.0,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": 0.0076,
+      "alpha_pct": -0.0076,
+      "portfolio_beta": 0.921,
+      "beta_adjusted_alpha_pct": -0.007
+    },
+    {
+      "date": "2026-05-06T08:07:05.980958",
+      "nav": 50000.0,
+      "total_return_pct": 0.0,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": 0.0118,
+      "alpha_pct": -0.0118,
+      "portfolio_beta": 1.175,
+      "beta_adjusted_alpha_pct": -0.0139
+    },
+    {
+      "date": "2026-05-06T09:15:07.845269",
+      "nav": 66908.81,
+      "total_return_pct": 0.3382,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": -0.0006,
+      "alpha_pct": 0.3388,
+      "portfolio_beta": 1.245,
+      "beta_adjusted_alpha_pct": 0.3389
+    },
+    {
+      "date": "2026-05-06T09:23:33.454879",
+      "nav": 66908.81,
+      "total_return_pct": 0.3382,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": -0.0006,
+      "alpha_pct": 0.3388,
+      "portfolio_beta": 1.245,
+      "beta_adjusted_alpha_pct": 0.3389
+    },
+    {
+      "date": "2026-05-06T09:25:44.892383",
+      "nav": 66908.81,
+      "total_return_pct": 0.3382,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": -0.0004,
+      "alpha_pct": 0.3386,
+      "portfolio_beta": 1.245,
+      "beta_adjusted_alpha_pct": 0.3387
+    },
+    {
+      "date": "2026-05-06T09:26:56.638401",
+      "nav": 66908.81,
+      "total_return_pct": 0.3382,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": -0.0007,
+      "alpha_pct": 0.3388,
+      "portfolio_beta": 1.245,
+      "beta_adjusted_alpha_pct": 0.339
     }
   ]
 }
