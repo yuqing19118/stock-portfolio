@@ -121,7 +121,6 @@ def intraday_monitor():
                 log.warning(f"ALERT: {a['ticker']} hit {a['type']} at ${a['price']:.2f}")
             notifier.send_alerts(alerts)
 
-        portfolio.refresh_prices()
         portfolio.write_status()
         summary = portfolio.summary()
         log.info(
@@ -226,15 +225,8 @@ def market_is_open(now: datetime | None = None) -> bool:
     return MARKET_OPEN_PT <= current <= MARKET_CLOSE_PT
 
 
-def maybe_publish_dashboard():
-    """Deprecated compatibility wrapper for manual dashboard publishing."""
-    if os.getenv("AUTO_PUBLISH_DASHBOARD", "false").lower() not in ("1", "true", "yes"):
-        return
-    _publish_dashboard()
-
-
 def maybe_publish_dashboard_daily():
-    """Optionally push dashboard once daily after research/EOD updates."""
+    """Push the dashboard to GitHub Pages once after end-of-day research."""
     if os.getenv("DAILY_PUBLISH_DASHBOARD", "false").lower() not in ("1", "true", "yes"):
         return
     _publish_dashboard()

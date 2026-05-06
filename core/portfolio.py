@@ -165,6 +165,14 @@ class PaperPortfolio:
         return alerts
 
     def refresh_prices(self):
+        today = datetime.now().date().isoformat()
+        if self.state.get("refresh_date") == today:
+            count = self.state.get("refresh_count", 0)
+        else:
+            count = 0
+        if count >= 3:
+            log.debug("Daily price refresh limit (3) reached — using cached prices")
+            return
         for pos in self.state["positions"]:
             try:
                 ticker_obj = yf.Ticker(pos["ticker"])
@@ -173,6 +181,8 @@ class PaperPortfolio:
                     pos["last_price"] = round(float(hist["Close"].iloc[-1]), 2)
             except Exception as e:
                 log.debug(f"Could not refresh {pos['ticker']}: {e}")
+        self.state["refresh_date"] = today
+        self.state["refresh_count"] = count + 1
         self._save()
 
     # ── Reporting ─────────────────────────────────────────────────
