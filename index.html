@@ -859,7 +859,7 @@ h1 {
         <div class="research-card">
           <h3>Stock Research Queue</h3>
           <div class="queue-meta">
-            <strong>Refresh:</strong> every market day at 06:35 PT after the morning scan; risk/status refresh at 09:30 PT; performance review at 13:05 PT. This is a dynamic queue: names can enter, move up, move down, or leave as price action, alpha, risk, and thesis quality change.
+            <strong>Refresh:</strong> every market day at 06:35 PT after the morning scan, then every 15 minutes during market hours for price/risk/beta/alpha status; performance review at 13:05 PT. This is a dynamic queue: names can enter, move up, move down, or leave as price action, alpha, risk, and thesis quality change.
           </div>
           <ul id="research-queue">
             <li><strong>NVDA</strong> — in queue because AI/chip momentum is strong and it is a paper holding; validate demand, margins, valuation, and stop discipline.</li>
@@ -1130,7 +1130,7 @@ function renderResearchDesk(status) {
       const confidence = (Number(position.confidence || 0) * 100).toFixed(0);
       return `<li><strong>${position.ticker}</strong> — entered because it is an active paper holding from a high-confidence scan (${confidence}%). Research checklist: moat, earnings quality, valuation, trend durability, stop/target logic, and what would invalidate the trade.</li>`;
     }).join("") + `
-      <li><strong>Next refresh</strong> — at the next 06:35 PT market-day scan, compare new top rule-score names against ${tickers.join(", ")} before adding risk.</li>
+      <li><strong>Next refresh</strong> — every 15 minutes during market hours for status/risk, and at the next 06:35 PT market-day scan for new candidates against ${tickers.join(", ")}.</li>
       <li><strong>Move up</strong> — stronger confidence, improving trend, better alpha contribution, or confirmed thesis.</li>
       <li><strong>Move down / exit</strong> — confidence below 55%, stop hit, thesis invalidated, weak data quality, or ETF/options replacement is cleaner.</li>
     `;

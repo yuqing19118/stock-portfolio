@@ -138,13 +138,13 @@ These are Los Angeles local times for U.S. market hours.
 | Time (PT) | What happens |
 |-----------|-------------|
 | 06:35 Mon–Fri | Morning scan — scores all stocks, executes paper trades |
-| 09:30 Mon–Fri | Midday check — stop-loss/take-profit monitoring |
+| Every 15 minutes during market hours | Price refresh, stop-loss/take-profit monitoring, beta/alpha/status update |
 | 13:05 Mon–Fri | EOD summary — daily P&L, SPY comparison, portfolio snapshot |
 | 13:30 Friday | Weekly reflection — self-critique, strategy adjustment |
 
 ### Stock Research Queue rules
 
-The dashboard research queue refreshes from the agent's local status after each run.
+The dashboard research queue refreshes from the agent's local status after each run. The agent scans for new candidates at 06:35 PT, then updates live-ish price/risk/beta/alpha status every 15 minutes during market hours.
 
 A ticker enters the queue when:
 
@@ -175,6 +175,16 @@ This file is used as context for watchlist expansion and thesis/risk framing. It
 - alpha contribution vs SPY
 - thesis invalidation conditions
 - whether ETF/options exposure is cleaner than single-stock risk
+
+### Optional auto-publish to GitHub Pages
+
+By default, the 15-minute monitor updates local `data/status.json`. To also push every monitor update to GitHub Pages, set:
+
+```bash
+AUTO_PUBLISH_DASHBOARD=true
+```
+
+Use this only if you are comfortable with frequent GitHub commits during market hours.
 
 ### Beta rules
 

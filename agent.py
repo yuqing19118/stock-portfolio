@@ -7,8 +7,9 @@ import schedule
 import time
 import logging
 import os
+import subprocess
 from pathlib import Path
-from datetime import datetime
+from datetime import datetime, time as dt_time
 from dotenv import load_dotenv
 from core.scanner import StockScanner
 from core.portfolio import PaperPortfolio
@@ -30,6 +31,9 @@ logging.basicConfig(
     ]
 )
 log = logging.getLogger("BuffetBot")
+
+MARKET_OPEN_PT = dt_time(6, 30)
+MARKET_CLOSE_PT = dt_time(13, 5)
 
 
 def morning_scan():
@@ -93,6 +97,39 @@ def midday_check():
         log.error(f"Midday check failed: {e}", exc_info=True)
 
 
+def intraday_monitor():
+    """Runs every 15 minutes during market hours — price/risk/status monitor."""
+    if not market_is_open():
+        return
+
+    log.info("--- 15-minute monitor ---")
+    try:
+        portfolio = PaperPortfolio()
+        notifier = Notifier()
+
+        alerts = portfolio.check_stops_and_targets()
+        if alerts:
+            for a in alerts:
+                log.warning(f"ALERT: {a['ticker']} hit {a['type']} at ${a['price']:.2f}")
+            notifier.send_alerts(alerts)
+
+        portfolio.refresh_prices()
+        portfolio.write_status()
+        summary = portfolio.summary()
+        log.info(
+            "Monitor: NAV $%s | alpha %s | beta %s | positions %s",
+            f"{summary['nav']:,.0f}",
+            _fmt_pct(summary.get("alpha_pct")),
+            summary.get("portfolio_beta", "—"),
+            summary.get("positions", 0),
+        )
+
+        maybe_publish_dashboard()
+
+    except Exception as e:
+        log.error(f"15-minute monitor failed: {e}", exc_info=True)
+
+
 def evening_review():
     """Runs at close — summarize the day, update learning log."""
     log.info("--- Evening review ---")
@@ -149,18 +186,51 @@ def weekly_reflection():
         log.error(f"Weekly reflection failed: {e}", exc_info=True)
 
 
+def market_is_open(now: datetime | None = None) -> bool:
+    """Return true during regular U.S. market hours in local Los Angeles time."""
+    now = now or datetime.now()
+    if now.weekday() >= 5:
+        return False
+    current = now.time()
+    return MARKET_OPEN_PT <= current <= MARKET_CLOSE_PT
+
+
+def maybe_publish_dashboard():
+    """Optionally push status updates to GitHub Pages."""
+    if os.getenv("AUTO_PUBLISH_DASHBOARD", "false").lower() not in ("1", "true", "yes"):
+        return
+
+    try:
+        subprocess.run(
+            ["./publish_dashboard.sh"],
+            cwd=Path(__file__).parent,
+            check=False,
+            timeout=60,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+        )
+    except Exception as e:
+        log.debug(f"Dashboard publish skipped: {e}")
+
+
+def _fmt_pct(value) -> str:
+    if value is None:
+        return "—"
+    return f"{value:+.2%}"
+
+
 def setup_schedule():
     # Los Angeles local market times for U.S. equities:
-    # 06:35 PT = 09:35 ET, 09:30 PT = 12:30 ET,
+    # 06:35 PT = 09:35 ET, every 15 minutes during market hours,
     # 13:05 PT = 16:05 ET, 13:30 PT = 16:30 ET.
     for day_name in ("monday", "tuesday", "wednesday", "thursday", "friday"):
         getattr(schedule.every(), day_name).at("06:35").do(morning_scan)
-        getattr(schedule.every(), day_name).at("09:30").do(midday_check)
         getattr(schedule.every(), day_name).at("13:05").do(evening_review)
 
+    schedule.every(15).minutes.do(intraday_monitor)
     schedule.every().friday.at("13:30").do(weekly_reflection)
 
-    log.info("Schedule armed in America/Los_Angeles market time. BuffetBot is running day and night.")
+    log.info("Schedule armed in America/Los_Angeles market time. 15-minute monitor active during market hours.")
 
 
 if __name__ == "__main__":
