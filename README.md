@@ -12,6 +12,7 @@
 - **Reasons** about each signal using Claude AI — thinks like Buffett/Munger
 - **Paper trades** with $50k simulated capital by default — tracks P&L, stops, and targets
 - **Compares itself to SPY** every day — records benchmark return and alpha
+- **Tracks beta** — estimates portfolio beta and beta-adjusted alpha so it does not confuse leverage-like risk with skill
 - **Alerts you** via Telegram (or email) with morning signals, midday risk alerts, and EOD summaries
 - **Reflects** every Friday — writes a self-critique, adjusts strategy, and only escalates when maturity and alpha are both strong
 - **Tracks maturity** — only claims readiness after 60+ days, 70%+ win rate, and 8 weeks of reflection
@@ -160,6 +161,14 @@ Queue membership is dynamic. A ticker can move up, move down, or leave:
 - **Leave:** stop-loss is hit, confidence falls below 55%, the thesis is invalidated, data quality is poor, or a cleaner ETF/options expression replaces the stock
 
 The queue is not a trade instruction. It means: "research this before considering more risk."
+
+### Beta rules
+
+Alpha alone is not enough. If the portfolio has beta above 1.0, it should beat SPY by more than the extra market risk it is taking.
+
+- **Portfolio beta:** weighted beta of current paper holdings; cash has beta 0
+- **Beta-adjusted alpha:** portfolio return minus `portfolio beta × SPY return`
+- **Risk warning:** if beta rises above 1.3, reduce sizing, hedge, or require stronger evidence
 
 ---
 

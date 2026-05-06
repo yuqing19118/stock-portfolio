@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-05T22:22:31.301478",
+  "updated_at": "2026-05-05T23:09:16.882529",
   "starting_capital": 50000.0,
   "summary": {
     "nav": 50000.0,
@@ -12,7 +12,9 @@
     "total_return_pct": 0.0,
     "benchmark_symbol": "SPY",
     "benchmark_return_pct": 0.0,
-    "alpha_pct": 0.0
+    "alpha_pct": 0.0,
+    "portfolio_beta": 0.269,
+    "beta_adjusted_alpha_pct": 0.0
   },
   "positions": [
     {
@@ -23,7 +25,8 @@
       "stop_loss": 41.88,
       "take_profit": 56.29,
       "entered_at": "2026-05-05T22:22:31.152489",
-      "confidence": 0.9
+      "confidence": 0.9,
+      "beta": 1.238
     },
     {
       "ticker": "NVDA",
@@ -33,7 +36,8 @@
       "stop_loss": 182.74,
       "take_profit": 245.62,
       "entered_at": "2026-05-05T22:22:31.153285",
-      "confidence": 0.75
+      "confidence": 0.75,
+      "beta": 2.244
     }
   ],
   "trade_history": [

@@ -921,7 +921,7 @@ h1 {
         <div class="metric"><div class="label">Agent status</div><div class="value">Waiting</div><div class="sub">No run recorded yet</div></div>
         <div class="metric"><div class="label">Paper NAV</div><div class="value">—</div><div class="sub">Starts at $50k</div></div>
         <div class="metric"><div class="label">Alpha vs SPY</div><div class="value">—</div><div class="sub">Needs positive alpha</div></div>
-        <div class="metric"><div class="label">Positions</div><div class="value">—</div><div class="sub">Paper only</div></div>
+        <div class="metric"><div class="label">Beta</div><div class="value">—</div><div class="sub">Risk vs SPY</div></div>
       </div>
       <p class="live-note" id="live-note">Start the agent with python agent.py. It will paper trade, compare itself to SPY, reflect weekly, and alert only when confidence rules are met.</p>
     </section>
@@ -1101,6 +1101,11 @@ function pct(value) {
   return (Number(value) * 100).toFixed(2) + "%";
 }
 
+function num(value, digits = 2) {
+  if (value == null || Number.isNaN(Number(value))) return "—";
+  return Number(value).toFixed(digits);
+}
+
 function renderResearchDesk(status) {
   const positions = status?.positions || [];
   const trades = status?.trade_history || [];
@@ -1127,6 +1132,7 @@ function renderResearchDesk(status) {
 
   document.getElementById("learned-list").innerHTML = `
     <li><strong>Current alpha</strong> — ${pct(summary.alpha_pct)} vs ${summary.benchmark_symbol || "SPY"}; alerts stay restrained until this is convincingly positive.</li>
+    <li><strong>Beta check</strong> — portfolio beta is ${num(summary.portfolio_beta, 2)}; beta-adjusted alpha is ${pct(summary.beta_adjusted_alpha_pct)}.</li>
     <li><strong>Cash matters</strong> — ${currency(summary.cash || 0)} remains available for better setups or drawdown defense.</li>
     <li><strong>Trade count</strong> — ${trades.length} paper trades logged; still too early for real-money confidence.</li>
   `;
@@ -1148,6 +1154,14 @@ function renderResearchDesk(status) {
 
   if (summary.alpha_pct != null && summary.alpha_pct <= 0) {
     warnings.unshift(["Alpha not proven", `Current alpha is ${pct(summary.alpha_pct)}, so the agent has not earned stronger trade alerts.`]);
+  }
+
+  if (summary.portfolio_beta != null && summary.portfolio_beta > 1.3) {
+    warnings.unshift(["Beta too hot", `Portfolio beta is ${num(summary.portfolio_beta, 2)}. If returns are only from extra market risk, reduce position size or hedge.`]);
+  }
+
+  if (summary.beta_adjusted_alpha_pct != null && summary.beta_adjusted_alpha_pct <= 0) {
+    warnings.unshift(["Beta-adjusted alpha not proven", `After adjusting for beta, alpha is ${pct(summary.beta_adjusted_alpha_pct)}.`]);
   }
 
   document.getElementById("warning-list").innerHTML = warnings.map(([title, body]) => `<li><strong>${title}</strong> — ${body}</li>`).join("");
@@ -1172,12 +1186,14 @@ async function loadAgentStatus() {
     const alpha = summary.alpha_pct;
     const benchmark = summary.benchmark_return_pct;
     const total = summary.total_return_pct;
+    const beta = summary.portfolio_beta;
+    const betaAlpha = summary.beta_adjusted_alpha_pct;
     renderResearchDesk(status);
     document.getElementById("live-grid").innerHTML = `
       <div class="metric"><div class="label">Agent status</div><div class="value">Running</div><div class="sub">Updated ${new Date(status.updated_at).toLocaleString()}</div></div>
       <div class="metric"><div class="label">Paper NAV</div><div class="value">${currency(summary.nav || status.starting_capital || 50000)}</div><div class="sub">Return ${total == null ? "—" : (total * 100).toFixed(2) + "%"}</div></div>
       <div class="metric"><div class="label">Alpha vs ${summary.benchmark_symbol || "SPY"}</div><div class="value">${alpha == null ? "—" : (alpha * 100).toFixed(2) + "%"}</div><div class="sub">Benchmark ${benchmark == null ? "—" : (benchmark * 100).toFixed(2) + "%"}</div></div>
-      <div class="metric"><div class="label">Positions</div><div class="value">${summary.positions ?? "—"}</div><div class="sub">${(summary.tickers || []).join(", ") || "No open paper positions"}</div></div>
+      <div class="metric"><div class="label">Beta</div><div class="value">${num(beta, 2)}</div><div class="sub">Beta-adjusted alpha ${pct(betaAlpha)}</div></div>
     `;
     document.getElementById("live-note").textContent = "This is paper performance only. Real trades still require your approval.";
   } catch (error) {

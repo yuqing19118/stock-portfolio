@@ -69,6 +69,8 @@ class Notifier:
             f"Total return: {summary['total_return']:+.2%}\n"
             f"Benchmark ({summary.get('benchmark_symbol', 'SPY')}): {summary.get('benchmark_return') or 0:+.2%}\n"
             f"Alpha: {summary.get('alpha') or 0:+.2%}\n"
+            f"Beta: {summary.get('portfolio_beta') if summary.get('portfolio_beta') is not None else '—'}\n"
+            f"Beta-adjusted alpha: {summary.get('beta_adjusted_alpha') or 0:+.2%}\n"
             f"Positions: {summary['positions']} ({', '.join(summary['tickers'][:5])})"
         )
         self._send(msg)

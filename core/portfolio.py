@@ -49,6 +49,12 @@ class PaperPortfolio:
         nav = self.nav()
         benchmark_return = self.benchmark_return()
         total_return = (nav - STARTING_CAPITAL) / STARTING_CAPITAL
+        portfolio_beta = self.portfolio_beta()
+        beta_adjusted_alpha = (
+            total_return - (portfolio_beta * benchmark_return)
+            if benchmark_return is not None and portfolio_beta is not None
+            else None
+        )
         return {
             "nav": round(nav, 2),
             "cash": round(self.cash(), 2),
@@ -58,6 +64,8 @@ class PaperPortfolio:
             "benchmark_symbol": self.state.get("benchmark_symbol", BENCHMARK_SYMBOL),
             "benchmark_return_pct": round(benchmark_return, 4) if benchmark_return is not None else None,
             "alpha_pct": round(total_return - benchmark_return, 4) if benchmark_return is not None else None,
+            "portfolio_beta": round(portfolio_beta, 3) if portfolio_beta is not None else None,
+            "beta_adjusted_alpha_pct": round(beta_adjusted_alpha, 4) if beta_adjusted_alpha is not None else None,
         }
 
     # ── Trade execution ───────────────────────────────────────────
@@ -185,6 +193,8 @@ class PaperPortfolio:
             "benchmark_symbol": self.state.get("benchmark_symbol", BENCHMARK_SYMBOL),
             "benchmark_return": round(benchmark_return, 4) if benchmark_return is not None else None,
             "alpha": round(total_return - benchmark_return, 4) if benchmark_return is not None else None,
+            "portfolio_beta": self.summary().get("portfolio_beta"),
+            "beta_adjusted_alpha": self.summary().get("beta_adjusted_alpha_pct"),
             "positions": len(self.positions()),
             "tickers": [p["ticker"] for p in self.positions()],
             "date": datetime.now().date().isoformat(),
@@ -209,6 +219,8 @@ class PaperPortfolio:
             "benchmark_symbol": self.state.get("benchmark_symbol", BENCHMARK_SYMBOL),
             "benchmark_return": self.summary().get("benchmark_return_pct"),
             "alpha": self.summary().get("alpha_pct"),
+            "portfolio_beta": self.summary().get("portfolio_beta"),
+            "beta_adjusted_alpha": self.summary().get("beta_adjusted_alpha_pct"),
         }
 
     def save_snapshot(self):
@@ -221,6 +233,8 @@ class PaperPortfolio:
             "benchmark_symbol": summary["benchmark_symbol"],
             "benchmark_return_pct": summary["benchmark_return_pct"],
             "alpha_pct": summary["alpha_pct"],
+            "portfolio_beta": summary["portfolio_beta"],
+            "beta_adjusted_alpha_pct": summary["beta_adjusted_alpha_pct"],
         })
         SNAPSHOTS_FILE.write_text(json.dumps(snaps[-365:], indent=2))  # Keep 1 year
         self.write_status()
@@ -240,6 +254,33 @@ class PaperPortfolio:
             return 0.0
 
         return (current - baseline) / baseline
+
+    def portfolio_beta(self) -> float | None:
+        """Estimate weighted beta using current holdings and cash beta of zero."""
+        nav = self.nav()
+        if nav <= 0:
+            return None
+
+        total_beta = 0.0
+        beta_weight = 0.0
+        for pos in self.positions():
+            market_value = pos["shares"] * pos["last_price"]
+            weight = market_value / nav
+            beta = pos.get("beta")
+            if beta is None:
+                beta = self._ticker_beta(pos["ticker"])
+                if beta is not None:
+                    pos["beta"] = beta
+            if beta is None:
+                continue
+            total_beta += weight * beta
+            beta_weight += weight
+
+        if beta_weight == 0:
+            return 0.0 if not self.positions() else None
+
+        self._save()
+        return total_beta
 
     def write_status(self):
         """Write a compact local status file for dashboards and review."""
@@ -287,4 +328,13 @@ class PaperPortfolio:
             return round(float(hist["Close"].iloc[-1]), 2)
         except Exception as e:
             log.debug(f"Could not fetch {ticker}: {e}")
+            return None
+
+    def _ticker_beta(self, ticker: str) -> float | None:
+        try:
+            info = yf.Ticker(ticker).info
+            beta = info.get("beta")
+            return float(beta) if beta is not None else None
+        except Exception as e:
+            log.debug(f"Could not fetch beta for {ticker}: {e}")
             return None
