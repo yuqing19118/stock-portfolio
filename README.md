@@ -162,6 +162,20 @@ Queue membership is dynamic. A ticker can move up, move down, or leave:
 
 The queue is not a trade instruction. It means: "research this before considering more risk."
 
+### User-provided research inputs
+
+The agent can reference user-provided reports. The current external research file is:
+
+- `data/research_notes.json` from `芯片与存储板块投资研究报告.docx`
+
+This file is used as context for watchlist expansion and thesis/risk framing. It does not override live checks. Before any alert, the agent should still verify:
+
+- live price action and trend
+- valuation and beta
+- alpha contribution vs SPY
+- thesis invalidation conditions
+- whether ETF/options exposure is cleaner than single-stock risk
+
 ### Beta rules
 
 Alpha alone is not enough. If the portfolio has beta above 1.0, it should beat SPY by more than the extra market risk it is taking.

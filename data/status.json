@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-05-05T23:09:16.882529",
+  "updated_at": "2026-05-05T23:11:47.573593",
   "starting_capital": 50000.0,
   "summary": {
     "nav": 50000.0,
@@ -66,6 +66,16 @@
       "benchmark_symbol": "SPY",
       "benchmark_return_pct": 0.0,
       "alpha_pct": 0.0
+    },
+    {
+      "date": "2026-05-05T23:11:47.535942",
+      "nav": 50000.0,
+      "total_return_pct": 0.0,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": 0.0,
+      "alpha_pct": 0.0,
+      "portfolio_beta": 0.269,
+      "beta_adjusted_alpha_pct": 0.0
     }
   ]
 }

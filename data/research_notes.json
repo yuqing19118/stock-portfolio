@@ -1,0 +1,39 @@
+{
+  "updated_at": "2026-05-05",
+  "source": "芯片与存储板块投资研究报告.docx",
+  "status": "user_provided_reference",
+  "agent_instruction": "Use as research context only. Do not treat as a trade instruction. Verify live price, valuation, trend, beta, alpha contribution, and thesis invalidation before alerts.",
+  "core_thesis": [
+    "AI data center demand, HBM, enterprise SSD, advanced process, and advanced packaging remain the main semiconductor/memory drivers.",
+    "Memory strength is not uniform: high-end AI/HBM/enterprise storage is stronger than consumer PC/phone-driven memory.",
+    "The sector has already rallied hard, so risk is now high expectations plus high beta plus high volatility.",
+    "Preferred structure is core growth exposure plus tactical high-beta memory names, not all-in chasing the hottest stocks."
+  ],
+  "preferred_core_watchlist": [
+    {"ticker": "TSM", "market": "NYSE", "why": "Advanced foundry quality anchor; AI chip manufacturing and advanced packaging exposure."},
+    {"ticker": "MU", "market": "NASDAQ", "why": "DRAM/NAND/HBM/enterprise SSD direct memory cycle exposure."},
+    {"ticker": "WDC", "market": "NASDAQ", "why": "AI storage infrastructure and data center storage exposure with more defensive character than small high-beta names."},
+    {"ticker": "688008.SS", "market": "China A", "why": "Memory interface / DDR5 / CXL / Retimer exposure, high margin but high valuation."},
+    {"ticker": "603986.SS", "market": "China A", "why": "NOR/NAND/MCU platform, China replacement theme, high valuation already reflects optimism."},
+    {"ticker": "0981.HK", "market": "Hong Kong", "why": "China foundry scarcity/policy exposure; useful as defensive local semiconductor allocation, not a chase-heavy position."}
+  ],
+  "tactical_high_beta_watchlist": [
+    {"ticker": "688525.SS", "market": "China A", "why": "BIWIN storage module / enterprise SSD / AI edge elasticity; high cash-flow and leverage risk."},
+    {"ticker": "301308.SZ", "market": "China A", "why": "Longsys storage products and controller/firmware/manufacturing integration; high earnings elasticity and balance-sheet risk."},
+    {"ticker": "SIMO", "market": "NASDAQ", "why": "NAND controller exposure; event-driven/trend-following candidate rather than low-risk core."},
+    {"ticker": "8299.TWO", "market": "Taiwan", "why": "Phison NAND controller and custom storage solutions; high valuation depends on AI storage mix continuing to rise."}
+  ],
+  "risk_flags": [
+    "Do not chase long green candles far above the 50-day moving average.",
+    "Reduce high-beta exposure if memory ASPs turn down, gross margins fall for two quarters, inventory rises with worsening operating cash flow, or AI capex expectations are cut.",
+    "High memory prices may damage non-AI PC/phone demand.",
+    "Export controls, geopolitics, currency, and liquidity risks differ across U.S., Hong Kong, China A-share, Korea, and Taiwan markets.",
+    "Options should remain auxiliary and defined-risk; not a shortcut to force a double."
+  ],
+  "portfolio_guidance": [
+    "Use staged buying rather than one-shot full allocation.",
+    "Core growth names can receive larger research priority than high-beta tactical names.",
+    "High-risk single names should not dominate the account.",
+    "Cash/short-duration assets are useful while the sector is technically hot."
+  ]
+}

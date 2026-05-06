@@ -15,6 +15,8 @@ log = logging.getLogger("Scanner")
 # The universe — S&P 500 large caps as a starting point
 UNIVERSE = [
     "AAPL","MSFT","GOOGL","AMZN","NVDA","META","TSLA","BRK-B","JPM","V",
+    "MU","TSM","WDC","SIMO","AVGO","ASML","ARM",
+    "688008.SS","603986.SS","688525.SS","301308.SZ","0981.HK","8299.TWO","000660.KS",
     "UNH","XOM","LLY","JNJ","WMT","MA","PG","HD","MRK","CVX",
     "ABBV","ORCL","COST","BAC","KO","PEP","TMO","NFLX","CRM","ACN",
     "MCD","LIN","ABT","AMD","TXN","DHR","QCOM","PM","GE","CAT",

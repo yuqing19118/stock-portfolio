@@ -907,6 +907,12 @@ h1 {
             <li><strong>No trade without a review note</strong> — every alert needs thesis, risk, stop, and invalidation.</li>
           </ul>
         </div>
+        <div class="research-card">
+          <h3>External Research Input</h3>
+          <ul id="external-research">
+            <li><strong>芯片与存储板块投资研究报告</strong> — loaded as context; not treated as a trade instruction.</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -1179,9 +1185,16 @@ render();
 
 async function loadAgentStatus() {
   try {
-    const response = await fetch("data/status.json?ts=" + Date.now());
+    const [response, researchResponse] = await Promise.all([
+      fetch("data/status.json?ts=" + Date.now()),
+      fetch("data/research_notes.json?ts=" + Date.now()).catch(() => null)
+    ]);
     if (!response.ok) return;
     const status = await response.json();
+    if (researchResponse && researchResponse.ok) {
+      const research = await researchResponse.json();
+      renderExternalResearch(research);
+    }
     const summary = status.summary || {};
     const alpha = summary.alpha_pct;
     const benchmark = summary.benchmark_return_pct;
@@ -1199,6 +1212,26 @@ async function loadAgentStatus() {
   } catch (error) {
     document.getElementById("live-note").textContent = "Live status will appear after the agent creates data/status.json.";
   }
+}
+
+function renderExternalResearch(research) {
+  const core = (research.preferred_core_watchlist || []).slice(0, 6).map(item => {
+    return `<li><strong>${item.ticker}</strong> — ${item.why}</li>`;
+  }).join("");
+  const tactical = (research.tactical_high_beta_watchlist || []).slice(0, 4).map(item => {
+    return `<li><strong>${item.ticker}</strong> — tactical/high beta: ${item.why}</li>`;
+  }).join("");
+  const risks = (research.risk_flags || []).slice(0, 3).map(flag => {
+    return `<li><strong>Risk</strong> — ${flag}</li>`;
+  }).join("");
+
+  document.getElementById("external-research").innerHTML = `
+    <li><strong>${research.source || "User research report"}</strong> — reference only; live scan still must verify price, beta, valuation, alpha, and invalidation.</li>
+    ${(research.core_thesis || []).slice(0, 2).map(thesis => `<li><strong>Thesis</strong> — ${thesis}</li>`).join("")}
+    ${core}
+    ${tactical}
+    ${risks}
+  `;
 }
 
 loadAgentStatus();
