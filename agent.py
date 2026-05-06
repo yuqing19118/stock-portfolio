@@ -3,6 +3,8 @@ BuffetBot — AI Paper Trading Research Agent
 Runs 24/7, learns daily, alerts you when it's confident enough to act.
 """
 
+from __future__ import annotations
+
 import schedule
 import time
 import logging
