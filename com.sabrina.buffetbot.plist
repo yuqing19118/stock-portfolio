@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.sabrina.buffetbot</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/python3</string>
+    <string>/Users/sabrina/Downloads/buffet-agent/agent.py</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/sabrina/Downloads/buffet-agent</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/sabrina/Library/Python/3.9/bin:/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    <key>PYTHONUNBUFFERED</key>
+    <string>1</string>
+    <key>PAPER_CAPITAL</key>
+    <string>50000</string>
+    <key>BENCHMARK_SYMBOL</key>
+    <string>SPY</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/sabrina/Downloads/buffet-agent/logs/launchd.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/sabrina/Downloads/buffet-agent/logs/launchd.err.log</string>
+</dict>
+</plist>

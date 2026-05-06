@@ -1,0 +1,67 @@
+{
+  "updated_at": "2026-05-05T22:22:31.301478",
+  "starting_capital": 50000.0,
+  "summary": {
+    "nav": 50000.0,
+    "cash": 41841.29,
+    "positions": 2,
+    "tickers": [
+      "CSX",
+      "NVDA"
+    ],
+    "total_return_pct": 0.0,
+    "benchmark_symbol": "SPY",
+    "benchmark_return_pct": 0.0,
+    "alpha_pct": 0.0
+  },
+  "positions": [
+    {
+      "ticker": "CSX",
+      "shares": 107,
+      "avg_cost": 45.029998779296875,
+      "last_price": 45.029998779296875,
+      "stop_loss": 41.88,
+      "take_profit": 56.29,
+      "entered_at": "2026-05-05T22:22:31.152489",
+      "confidence": 0.9
+    },
+    {
+      "ticker": "NVDA",
+      "shares": 17,
+      "avg_cost": 196.5,
+      "last_price": 196.5,
+      "stop_loss": 182.74,
+      "take_profit": 245.62,
+      "entered_at": "2026-05-05T22:22:31.153285",
+      "confidence": 0.75
+    }
+  ],
+  "trade_history": [
+    {
+      "ticker": "CSX",
+      "action": "BUY",
+      "shares": 107,
+      "price": 45.029998779296875,
+      "total": 4818.21,
+      "at": "2026-05-05T22:22:31.152495"
+    },
+    {
+      "ticker": "NVDA",
+      "action": "BUY",
+      "shares": 17,
+      "price": 196.5,
+      "total": 3340.5,
+      "at": "2026-05-05T22:22:31.153292"
+    }
+  ],
+  "snapshots": [
+    {
+      "date": "2026-05-05T22:22:31.280746",
+      "nav": 50000.0,
+      "total_return_pct": 0.0,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": 0.0,
+      "alpha_pct": 0.0
+    }
+  ]
+}

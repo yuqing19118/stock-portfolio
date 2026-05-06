@@ -1,0 +1,14 @@
+.DS_Store
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Runtime logs can include local paths, API errors, and notification text.
+logs/
+reports/
+
+# Keep dashboard status public, but do not publish local process bookkeeping.
+data/agent.pid
+data/portfolio.json
+data/snapshots.json

@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>50K to 100K Portfolio Plan</title>
+<style>
+:root {
+  --bg: #f6f3ee;
+  --ink: #151515;
+  --muted: #6d6a63;
+  --line: #d8d1c5;
+  --panel: #fffaf1;
+  --panel-2: #ebe4d8;
+  --green: #0e7c59;
+  --green-soft: #d9eee5;
+  --red: #b84a3c;
+  --red-soft: #f4d9d4;
+  --blue: #245e9d;
+  --blue-soft: #dbe8f4;
+  --gold: #bd7b17;
+  --gold-soft: #f5e3c4;
+  --violet: #6f4aa6;
+  --violet-soft: #eadff0;
+  --shadow: 0 20px 60px rgba(49, 39, 25, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.45;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.shell {
+  min-height: 100vh;
+}
+
+.hero {
+  background:
+    linear-gradient(90deg, rgba(10, 10, 10, 0.82), rgba(10, 10, 10, 0.48)),
+    url("https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&w=1800&q=80");
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.hero-inner {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+  min-height: 62vh;
+  display: grid;
+  align-content: center;
+  padding: 34px 0 72px;
+}
+
+.nav {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1180px, calc(100vw - 32px));
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.82rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: #39d98a;
+  box-shadow: 0 0 0 6px rgba(57, 217, 138, 0.18);
+}
+
+.hero-copy {
+  max-width: 720px;
+  padding-top: 70px;
+}
+
+.eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.74rem;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: clamp(3rem, 8vw, 6.7rem);
+  line-height: 0.92;
+  margin: 0;
+  letter-spacing: 0;
+  max-width: 820px;
+}
+
+.hero-copy p {
+  max-width: 600px;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.02rem;
+  margin: 22px 0 0;
+}
+
+.hero-metrics {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.hero-metric {
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(12px);
+  padding: 13px 16px;
+  min-width: 150px;
+}
+
+.hero-metric span {
+  display: block;
+  color: rgba(255, 255, 255, 0.62);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero-metric strong {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.2rem;
+}
+
+.main {
+  width: min(1180px, calc(100vw - 32px));
+  margin: -42px auto 64px;
+  position: relative;
+}
+
+.controls-band {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  padding: 18px;
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mode-tabs {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--panel-2);
+  border: 1px solid var(--line);
+  padding: 4px;
+  gap: 4px;
+}
+
+.mode-tabs button {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 10px 16px;
+  min-width: 110px;
+  cursor: pointer;
+}
+
+.mode-tabs button.active {
+  background: var(--ink);
+  color: #fff;
+}
+
+.capital-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+.capital-control input {
+  width: 132px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  padding: 10px 12px;
+}
+
+.dashboard {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+  align-items: start;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.summary {
+  padding: 28px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.metric {
+  background: rgba(255, 255, 255, 0.58);
+  border: 1px solid var(--line);
+  padding: 16px;
+}
+
+.label {
+  color: var(--muted);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.value {
+  font-weight: 850;
+  font-size: 1.5rem;
+  margin-top: 6px;
+}
+
+.sub {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 5px;
+}
+
+.goal {
+  margin-top: 22px;
+}
+
+.goal-track {
+  height: 16px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  overflow: hidden;
+}
+
+.goal-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--green));
+  transition: width 240ms ease;
+}
+
+.goal-copy {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+
+.allocations {
+  margin-top: 18px;
+  padding: 28px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 1.18rem;
+}
+
+.section-head p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.allocation-list {
+  display: grid;
+  gap: 10px;
+}
+
+.allocation-row {
+  display: grid;
+  grid-template-columns: 58px minmax(0, 1fr) 132px 118px 96px;
+  gap: 16px;
+  align-items: center;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.ticker {
+  min-width: 0;
+  font-weight: 850;
+  color: #fff;
+  text-align: center;
+  padding: 8px 4px;
+}
+
+.ticker.green { background: var(--green); }
+.ticker.blue { background: var(--blue); }
+.ticker.gold { background: var(--gold); }
+.ticker.red { background: var(--red); }
+.ticker.violet { background: var(--violet); }
+
+.asset h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.asset p {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.bar {
+  height: 10px;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+}
+
+.bar i {
+  display: block;
+  height: 100%;
+}
+
+.amount {
+  text-align: right;
+  font-weight: 820;
+}
+
+.shares {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-align: right;
+}
+
+.shares strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.side {
+  display: grid;
+  gap: 18px;
+}
+
+.donut-panel {
+  padding: 24px;
+}
+
+.donut-wrap {
+  display: grid;
+  place-items: center;
+  padding: 8px 0 14px;
+}
+
+.donut {
+  width: min(260px, 68vw);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: conic-gradient(var(--green) 0deg 198deg, var(--blue) 198deg 252deg, var(--gold) 252deg 306deg, var(--red) 306deg 342deg, var(--violet) 342deg 360deg);
+  position: relative;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+
+.donut::after {
+  content: "";
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.donut-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+.donut-center strong {
+  display: block;
+  font-size: 1.45rem;
+}
+
+.donut-center span {
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.rules,
+.review {
+  padding: 24px;
+}
+
+.live-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.live-note {
+  color: var(--muted);
+  margin: 14px 0 0;
+  font-size: 0.88rem;
+}
+
+.rule-list,
+.review-list {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.rule-list li,
+.review-list li {
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  color: var(--muted);
+}
+
+.rule-list strong,
+.review-list strong {
+  color: var(--ink);
+}
+
+.scenario-band {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.scenario {
+  padding: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.scenario strong {
+  display: block;
+  font-size: 1.08rem;
+}
+
+.scenario p {
+  color: var(--muted);
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+}
+
+.scenario .num {
+  font-size: 1.6rem;
+  font-weight: 880;
+  margin-top: 16px;
+}
+
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.option-card {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 16px;
+}
+
+.option-card .tag {
+  display: inline-flex;
+  background: var(--violet);
+  color: #fff;
+  font-weight: 850;
+  font-size: 0.72rem;
+  padding: 5px 8px;
+  margin-bottom: 12px;
+}
+
+.option-card h3 {
+  margin: 0;
+  font-size: 0.98rem;
+}
+
+.option-card p {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.option-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.option-meta div {
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.option-meta strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.footer-note {
+  color: var(--muted);
+  font-size: 0.82rem;
+  margin-top: 20px;
+  padding: 0 2px;
+}
+
+@media (max-width: 980px) {
+  .dashboard,
+  .live-grid,
+  .options-grid,
+  .scenario-band {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .controls-band {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .mode-tabs {
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav {
+    padding-top: 16px;
+  }
+
+  .hero-inner {
+    min-height: 70vh;
+    padding-bottom: 78px;
+  }
+
+  .hero-metric {
+    min-width: calc(50% - 5px);
+    flex: 1;
+  }
+
+  .main {
+    margin-top: -34px;
+  }
+
+  .summary,
+  .allocations,
+  .donut-panel,
+  .rules,
+  .review,
+  .scenario {
+    padding: 18px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .allocation-row {
+    grid-template-columns: 50px minmax(0, 1fr);
+  }
+
+  .bar,
+  .shares,
+  .amount {
+    grid-column: 2;
+  }
+
+  .shares,
+  .amount {
+    text-align: left;
+  }
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <section class="hero">
+    <div class="nav">
+      <div class="brand">Buffet Agent</div>
+      <div class="status"><span class="dot"></span>Paper plan, not financial advice</div>
+    </div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Age 31 / Capital $50,000 / Goal $100,000</div>
+        <h1>50K to 100K Portfolio Plan</h1>
+        <p>A concrete starting buy list: broad-market core, Nasdaq growth, semiconductors, international diversification, Treasury ballast, and a small Bitcoin sleeve.</p>
+        <div class="hero-metrics">
+          <div class="hero-metric"><span>Starting capital</span><strong id="hero-capital">$50,000</strong></div>
+          <div class="hero-metric"><span>Target</span><strong id="hero-target">$100,000</strong></div>
+          <div class="hero-metric"><span>Risk posture</span><strong id="hero-mode">Aggressive</strong></div>
+          <div class="hero-metric"><span>Review cadence</span><strong>Weekly</strong></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="main">
+    <section class="controls-band">
+      <div class="mode-tabs" aria-label="Portfolio mode">
+        <button type="button" data-mode="steady">Steady</button>
+        <button type="button" data-mode="aggressive" class="active">Aggressive</button>
+        <button type="button" data-mode="sprint">Sprint</button>
+      </div>
+      <label class="capital-control">
+        Capital
+        <input id="capital" type="number" min="1000" step="500" value="50000">
+      </label>
+    </section>
+
+    <div class="dashboard">
+      <div>
+        <section class="panel summary">
+          <div class="summary-grid">
+            <div class="metric">
+              <div class="label">Core assets</div>
+              <div class="value" id="core-pct">70%</div>
+              <div class="sub">Broad equity plus cash</div>
+            </div>
+            <div class="metric">
+              <div class="label">Upside sleeve</div>
+              <div class="value" id="upside-pct">15%</div>
+              <div class="sub">Growth, crypto, options</div>
+            </div>
+            <div class="metric">
+              <div class="label">Cash buffer</div>
+              <div class="value" id="cash-pct">15%</div>
+              <div class="sub">Dry powder and defense</div>
+            </div>
+            <div class="metric">
+              <div class="label">Needed gain</div>
+              <div class="value">100%</div>
+              <div class="sub">From start to target</div>
+            </div>
+          </div>
+          <div class="goal">
+            <div class="goal-track"><div class="goal-fill" id="goal-fill"></div></div>
+            <div class="goal-copy">
+              <span id="goal-left">$50,000 to go</span>
+              <span id="goal-progress">0% of the way to 2x</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel allocations">
+          <div class="section-head">
+            <div>
+              <h2>Exact Buy List</h2>
+              <p id="mode-copy">Balanced for speed without letting the speculative sleeve dominate the whole account.</p>
+            </div>
+          </div>
+          <div class="allocation-list" id="allocation-list"></div>
+        </section>
+      </div>
+
+      <aside class="side">
+        <section class="panel donut-panel">
+          <div class="section-head">
+            <div>
+              <h2>Shape</h2>
+              <p id="shape-copy">Most of the money compounds; some of it takes real shots.</p>
+            </div>
+          </div>
+          <div class="donut-wrap">
+            <div class="donut" id="donut">
+              <div class="donut-center">
+                <div>
+                  <strong id="donut-total">$50k</strong>
+                  <span>allocated</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel rules">
+          <div class="section-head">
+            <div>
+              <h2>Guardrails</h2>
+              <p>Rules before trades.</p>
+            </div>
+          </div>
+          <ul class="rule-list">
+            <li><strong>No margin.</strong> Borrowed money turns volatility into forced selling.</li>
+            <li><strong>No weekly options.</strong> Treat short-dated options like lottery tickets, not a plan.</li>
+            <li><strong>Options are defined-risk.</strong> Prefer LEAPS or debit spreads; never naked short options.</li>
+            <li><strong>Use ETFs first.</strong> They reduce single-company blowup risk while still giving targeted exposure.</li>
+            <li><strong>Fractional shares are fine.</strong> If your broker only allows whole shares, round down and leave the extra in SGOV.</li>
+            <li><strong>Rebalance winners.</strong> If a risky sleeve doubles, harvest part of it.</li>
+          </ul>
+        </section>
+      </aside>
+    </div>
+
+    <section class="panel review" style="margin-top:18px">
+      <div class="section-head">
+        <div>
+          <h2>Options Paper Sleeve</h2>
+          <p id="options-copy">Options are paper-only until the agent earns trust. Max loss must be known before entry.</p>
+        </div>
+      </div>
+      <div class="options-grid" id="options-grid"></div>
+    </section>
+
+    <section class="scenario-band">
+      <div class="scenario">
+        <strong>Base Case</strong>
+        <p>Markets grind higher, growth participates, cash earns modest yield.</p>
+        <div class="num">+8% to +18%</div>
+      </div>
+      <div class="scenario">
+        <strong>Upside Case</strong>
+        <p>Growth and crypto rally while broad equities stay firm.</p>
+        <div class="num">+25% to +55%</div>
+      </div>
+      <div class="scenario">
+        <strong>Stress Case</strong>
+        <p>Risk assets sell off; the cash sleeve becomes useful.</p>
+        <div class="num">-15% to -35%</div>
+      </div>
+    </section>
+
+    <section class="panel review" style="margin-top:18px">
+      <div class="section-head">
+        <div>
+          <h2>Weekly Retrospective</h2>
+          <p>Friday after market close: update prices, ask what changed, and resize only when the thesis or risk changes.</p>
+        </div>
+      </div>
+      <ul class="review-list">
+        <li><strong>What worked?</strong> Which sleeve carried returns, and was that skill or market beta?</li>
+        <li><strong>What hurt?</strong> Which drawdown was expected, and which one exposed a bad assumption?</li>
+        <li><strong>What changed?</strong> Earnings, rates, valuation, liquidity, sentiment, or nothing meaningful?</li>
+        <li><strong>What action?</strong> Hold, trim, add, or move risk back into the core.</li>
+      </ul>
+    </section>
+
+    <section class="panel review" style="margin-top:18px">
+      <div class="section-head">
+        <div>
+          <h2>Live Agent Record</h2>
+          <p>When the day-and-night agent runs, it writes local paper-trading results here from data/status.json.</p>
+        </div>
+      </div>
+      <div class="live-grid" id="live-grid">
+        <div class="metric"><div class="label">Agent status</div><div class="value">Waiting</div><div class="sub">No run recorded yet</div></div>
+        <div class="metric"><div class="label">Paper NAV</div><div class="value">—</div><div class="sub">Starts at $50k</div></div>
+        <div class="metric"><div class="label">Alpha vs SPY</div><div class="value">—</div><div class="sub">Needs positive alpha</div></div>
+        <div class="metric"><div class="label">Positions</div><div class="value">—</div><div class="sub">Paper only</div></div>
+      </div>
+      <p class="live-note" id="live-note">Start the agent with python agent.py. It will paper trade, compare itself to SPY, reflect weekly, and alert only when confidence rules are met.</p>
+    </section>
+
+    <p class="footer-note">This dashboard is a planning and education view, not investment advice. Fast doubling requires concentration, and concentration can produce large losses. Reference prices and fund details are from Vanguard, iShares/BlackRock, VanEck, Invesco, and StockAnalysis snapshots checked in early May 2026.</p>
+  </main>
+</div>
+
+<script>
+const modes = {
+  steady: {
+    name: "Steady",
+    copy: "A calmer version: slower path to 2x, better odds of staying in the game.",
+    shape: "Heavier defense, smaller turbo sleeve.",
+    optionsCopy: "Steady mode keeps options tiny and long-dated. The goal is learning, not forcing speed.",
+    allocations: [
+      ["VTI", "Vanguard Total Stock Market ETF", "Buy the whole U.S. market at low cost; this is the compounding engine.", 45, "green"],
+      ["VXUS", "Vanguard Total International Stock ETF", "Own non-U.S. markets because leadership rotates and valuations differ.", 15, "blue"],
+      ["SGOV", "iShares 0-3 Month Treasury Bond ETF", "Keep dry powder earning Treasury yield; useful if growth sells off.", 25, "gold"],
+      ["QQQM", "Invesco Nasdaq 100 ETF", "Add large-cap growth exposure without picking one megacap winner.", 10, "red"],
+      ["SMH", "VanEck Semiconductor ETF", "Small AI/chip cycle tilt with ETF diversification.", 3, "red"],
+      ["IBIT", "iShares Bitcoin Trust ETF", "Tiny asymmetric sleeve; volatile enough that small sizing matters.", 2, "violet"]
+    ],
+    options: [
+      ["QQQ LEAPS call", "Paper buy 1 deep ITM call, 9-18 months out", 2, "Defined max loss: premium paid. Use only if trend is above 200-day moving average."],
+      ["SPY put spread hedge", "Paper buy a 3-6 month put debit spread", 1, "Insurance sleeve for broad-market drawdown; do not expect it to make money most weeks."],
+      ["Cash reserve", "No trade unless volatility/payoff is favorable", 0, "Most weeks the right options trade is no trade."]
+    ]
+  },
+  aggressive: {
+    name: "Aggressive",
+    copy: "This is my default specific version: enough growth exposure to matter, enough ballast to avoid going fully reckless.",
+    shape: "Core plus defined turbo: 50% broad markets, 35% growth/crypto, 15% Treasury ballast.",
+    optionsCopy: "Aggressive mode allows a 5% paper options sleeve, mostly long-dated calls or debit spreads.",
+    allocations: [
+      ["VTI", "Vanguard Total Stock Market ETF", "Buy the whole U.S. market at low cost; this is the compounding engine.", 40, "green"],
+      ["QQQM", "Invesco Nasdaq 100 ETF", "Tilt toward profitable, dominant growth companies and AI-adjacent platforms.", 20, "red"],
+      ["VXUS", "Vanguard Total International Stock ETF", "Diversify away from U.S.-only valuation and currency risk.", 10, "blue"],
+      ["SGOV", "iShares 0-3 Month Treasury Bond ETF", "Cash-like Treasury exposure for stability and opportunistic buying.", 15, "gold"],
+      ["SMH", "VanEck Semiconductor ETF", "Target the AI compute supply chain: Nvidia, TSMC, Broadcom, equipment makers.", 10, "red"],
+      ["IBIT", "iShares Bitcoin Trust ETF", "Asymmetric Bitcoin exposure without self-custody; cap it because drawdowns are brutal.", 5, "violet"]
+    ],
+    options: [
+      ["NVDA call debit spread", "Paper buy 3-6 month call spread after confirmed pullback", 2, "Use spreads so premium is capped; thesis is AI momentum without unlimited premium burn."],
+      ["QQQ LEAPS call", "Paper buy 1 deep ITM call, 9-18 months out", 2, "Longer duration gives the thesis time; exit if QQQ loses the 200-day trend."],
+      ["SPY put spread hedge", "Paper buy 2-4 month put debit spread", 1, "Offsets part of growth/semiconductor drawdown risk."]
+    ]
+  },
+  sprint: {
+    name: "Sprint",
+    copy: "The fastest version shown here, with visibly higher drawdown risk.",
+    shape: "More upside, less shock absorption.",
+    optionsCopy: "Sprint mode is the maximum-risk dashboard. Options are still paper-only and never naked.",
+    allocations: [
+      ["VTI", "Vanguard Total Stock Market ETF", "Still keep a U.S. market anchor so the account is not all theme risk.", 35, "green"],
+      ["QQQM", "Invesco Nasdaq 100 ETF", "Aggressive large-cap growth tilt for faster compounding attempts.", 20, "red"],
+      ["SMH", "VanEck Semiconductor ETF", "High-conviction AI hardware and semiconductor supply-chain exposure.", 15, "red"],
+      ["IBIT", "iShares Bitcoin Trust ETF", "High-volatility upside sleeve; this can also hurt fast.", 15, "violet"],
+      ["VXUS", "Vanguard Total International Stock ETF", "Small diversification sleeve outside U.S. winners.", 10, "blue"],
+      ["SGOV", "iShares 0-3 Month Treasury Bond ETF", "Minimum dry powder only.", 5, "gold"]
+    ],
+    options: [
+      ["NVDA call debit spread", "Paper buy 2-5 month call spread only after signal confirmation", 4, "Fast upside attempt, but max loss must be capped at entry."],
+      ["QQQ call debit spread", "Paper buy 2-4 month call spread on broad tech breakout", 3, "Avoids single-name earnings risk while keeping growth beta."],
+      ["SPY put spread hedge", "Paper hedge when portfolio beta is high", 2, "Required shock absorber for sprint mode."]
+    ]
+  }
+};
+
+const referencePrices = {
+  VTI: { price: 350.21, note: "Apr 20 close" },
+  QQQM: { price: 260.15, note: "Apr 15 quote" },
+  VXUS: { price: 77.97, note: "Apr 6 close" },
+  SGOV: { price: 100.52, note: "Apr 15 NAV" },
+  SMH: { price: 477.17, note: "Apr 22 NAV" },
+  IBIT: { price: 43.94, note: "Apr 17 close" }
+};
+
+const colorMap = {
+  green: "var(--green)",
+  blue: "var(--blue)",
+  gold: "var(--gold)",
+  red: "var(--red)",
+  violet: "var(--violet)"
+};
+
+let activeMode = "aggressive";
+
+function currency(value) {
+  return value.toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0
+  });
+}
+
+function compact(value) {
+  if (value >= 1000) return "$" + Math.round(value / 1000) + "k";
+  return currency(value);
+}
+
+function render() {
+  const capitalInput = document.getElementById("capital");
+  const capital = Math.max(1000, Number(capitalInput.value || 50000));
+  const target = capital * 2;
+  const mode = modes[activeMode];
+  const core = mode.allocations.filter(a => ["VTI", "VXUS", "SGOV"].includes(a[0])).reduce((sum, a) => sum + a[3], 0);
+  const cash = mode.allocations.find(a => a[0] === "SGOV")[3];
+  const upside = 100 - core;
+
+  document.getElementById("hero-capital").textContent = currency(capital);
+  document.getElementById("hero-target").textContent = currency(target);
+  document.getElementById("hero-mode").textContent = mode.name;
+  document.getElementById("core-pct").textContent = core + "%";
+  document.getElementById("upside-pct").textContent = upside + "%";
+  document.getElementById("cash-pct").textContent = cash + "%";
+  document.getElementById("goal-left").textContent = currency(target - capital) + " to go";
+  document.getElementById("goal-progress").textContent = "0% of the way to 2x";
+  document.getElementById("goal-fill").style.width = "0%";
+  document.getElementById("mode-copy").textContent = mode.copy;
+  document.getElementById("shape-copy").textContent = mode.shape;
+  document.getElementById("options-copy").textContent = mode.optionsCopy;
+  document.getElementById("donut-total").textContent = compact(capital);
+
+  const list = document.getElementById("allocation-list");
+  list.innerHTML = mode.allocations.map(([ticker, name, thesis, pct, color]) => {
+    const amount = capital * pct / 100;
+    const ref = referencePrices[ticker];
+    const shares = ref ? amount / ref.price : 0;
+    return `
+      <div class="allocation-row">
+        <div class="ticker ${color}">${ticker}</div>
+        <div class="asset">
+          <h3>${name}</h3>
+          <p>${thesis}</p>
+        </div>
+        <div class="bar"><i style="width:${pct}%;background:${colorMap[color]}"></i></div>
+        <div class="shares"><strong>${shares.toFixed(2)} shares</strong>@ $${ref.price.toFixed(2)} <span class="sub">${ref.note}</span></div>
+        <div class="amount">${currency(amount)}<div class="sub">${pct}%</div></div>
+      </div>
+    `;
+  }).join("");
+
+  const optionsGrid = document.getElementById("options-grid");
+  optionsGrid.innerHTML = mode.options.map(([name, structure, pct, thesis]) => {
+    const riskBudget = capital * pct / 100;
+    return `
+      <div class="option-card">
+        <span class="tag">PAPER OPTION</span>
+        <h3>${name}</h3>
+        <p>${structure}</p>
+        <div class="option-meta">
+          <div><strong>${currency(riskBudget)}</strong>max premium/risk</div>
+          <div><strong>${pct}%</strong>of portfolio cap</div>
+        </div>
+        <p>${thesis}</p>
+      </div>
+    `;
+  }).join("");
+
+  let degrees = 0;
+  const stops = mode.allocations.map((allocation) => {
+    const color = colorMap[allocation[4]];
+    const start = degrees;
+    degrees += allocation[3] * 3.6;
+    return `${color} ${start}deg ${degrees}deg`;
+  });
+  document.getElementById("donut").style.background = `conic-gradient(${stops.join(", ")})`;
+
+  document.querySelectorAll(".mode-tabs button").forEach(button => {
+    button.classList.toggle("active", button.dataset.mode === activeMode);
+  });
+}
+
+document.querySelectorAll(".mode-tabs button").forEach(button => {
+  button.addEventListener("click", () => {
+    activeMode = button.dataset.mode;
+    render();
+  });
+});
+
+document.getElementById("capital").addEventListener("input", render);
+render();
+
+async function loadAgentStatus() {
+  try {
+    const response = await fetch("data/status.json?ts=" + Date.now());
+    if (!response.ok) return;
+    const status = await response.json();
+    const summary = status.summary || {};
+    const alpha = summary.alpha_pct;
+    const benchmark = summary.benchmark_return_pct;
+    const total = summary.total_return_pct;
+    document.getElementById("live-grid").innerHTML = `
+      <div class="metric"><div class="label">Agent status</div><div class="value">Running</div><div class="sub">Updated ${new Date(status.updated_at).toLocaleString()}</div></div>
+      <div class="metric"><div class="label">Paper NAV</div><div class="value">${currency(summary.nav || status.starting_capital || 50000)}</div><div class="sub">Return ${total == null ? "—" : (total * 100).toFixed(2) + "%"}</div></div>
+      <div class="metric"><div class="label">Alpha vs ${summary.benchmark_symbol || "SPY"}</div><div class="value">${alpha == null ? "—" : (alpha * 100).toFixed(2) + "%"}</div><div class="sub">Benchmark ${benchmark == null ? "—" : (benchmark * 100).toFixed(2) + "%"}</div></div>
+      <div class="metric"><div class="label">Positions</div><div class="value">${summary.positions ?? "—"}</div><div class="sub">${(summary.tickers || []).join(", ") || "No open paper positions"}</div></div>
+    `;
+    document.getElementById("live-note").textContent = "This is paper performance only. Real trades still require your approval.";
+  } catch (error) {
+    document.getElementById("live-note").textContent = "Live status will appear after the agent creates data/status.json.";
+  }
+}
+
+loadAgentStatus();
+</script>
+</body>
+</html>
