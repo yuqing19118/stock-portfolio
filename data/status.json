@@ -1,9 +1,9 @@
 {
-  "updated_at": "2026-05-06T21:32:46.990814",
+  "updated_at": "2026-05-07T13:02:13.502567",
   "starting_capital": 50000.0,
   "summary": {
-    "nav": 66908.81,
-    "cash": 8981.18,
+    "nav": 67389.28,
+    "cash": 5461.16,
     "positions": 16,
     "tickers": [
       "MU",
@@ -21,21 +21,21 @@
       "WDC",
       "MS",
       "TXN",
-      "SIMO"
+      "ANET"
     ],
-    "total_return_pct": 0.3382,
+    "total_return_pct": 0.3478,
     "benchmark_symbol": "SPY",
-    "benchmark_return_pct": null,
-    "alpha_pct": null,
-    "portfolio_beta": 1.245,
-    "beta_adjusted_alpha_pct": null
+    "benchmark_return_pct": -0.001,
+    "alpha_pct": 0.3488,
+    "portfolio_beta": 1.338,
+    "beta_adjusted_alpha_pct": 0.3492
   },
   "positions": [
     {
       "ticker": "MU",
       "shares": 4.541876,
       "avg_cost": 657.73,
-      "last_price": 658.84,
+      "last_price": 666.59,
       "stop_loss": 611.69,
       "take_profit": 822.16,
       "entered_at": "2026-05-06T08:11:00",
@@ -47,7 +47,7 @@
       "ticker": "MSFT",
       "shares": 5.023547,
       "avg_cost": 414.79,
-      "last_price": 415.48,
+      "last_price": 413.96,
       "stop_loss": 385.75,
       "take_profit": 518.49,
       "entered_at": "2026-05-06T08:11:00",
@@ -59,7 +59,7 @@
       "ticker": "AVGO",
       "shares": 4.591262,
       "avg_cost": 423.13,
-      "last_price": 422.34,
+      "last_price": 425.44,
       "stop_loss": 393.51,
       "take_profit": 528.91,
       "entered_at": "2026-05-06T08:11:00",
@@ -71,7 +71,7 @@
       "ticker": "ADBE",
       "shares": 5.48486,
       "avg_cost": 252.32,
-      "last_price": 252.08,
+      "last_price": 250.17,
       "stop_loss": 234.66,
       "take_profit": 315.4,
       "entered_at": "2026-05-06T08:11:00",
@@ -83,7 +83,7 @@
       "ticker": "ALAB",
       "shares": 6.503078,
       "avg_cost": 209.22,
-      "last_price": 207.62,
+      "last_price": 213.91,
       "stop_loss": 194.57,
       "take_profit": 261.52,
       "entered_at": "2026-05-06T08:11:00",
@@ -95,7 +95,7 @@
       "ticker": "PLTR",
       "shares": 7.494004,
       "avg_cost": 133.47,
-      "last_price": 133.07,
+      "last_price": 133.79,
       "stop_loss": 124.13,
       "take_profit": 166.84,
       "entered_at": "2026-05-06T08:11:00",
@@ -107,7 +107,7 @@
       "ticker": "MRVL",
       "shares": 5.774839,
       "avg_cost": 168.93,
-      "last_price": 168.84,
+      "last_price": 172.15,
       "stop_loss": 157.1,
       "take_profit": 211.16,
       "entered_at": "2026-05-06T08:11:00",
@@ -119,7 +119,7 @@
       "ticker": "SMCI",
       "shares": 17.53909,
       "avg_cost": 32.05,
-      "last_price": 31.9,
+      "last_price": 34.66,
       "stop_loss": 29.81,
       "take_profit": 40.06,
       "entered_at": "2026-05-06T08:11:00",
@@ -131,7 +131,7 @@
       "ticker": "QQQ",
       "shares": 3.364656,
       "avg_cost": 691.56,
-      "last_price": 691.67,
+      "last_price": 695.77,
       "stop_loss": 643.15,
       "take_profit": 864.45,
       "entered_at": "2026-05-06T08:11:00",
@@ -142,7 +142,7 @@
       "ticker": "ASML",
       "shares": 5,
       "avg_cost": 1536.56005859375,
-      "last_price": 1536.56005859375,
+      "last_price": 1544.74,
       "stop_loss": 1429.0,
       "take_profit": 1920.7,
       "entered_at": "2026-05-06T09:15:04.711420",
@@ -153,7 +153,7 @@
       "ticker": "CSX",
       "shares": 182,
       "avg_cost": 45.60499954223633,
-      "last_price": 45.60499954223633,
+      "last_price": 45.6,
       "stop_loss": 42.41,
       "take_profit": 57.01,
       "entered_at": "2026-05-06T09:15:04.712603",
@@ -164,7 +164,7 @@
       "ticker": "TSM",
       "shares": 18,
       "avg_cost": 417.5450134277344,
-      "last_price": 417.5450134277344,
+      "last_price": 419.5,
       "stop_loss": 388.32,
       "take_profit": 521.93,
       "entered_at": "2026-05-06T09:15:04.714276",
@@ -175,7 +175,7 @@
       "ticker": "WDC",
       "shares": 14,
       "avg_cost": 468.7099914550781,
-      "last_price": 468.7099914550781,
+      "last_price": 483.15,
       "stop_loss": 435.9,
       "take_profit": 585.89,
       "entered_at": "2026-05-06T09:15:04.715316",
@@ -186,7 +186,7 @@
       "ticker": "MS",
       "shares": 35,
       "avg_cost": 193.11000061035156,
-      "last_price": 193.11000061035156,
+      "last_price": 193.35,
       "stop_loss": 179.59,
       "take_profit": 241.39,
       "entered_at": "2026-05-06T09:15:04.716899",
@@ -197,7 +197,7 @@
       "ticker": "TXN",
       "shares": 20,
       "avg_cost": 288.8399963378906,
-      "last_price": 288.8399963378906,
+      "last_price": 289.44,
       "stop_loss": 268.62,
       "take_profit": 361.05,
       "entered_at": "2026-05-06T09:15:04.718657",
@@ -205,189 +205,18 @@
       "beta": 1.298
     },
     {
-      "ticker": "SIMO",
-      "shares": 3,
-      "avg_cost": 240.30999755859375,
-      "last_price": 240.30999755859375,
-      "stop_loss": 223.49,
-      "take_profit": 300.39,
-      "entered_at": "2026-05-06T09:15:04.719708",
-      "confidence": 0.85,
-      "beta": 1.668
+      "ticker": "ANET",
+      "shares": 29,
+      "avg_cost": 147.06,
+      "last_price": 147.06,
+      "stop_loss": 136.77,
+      "take_profit": 183.82,
+      "entered_at": "2026-05-07T00:31:26.959797",
+      "confidence": 0.82,
+      "beta": 1.673
     }
   ],
-  "trade_history": [
-    {
-      "ticker": "ASML",
-      "action": "BUY",
-      "shares": 5,
-      "price": 1536.56005859375,
-      "total": 7682.8,
-      "at": "2026-05-06T09:15:04.711441"
-    },
-    {
-      "ticker": "CSX",
-      "action": "BUY",
-      "shares": 182,
-      "price": 45.60499954223633,
-      "total": 8300.11,
-      "at": "2026-05-06T09:15:04.712611"
-    },
-    {
-      "ticker": "TSM",
-      "action": "BUY",
-      "shares": 18,
-      "price": 417.5450134277344,
-      "total": 7515.81,
-      "at": "2026-05-06T09:15:04.714286"
-    },
-    {
-      "ticker": "WDC",
-      "action": "BUY",
-      "shares": 14,
-      "price": 468.7099914550781,
-      "total": 6561.94,
-      "at": "2026-05-06T09:15:04.715325"
-    },
-    {
-      "ticker": "MS",
-      "action": "BUY",
-      "shares": 35,
-      "price": 193.11000061035156,
-      "total": 6758.85,
-      "at": "2026-05-06T09:15:04.716910"
-    },
-    {
-      "ticker": "TXN",
-      "action": "BUY",
-      "shares": 20,
-      "price": 288.8399963378906,
-      "total": 5776.8,
-      "at": "2026-05-06T09:15:04.718666"
-    },
-    {
-      "ticker": "SIMO",
-      "action": "BUY",
-      "shares": 3,
-      "price": 240.30999755859375,
-      "total": 720.93,
-      "at": "2026-05-06T09:15:04.719713"
-    },
-    {
-      "ticker": "CHYM",
-      "action": "SELL",
-      "shares": 100.0,
-      "price": 21.139999389648438,
-      "pnl": -4.0,
-      "pnl_pct": -0.0019,
-      "reason": "signal",
-      "at": "2026-05-06T09:15:04.720766"
-    },
-    {
-      "ticker": "CHYM",
-      "action": "SELL",
-      "shares": 100.0,
-      "price": 21.139999389648438,
-      "total": 2114.0,
-      "at": "2026-05-06T09:15:04.720772",
-      "pnl": -4.0
-    },
-    {
-      "ticker": "KLAR",
-      "action": "SELL",
-      "shares": 1.0,
-      "price": 14.140000343322754,
-      "pnl": -0.17,
-      "pnl_pct": -0.0119,
-      "reason": "signal",
-      "at": "2026-05-06T09:15:04.721559"
-    },
-    {
-      "ticker": "KLAR",
-      "action": "SELL",
-      "shares": 1.0,
-      "price": 14.140000343322754,
-      "total": 14.14,
-      "at": "2026-05-06T09:15:04.721564",
-      "pnl": -0.17
-    },
-    {
-      "ticker": "SQQQ",
-      "action": "SELL",
-      "shares": 17.794928,
-      "price": 46.20989990234375,
-      "pnl": -4.45,
-      "pnl_pct": -0.0054,
-      "reason": "signal",
-      "at": "2026-05-06T09:15:04.722612"
-    },
-    {
-      "ticker": "SQQQ",
-      "action": "SELL",
-      "shares": 17.794928,
-      "price": 46.20989990234375,
-      "total": 822.3,
-      "at": "2026-05-06T09:15:04.722621",
-      "pnl": -4.45
-    },
-    {
-      "ticker": "BITI",
-      "action": "SELL",
-      "shares": 12.0,
-      "price": 21.360300064086914,
-      "pnl": -0.96,
-      "pnl_pct": -0.0037,
-      "reason": "signal",
-      "at": "2026-05-06T09:15:04.723583"
-    },
-    {
-      "ticker": "BITI",
-      "action": "SELL",
-      "shares": 12.0,
-      "price": 21.360300064086914,
-      "total": 256.32,
-      "at": "2026-05-06T09:15:04.723589",
-      "pnl": -0.96
-    },
-    {
-      "ticker": "BTC-USD",
-      "action": "SELL",
-      "shares": 0.06905757,
-      "price": 80927.0546875,
-      "pnl": -39.15,
-      "pnl_pct": -0.007,
-      "reason": "signal",
-      "at": "2026-05-06T09:15:04.724789"
-    },
-    {
-      "ticker": "BTC-USD",
-      "action": "SELL",
-      "shares": 0.06905757,
-      "price": 80927.0546875,
-      "total": 5588.63,
-      "at": "2026-05-06T09:15:04.724799",
-      "pnl": -39.15
-    },
-    {
-      "ticker": "XRP-USD",
-      "action": "SELL",
-      "shares": 1.065,
-      "price": 1.4131489992141724,
-      "pnl": -0.02,
-      "pnl_pct": -0.0118,
-      "reason": "signal",
-      "at": "2026-05-06T09:15:04.725861"
-    },
-    {
-      "ticker": "XRP-USD",
-      "action": "SELL",
-      "shares": 1.065,
-      "price": 1.4131489992141724,
-      "total": 1.51,
-      "at": "2026-05-06T09:15:04.725867",
-      "pnl": -0.02
-    }
-  ],
+  "trade_history": [],
   "snapshots": [
     {
       "date": "2026-05-05T22:22:31.280746",
@@ -466,6 +295,26 @@
       "alpha_pct": 0.3388,
       "portfolio_beta": 1.245,
       "beta_adjusted_alpha_pct": 0.339
+    },
+    {
+      "date": "2026-05-07T00:17:56.832998",
+      "nav": 66908.81,
+      "total_return_pct": 0.3382,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": 0.002,
+      "alpha_pct": 0.3361,
+      "portfolio_beta": 1.245,
+      "beta_adjusted_alpha_pct": 0.3356
+    },
+    {
+      "date": "2026-05-07T00:18:24.354264",
+      "nav": 66908.81,
+      "total_return_pct": 0.3382,
+      "benchmark_symbol": "SPY",
+      "benchmark_return_pct": 0.002,
+      "alpha_pct": 0.3361,
+      "portfolio_beta": 1.245,
+      "beta_adjusted_alpha_pct": 0.3356
     }
   ]
 }
