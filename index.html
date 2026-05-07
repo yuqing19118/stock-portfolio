@@ -596,6 +596,219 @@ button, input { font: inherit; }
   line-height: 1.5;
 }
 
+/* ── Holding research card ─────────────────────────────────────── */
+.holding-research-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.holding-card {
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 14px;
+  border-left: 3px solid var(--stock-c);
+}
+
+.holding-card.crypto  { border-left-color: var(--crypto-c); }
+.holding-card.etf     { border-left-color: var(--etf-c); }
+.holding-card.warning { border-left-color: var(--red); background: rgba(255,80,0,0.04); }
+
+.holding-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.holding-card-ticker {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.holding-card-sector {
+  font-size: 0.72rem;
+  color: var(--sub);
+  margin-top: 2px;
+}
+
+.holding-card-ai-score {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.ai-score-label {
+  font-size: 0.64rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--sub);
+  margin-bottom: 4px;
+}
+
+.ai-score-bar {
+  width: 72px;
+  height: 5px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.ai-score-fill {
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, var(--blue), var(--green));
+}
+
+.ai-score-fill.negative { background: linear-gradient(90deg, var(--red), #ff9060); }
+
+.ai-score-num {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--sub);
+  margin-top: 3px;
+}
+
+.holding-card-thesis {
+  font-size: 0.82rem;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.bull-bear {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.bull-box, .bear-box {
+  padding: 8px 10px;
+  border-radius: 7px;
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+.bull-box {
+  background: rgba(0,200,5,0.07);
+  color: #1a7a20;
+}
+
+.bear-box {
+  background: rgba(255,80,0,0.07);
+  color: #c03000;
+}
+
+.bull-box b, .bear-box b {
+  display: block;
+  font-size: 0.64rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 3px;
+  opacity: 0.7;
+}
+
+.news-link {
+  font-size: 0.76rem;
+  color: var(--blue);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+  width: 100%;
+}
+
+.news-link:hover { text-decoration: underline; }
+
+/* ── Risk panel ────────────────────────────────────────────────── */
+.risk-panel {
+  background: rgba(255,80,0,0.04);
+  border: 1px solid rgba(255,80,0,0.18);
+  border-radius: var(--radius-sm);
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.risk-panel-title {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.risk-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  border-top: 1px solid rgba(255,80,0,0.12);
+  padding: 9px 0;
+  font-size: 0.8rem;
+  color: rgba(160,50,0,0.85);
+  line-height: 1.45;
+}
+
+.risk-item:first-of-type { border-top: none; padding-top: 0; }
+
+.risk-item-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+/* ── Sector concentration bar ──────────────────────────────────── */
+.concentration-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 0 4px;
+}
+
+.conc-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.conc-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  min-width: 80px;
+  color: var(--ink);
+}
+
+.conc-bar-wrap {
+  flex: 1;
+  height: 6px;
+  background: var(--line);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.conc-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.conc-pct {
+  font-size: 0.76rem;
+  font-weight: 700;
+  min-width: 38px;
+  text-align: right;
+  color: var(--sub);
+}
+
 /* ── Footer ────────────────────────────────────────────────────── */
 .rh-footer {
   padding: 20px;
@@ -861,17 +1074,63 @@ button, input { font: inherit; }
         </ul>
       </div>
 
-      <!-- Research desk -->
+      <!-- ── Risk flags ── -->
+      <div class="panel-section">
+        <div class="panel-title">Risk Flags</div>
+        <div class="risk-panel" id="risk-panel">
+          <div class="risk-panel-title">Live from research feed</div>
+          <div class="risk-item"><div class="risk-item-dot"></div>Loading risk analysis…</div>
+        </div>
+      </div>
+
+      <!-- ── Sector concentration ── -->
+      <div class="panel-section">
+        <div class="panel-title">Sector Concentration</div>
+        <p class="panel-sub">How your invested capital (ex-cash) is distributed</p>
+        <div class="concentration-row">
+          <div class="conc-item">
+            <div class="conc-label">AI / Semi</div>
+            <div class="conc-bar-wrap"><div class="conc-bar-fill" style="width:72%;background:#4a90d9"></div></div>
+            <div class="conc-pct">72%</div>
+          </div>
+          <div class="conc-item">
+            <div class="conc-label">AI Software</div>
+            <div class="conc-bar-wrap"><div class="conc-bar-fill" style="width:20%;background:#9b74db"></div></div>
+            <div class="conc-pct">20%</div>
+          </div>
+          <div class="conc-item">
+            <div class="conc-label">Crypto</div>
+            <div class="conc-bar-wrap"><div class="conc-bar-fill" style="width:24%;background:#e07070"></div></div>
+            <div class="conc-pct">24%</div>
+          </div>
+          <div class="conc-item">
+            <div class="conc-label">Hedges</div>
+            <div class="conc-bar-wrap"><div class="conc-bar-fill" style="width:11%;background:#f0a500"></div></div>
+            <div class="conc-pct">11%</div>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:var(--sub);margin-top:12px;">AI/Semi cluster: MU+AVGO+ALAB+MRVL+SMCI = 72% of invested capital — one sector rotation hits the whole book.</p>
+      </div>
+
+      <!-- ── Per-holding research ── -->
+      <div class="panel-section">
+        <div class="panel-title">Holding Research</div>
+        <p class="panel-sub">Thesis, bull/bear, AI exposure score — updated from live research feed</p>
+        <div class="holding-research-grid" id="holding-research-grid">
+          <div class="holding-card" style="border-left-color:var(--sub)">
+            <div class="holding-card-ticker">Loading research…</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Research desk ── -->
       <div class="panel-section">
         <div class="panel-title">Research Desk</div>
         <div class="research-2col" style="margin-top:4px">
           <div class="research-card">
-            <div class="research-card-title">Research Queue</div>
-            <ul id="research-queue">
-              <li><strong>MU</strong> — top position (4.46%); validate memory cycle timing and AI datacenter demand.</li>
-              <li><strong>AVGO / MRVL / ALAB</strong> — semi networking cluster; watch AI custom silicon thesis.</li>
-              <li><strong>PLTR / SMCI</strong> — high beta AI names; monitor government contract flow and margins.</li>
-              <li><strong>SQQQ + BITI</strong> — inverse ETFs held alongside longs; review whether hedge is still the intent.</li>
+            <div class="research-card-title">Key Takeaways</div>
+            <ul id="research-feed">
+              <li><strong>Loading</strong> — fetching from research_feed.json…</li>
             </ul>
           </div>
           <div class="research-card">
@@ -880,6 +1139,7 @@ button, input { font: inherit; }
               <li><strong>Momentum + quality</strong> — buy only when trend and fundamentals agree.</li>
               <li><strong>Deploy cash gradually</strong> — $43k idle; agent hunts high-confidence entries.</li>
               <li><strong>Alpha gate</strong> — no strong alerts until paper performance beats SPY.</li>
+              <li><strong>Resolve contradictions first</strong> — exit SQQQ or QQQ, exit BITI or BTC before new buys.</li>
             </ul>
           </div>
           <div class="research-card">
@@ -901,7 +1161,7 @@ button, input { font: inherit; }
           <div class="research-card">
             <div class="research-card-title">Current Best Ideas</div>
             <ul id="best-ideas">
-              <li><strong>Real portfolio loaded</strong> — agent positions seeded from Robinhood screenshot as of May 6, 2026.</li>
+              <li><strong>Real portfolio loaded</strong> — positions seeded from Robinhood as of May 6, 2026.</li>
             </ul>
           </div>
           <div class="research-card warning-card">
@@ -919,9 +1179,16 @@ button, input { font: inherit; }
             </ul>
           </div>
           <div class="research-card">
-            <div class="research-card-title">Daily News Feed</div>
-            <ul id="research-feed">
-              <li><strong>Waiting</strong> — daily research watcher will populate this after market close.</li>
+            <div class="research-card-title">Earnings Highlights</div>
+            <ul id="earnings-highlights">
+              <li><strong>MU</strong> — Q2 revenue $23.9B (+196% YoY); HBM4 sold out through 2026</li>
+              <li><strong>AVGO</strong> — Q1 AI revenue $8.4B (+106%); $100B AI revenue target by 2028</li>
+              <li><strong>ALAB</strong> — Q1 $308M (+93%); Q2 guided $365M on PCIe 6 ramp</li>
+              <li><strong>MRVL</strong> — FY2026 $8.2B (+42%); NVIDIA $2B investment; +67% in April</li>
+              <li><strong>PLTR</strong> — Q1 $1.63B (+85%); $10B Army contract; 2026 guide $7.65B</li>
+              <li><strong>SMCI</strong> — Q3 EPS $0.84 beat; FY2026 guide $38.9-40.4B; legal risk</li>
+              <li><strong>MSFT</strong> — Azure +40%; AI revenue $37B annualized; stock -12% on capex</li>
+              <li><strong>ADBE</strong> — Firefly ARR $250M+; AI-first ARR 3x; CEO transition risk</li>
             </ul>
           </div>
           <div class="research-card">
@@ -1228,18 +1495,52 @@ function renderExternalResearch(r) {
 }
 
 function renderResearchFeed(f) {
-  const items = [
-    ...(f.takeaways||[]).slice(0,4).map(t => `<li><strong>Takeaway</strong> — ${t}</li>`),
-    ...(f.risk_flags||[]).slice(0,2).map(t => `<li><strong>Risk</strong> — ${t}</li>`),
-    ...(f.items||[]).slice(0,4).flatMap(i =>
-      (i.latest_news||[]).slice(0,1).map(n => {
-        const url = n.url ? ` <a href="${n.url}" target="_blank" rel="noopener">↗</a>` : "";
-        return `<li><strong>${i.ticker}</strong> — ${n.title}${url}</li>`;
-      })
-    ),
-  ];
+  // Takeaways list
+  const takeaways = (f.takeaways || []).slice(0, 8).map(t => `<li>${t}</li>`).join("");
   document.getElementById("research-feed").innerHTML =
-    `<li><strong>Updated</strong> — ${new Date(f.updated_at).toLocaleString()}</li>` + items.join("");
+    `<li><strong>Updated</strong> — ${new Date(f.updated_at).toLocaleString()}</li>` + takeaways;
+
+  // Risk panel
+  const risks = (f.risk_flags || []).slice(0, 7);
+  document.getElementById("risk-panel").innerHTML = `
+    <div class="risk-panel-title">Active risks — ${risks.length} flagged</div>
+    ${risks.map(r => `<div class="risk-item"><div class="risk-item-dot"></div>${r}</div>`).join("")}
+  `;
+
+  // Per-holding research cards
+  const items = f.items || [];
+  if (!items.length) return;
+  document.getElementById("holding-research-grid").innerHTML = items.map(item => {
+    const score  = item.ai_exposure || 0;
+    const isNeg  = score < 0;
+    const abs    = Math.abs(score);
+    const cat    = item.sector?.toLowerCase().includes("crypto") ? "crypto"
+                 : item.sector?.toLowerCase().includes("inverse") ? "warning"
+                 : item.sector?.toLowerCase().includes("etf") ? "etf" : "";
+    const news   = (item.latest_news || [])[0];
+    return `
+      <div class="holding-card ${cat}">
+        <div class="holding-card-top">
+          <div>
+            <div class="holding-card-ticker">${item.ticker}</div>
+            <div class="holding-card-sector">${item.sector || ""}</div>
+          </div>
+          <div class="holding-card-ai-score">
+            <div class="ai-score-label">AI exposure</div>
+            <div class="ai-score-bar">
+              <div class="ai-score-fill ${isNeg ? "negative" : ""}" style="width:${abs}%"></div>
+            </div>
+            <div class="ai-score-num">${isNeg ? "−" : "+"}${abs}%</div>
+          </div>
+        </div>
+        <div class="holding-card-thesis">${item.thesis || ""}</div>
+        <div class="bull-bear">
+          <div class="bull-box"><b>Bull</b>${item.bull || ""}</div>
+          <div class="bear-box"><b>Bear</b>${item.bear || ""}</div>
+        </div>
+        ${news ? `<a class="news-link" href="${news.url}" target="_blank" rel="noopener">↗ ${news.title}</a>` : ""}
+      </div>`;
+  }).join("");
 }
 
 function renderAgentMemory(m) {
@@ -1250,6 +1551,14 @@ function renderAgentMemory(m) {
 }
 
 loadAgentStatus();
+
+// Always load research feed regardless of agent status
+(async () => {
+  try {
+    const r = await fetch("data/research_feed.json?ts=" + Date.now());
+    if (r.ok) renderResearchFeed(await r.json());
+  } catch (_) {}
+})();
 </script>
 </body>
 </html>

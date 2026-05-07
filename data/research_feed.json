@@ -1,326 +1,125 @@
 {
-  "updated_at": "2026-05-05T23:28:12.536096",
-  "source_policy": "Yahoo Finance/yfinance plus user-provided research notes. Reference only; not a trade instruction.",
-  "tickers": [
-    "CSX",
-    "NVDA",
-    "MU",
-    "TSM",
-    "WDC",
-    "SIMO"
+  "updated_at": "2026-05-06T08:30:00",
+  "takeaways": [
+    "MU up 70% YTD — HBM4 mass production started, sold out through 2026, DA Davidson targets $1,000",
+    "AVGO AI revenue +106% YoY to $8.4B in Q1; CEO guides $100B+ annual AI chip revenue by 2028",
+    "ALAB Q1 revenue $308M (+93% YoY), Q2 guided to $365M — PCIe 6 ramp driving upside",
+    "MRVL +67% in April alone — NVIDIA $2B strategic investment, Google TPU talks confirmed",
+    "PLTR Q1 revenue $1.63B (+85% YoY), U.S. Army $10B contract; raised 2026 guide to $7.65B",
+    "SMCI Q3 EPS beat $0.84 vs $0.62 est; $38.9-40.4B FY2026 guidance, but legal overhang persists",
+    "MSFT Azure +40% YoY, annualized AI revenue $37B (+123%); stock -12% YTD on capex concerns",
+    "ADBE down 37-46% from peak — Firefly ARR $250M+, AI-first ARR 3x YoY, but CEO transition risk",
+    "BTC consolidating $80-85K range; prediction markets favor $85K by end of May",
+    "SQQQ+QQQ and BITI+BTC are self-cancelling pairs — review before next deployment of cash"
+  ],
+  "risk_flags": [
+    "AI concentration: MU+AVGO+ALAB+MRVL+SMCI+PLTR = 6 of 10 stocks in same AI supercycle — one sector rotation wipes the book",
+    "SQQQ ($827) held alongside QQQ ($2,327) — daily decay on 3x inverse will erode SQQQ value in any sideways or up market",
+    "BITI ($257) held alongside BTC ($5,628) — inverse futures ETF decays over time and cancels BTC upside",
+    "SMCI legal risk: co-founder smuggling allegations, revenue recognition delays, down 77% from ATH",
+    "ADBE CEO transition + AI disruption risk from Canva/Sora — down 43-46% from peak, thesis under pressure",
+    "MSFT capex $190B guided 2026 — market concerned about AI ROI timeline despite strong Azure growth",
+    "$43,501 cash (65%) — large uninvested position losing real return vs inflation; opportunity cost rising"
   ],
   "items": [
     {
-      "ticker": "CSX",
-      "company": "CSX Corporation",
-      "sector": "Industrials",
-      "industry": "Railroads",
-      "market_cap": 83671990272,
-      "beta": 1.238,
-      "trailing_pe": 27.625767,
-      "forward_pe": 20.922386,
-      "profit_margin": 0.21553,
-      "revenue_growth": 0.017,
-      "earnings_growth": 0.265,
-      "recommendation": "buy",
-      "target_mean_price": 45.54348,
-      "current_price": 45.03,
-      "latest_news": [
-        {
-          "title": "How The CSX (CSX) Investment Story Is Shifting With New Targets And Freight Signals",
-          "publisher": "Simply Wall St.",
-          "published_at": "2026-05-05T12:14:11Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/csx-csx-investment-story-shifting-121411155.html"
-        },
-        {
-          "title": "3 S&P 500 Stocks We Steer Clear Of",
-          "publisher": "StockStory",
-          "published_at": "2026-05-05T09:24:55Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/3-p-500-stocks-steer-092455209.html"
-        },
-        {
-          "title": "What Are Wall Street Analysts' Target Price for CSX Corporation Stock?",
-          "publisher": "Barchart",
-          "published_at": "2026-05-04T18:38:23Z",
-          "url": "https://www.barchart.com/story/news/1690908/what-are-wall-street-analysts-target-price-for-csx-corporation-stock"
-        },
-        {
-          "title": "CSX sees volume uptick from spike in truck-to-rail conversions",
-          "publisher": "Supply Chain Dive",
-          "published_at": "2026-05-04T12:23:00Z",
-          "url": "https://www.supplychaindive.com/news/csx-sees-volume-uptick-from-spike-in-truck-to-rail-conversions/818728/"
-        },
-        {
-          "title": "Stock Market Holds Near Highs As Intel Leads Chip Surge; Apple, Tesla, ServiceNow In Focus: Weekly Review",
-          "publisher": "Investor's Business Daily",
-          "published_at": "2026-04-24T15:36:01Z",
-          "url": "https://www.investors.com/news/stock-market-highs-intel-leads-chip-surge-apple-tesla-servicenow/?src=A00220&yptr=yahoo"
-        }
-      ],
-      "updated_at": "2026-05-05T23:28:13.180301"
-    },
-    {
-      "ticker": "NVDA",
-      "company": "NVIDIA Corporation",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "market_cap": 4775932329984,
-      "beta": 2.244,
-      "trailing_pe": 40.18405,
-      "forward_pe": 17.483482,
-      "profit_margin": 0.55603004,
-      "revenue_growth": 0.732,
-      "earnings_growth": 0.956,
-      "recommendation": "strong_buy",
-      "target_mean_price": 269.16544,
-      "current_price": 196.5,
-      "latest_news": [
-        {
-          "title": "AMD Q1 earnings: What the chipmaker's growth could mean for Nvidia",
-          "publisher": "Yahoo Finance Video",
-          "published_at": "2026-05-05T20:42:03Z",
-          "url": "https://finance.yahoo.com/video/amd-q1-earnings-what-the-chipmakers-growth-could-mean-for-nvidia-204203602.html"
-        },
-        {
-          "title": "The chip trade is no longer just about Nvidia",
-          "publisher": "Yahoo Finance",
-          "published_at": "2026-05-05T17:59:00Z",
-          "url": "https://finance.yahoo.com/markets/article/the-chip-trade-is-no-longer-just-about-nvidia-175900816.html"
-        },
-        {
-          "title": "AMD earnings on deck: Why we might see a stock sell-off",
-          "publisher": "Yahoo Finance Video",
-          "published_at": "2026-05-05T14:17:30Z",
-          "url": "https://finance.yahoo.com/video/amd-earnings-deck-why-might-141730992.html"
-        },
-        {
-          "title": "Prediction: Sandisk Stock Is Going to $4,000 in 1 Year",
-          "publisher": "Motley Fool",
-          "published_at": "2026-05-06T06:11:00Z",
-          "url": "https://www.fool.com/investing/2026/05/06/prediction-sandisk-stock-is-going-to-4000-in-1-yea/"
-        },
-        {
-          "title": "Thinking of Buying Pinterest? Stop and Do This Instead.",
-          "publisher": "Motley Fool",
-          "published_at": "2026-05-06T02:35:00Z",
-          "url": "https://www.fool.com/investing/2026/05/05/thinking-of-buying-pinterest-stop-and-do-this-inst/"
-        }
-      ],
-      "updated_at": "2026-05-05T23:28:13.495958"
-    },
-    {
       "ticker": "MU",
-      "company": "Micron Technology, Inc.",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "market_cap": 721975312384,
-      "beta": 1.919,
-      "trailing_pe": 30.183878,
-      "forward_pe": 6.3093038,
-      "profit_margin": 0.41486,
-      "revenue_growth": 1.963,
-      "earnings_growth": 7.56,
-      "recommendation": "strong_buy",
-      "target_mean_price": 551.4048,
-      "current_price": 640.2,
-      "latest_news": [
-        {
-          "title": "Micron stock is surging, hitting a new intraday record high. Why?",
-          "publisher": "Yahoo Finance Video",
-          "published_at": "2026-05-05T19:52:11Z",
-          "url": "https://finance.yahoo.com/video/micron-stock-is-surging-hitting-a-new-intraday-record-high-why-195211594.html"
-        },
-        {
-          "title": "Micron stock surges on booming memory chip demand",
-          "publisher": "Yahoo Finance",
-          "published_at": "2026-05-05T14:39:46Z",
-          "url": "https://finance.yahoo.com/markets/stocks/article/micron-stock-surges-on-booming-memory-chip-demand-143946553.html"
-        },
-        {
-          "title": "Still Time to Pay Up for Micron & Sandisk Stock?",
-          "publisher": "Zacks",
-          "published_at": "2026-05-05T22:43:00Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/still-time-pay-micron-sandisk-224300490.html"
-        },
-        {
-          "title": "Stock Market Today, May 5: Stocks Rebound as U.S.-Iran Truce Holds",
-          "publisher": "Motley Fool",
-          "published_at": "2026-05-05T21:37:02Z",
-          "url": "https://www.fool.com/coverage/stock-market-today/2026/05/05/stock-market-today-may-5-stocks-rebound-as-u-s-iran-truce-holds/"
-        },
-        {
-          "title": "These Stocks Are Today’s Movers: Intel, PayPal, Palantir, Shopify, Micron, Duolingo, and More",
-          "publisher": "Barrons.com",
-          "published_at": "2026-05-05T21:12:00Z",
-          "url": "https://www.barrons.com/articles/stock-movers-8b3b686f?siteid=yhoof2&yptr=yahoo"
-        }
-      ],
-      "updated_at": "2026-05-05T23:28:13.812051"
+      "sector": "Semiconductors / AI Memory",
+      "thesis": "Pure-play AI memory — HBM4 sold out through 2026, HBM4e ramp in 2027. Record Q2 revenue $23.9B (+196% YoY). DA Davidson $1,000 PT.",
+      "bull": "Sold out of HBM for quarters; 1γ node power advantage; $73.9B FY2026 revenue est (+98%)",
+      "bear": "Memory is cyclical; DRAM oversupply risk if AI capex slows; Samsung/SK Hynix competition",
+      "ai_exposure": 95,
+      "latest_news": [{"title": "MU up 70% in 2026 — analysts still see more upside on HBM4 supercycle", "url": "https://www.tikr.com/blog/micron-stock-is-up-70-in-2026-heres-why-analysts-still-see-more-upside-ahead"}]
     },
     {
-      "ticker": "TSM",
-      "company": "Taiwan Semiconductor Manufactur",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "market_cap": 2045568090112,
-      "beta": 1.264,
-      "trailing_pe": 34.000862,
-      "forward_pe": 20.444036,
-      "profit_margin": 0.46505,
-      "revenue_growth": 0.351,
-      "earnings_growth": 0.584,
-      "recommendation": "strong_buy",
-      "target_mean_price": 463.4514,
-      "current_price": 394.41,
-      "latest_news": [
-        {
-          "title": "AI infrastructure: Is it time to trade in the Mag 7 for the Air 7?",
-          "publisher": "Yahoo Finance Video",
-          "published_at": "2026-05-05T19:24:56Z",
-          "url": "https://finance.yahoo.com/video/ai-infrastructure-is-it-time-to-trade-in-the-mag-7-for-the-air-7-192456740.html"
-        },
-        {
-          "title": "The chip trade is no longer just about Nvidia",
-          "publisher": "Yahoo Finance",
-          "published_at": "2026-05-05T17:59:00Z",
-          "url": "https://finance.yahoo.com/markets/article/the-chip-trade-is-no-longer-just-about-nvidia-175900816.html"
-        },
-        {
-          "title": "Samsung’s Market Value Hits $1 Trillion",
-          "publisher": "The Wall Street Journal",
-          "published_at": "2026-05-06T04:40:00Z",
-          "url": "https://www.wsj.com/tech/samsungs-market-value-hits-1-trillion-2026ac80?siteid=yhoof2&yptr=yahoo"
-        },
-        {
-          "title": "Samsung Electronics' market cap surpasses $1 trln after US AI chip stocks surge",
-          "publisher": "Reuters",
-          "published_at": "2026-05-06T01:04:21Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/samsung-electronics-market-cap-surpasses-010421668.html"
-        },
-        {
-          "title": "Apple Talks Put Intel Foundry Ambitions And Investor Hopes In Focus",
-          "publisher": "Simply Wall St.",
-          "published_at": "2026-05-05T22:14:13Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/apple-talks-put-intel-foundry-221413260.html"
-        }
-      ],
-      "updated_at": "2026-05-05T23:28:14.119880"
+      "ticker": "AVGO",
+      "sector": "Semiconductors / Custom Silicon + Networking",
+      "thesis": "AI custom silicon (XPUs) + Ethernet networking for hyperscalers. Q1 AI revenue $8.4B (+106%). CEO guides $100B+ AI chip revenue by 2028.",
+      "bull": "48 of 50 analysts Buy/Strong Buy; $40-50B AI revenue 2026E; dominant in custom ASIC + networking",
+      "bear": "Valuation rich; hyperscaler capex concentration risk; VMware integration execution",
+      "ai_exposure": 90,
+      "latest_news": [{"title": "Broadcom AI revenue rockets 106% to $8.4B — custom silicon dominates infrastructure build-out", "url": "https://markets.financialcontent.com/stocks/article/marketminute-2026-3-24-broadcoms-ai-revenue-rockets-106-to-84-billion-as-custom-silicon-dominates-the-infrastructure-build-out"}]
     },
     {
-      "ticker": "WDC",
-      "company": "Western Digital Corporation",
-      "sector": "Technology",
-      "industry": "Computer Hardware",
-      "market_cap": 160366821376,
-      "beta": 2.158,
-      "trailing_pe": 27.826557,
-      "forward_pe": 26.727146,
-      "profit_margin": 0.55286,
-      "revenue_growth": 0.455,
-      "earnings_growth": 4.829,
-      "recommendation": "strong_buy",
-      "target_mean_price": 492.04544,
-      "current_price": 465.26,
-      "latest_news": [
-        {
-          "title": "Still Time to Pay Up for Micron & Sandisk Stock?",
-          "publisher": "Zacks",
-          "published_at": "2026-05-05T22:43:00Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/still-time-pay-micron-sandisk-224300490.html"
-        },
-        {
-          "title": "Sandisk Spun Off From Western Digital Last Year. Now It’s a $200 Billion Company.",
-          "publisher": "Barrons.com",
-          "published_at": "2026-05-05T21:08:00Z",
-          "url": "https://www.barrons.com/articles/sandisk-stock-price-ai-memory-c5af95ae?siteid=yhoof2&yptr=yahoo"
-        },
-        {
-          "title": "A $6 Billion Reason to Buy SanDisk Stock Here",
-          "publisher": "Barchart",
-          "published_at": "2026-05-05T19:00:21Z",
-          "url": "https://www.barchart.com/story/news/1719314/a-6-billion-reason-to-buy-sandisk-stock-here"
-        },
-        {
-          "title": "Western Digital (WDC) Valuation Check As Strong AI Storage Demand And Dividend Hike Lift Investor Interest",
-          "publisher": "Simply Wall St.",
-          "published_at": "2026-05-05T18:17:19Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/western-digital-wdc-valuation-check-181719638.html"
-        },
-        {
-          "title": "SanDisk’s Latest Results Reset Expectations Again",
-          "publisher": "Trefis",
-          "published_at": "2026-05-05T17:51:58Z",
-          "url": "https://www.trefis.com/articles/598313/sandisks-latest-results-reset-expectations-again/2026-05-05"
-        }
-      ],
-      "updated_at": "2026-05-05T23:28:14.407093"
+      "ticker": "ALAB",
+      "sector": "Semiconductors / AI Connectivity",
+      "thesis": "Pure-play AI fabric connectivity — PCIe 6, CXL, NVLink Fusion. Q1 $308M (+93% YoY). Q2 guided $365M. Only independent AI connectivity pure-play.",
+      "bull": "Only public pure-play on AI rack connectivity; PCIe 6 ramp just starting; deep hyperscaler partnerships",
+      "bear": "Small cap, illiquid; hyperscaler vertical integration risk; premium valuation",
+      "ai_exposure": 98,
+      "latest_news": [{"title": "ALAB Q1 2026: $308M revenue +93% YoY, Q2 guided $365M on PCIe 6 ramp", "url": "https://www.asteralabs.com/news/astera-labs-reports-first-quarter-2026-financial-results/"}]
     },
     {
-      "ticker": "SIMO",
-      "company": "Silicon Motion Technology Corpo",
-      "sector": "Technology",
-      "industry": "Semiconductors",
-      "market_cap": 8083967488,
-      "beta": 1.668,
-      "trailing_pe": 53.21652,
-      "forward_pe": 24.651493,
-      "profit_margin": 0.16016,
-      "revenue_growth": 1.055,
-      "earnings_growth": 2.387,
-      "recommendation": "strong_buy",
-      "target_mean_price": 237.5,
-      "current_price": 238.41,
-      "latest_news": [
-        {
-          "title": "Are You Looking for a Top Momentum Pick? Why Silicon Motion (SIMO) is a Great Choice",
-          "publisher": "Zacks",
-          "published_at": "2026-05-05T16:00:05Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/looking-top-momentum-pick-why-160005113.html"
-        },
-        {
-          "title": "Silicon Motion Technology Corporation (SIMO) is Attracting Investor Attention: Here is What You Should Know",
-          "publisher": "Zacks",
-          "published_at": "2026-05-05T13:00:02Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/silicon-motion-technology-corporation-simo-130002343.html"
-        },
-        {
-          "title": "Surging Earnings Estimates Signal Upside for Silicon Motion (SIMO) Stock",
-          "publisher": "Zacks",
-          "published_at": "2026-05-04T16:20:03Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/surging-earnings-estimates-signal-upside-162003074.html"
-        },
-        {
-          "title": "Best Momentum Stock to Buy for May 4th",
-          "publisher": "Zacks",
-          "published_at": "2026-05-04T14:05:00Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/best-momentum-stock-buy-may-140500076.html"
-        },
-        {
-          "title": "If You Invested $1000 in Silicon Motion 10 Years Ago, This Is How Much You'd Have Now",
-          "publisher": "Zacks",
-          "published_at": "2026-05-04T12:30:03Z",
-          "url": "https://finance.yahoo.com/markets/stocks/articles/invested-1000-silicon-motion-10-123003103.html"
-        }
-      ],
-      "updated_at": "2026-05-05T23:28:14.703443"
+      "ticker": "MRVL",
+      "sector": "Semiconductors / Custom AI ASIC + Networking",
+      "thesis": "Custom AI silicon for Amazon/Microsoft/Google + optical networking. NVIDIA $2B investment validates roadmap. +67% in April on Google TPU deal talks.",
+      "bull": "$2B NVIDIA investment; Google TPU talks; 18 cloud design wins; $8.2B revenue FY2026 (+42%)",
+      "bear": "Custom silicon timelines slip; margins below AVGO; depends on 2-3 hyperscaler relationships",
+      "ai_exposure": 88,
+      "latest_news": [{"title": "MRVL +67% in April: Google TPU talks and NVIDIA $2B investment confirm custom silicon thesis", "url": "https://247wallst.com/investing/2026/04/14/why-googles-tpu-talks-just-made-marvell-technology-a-must-buy-ai-stock/"}]
+    },
+    {
+      "ticker": "PLTR",
+      "sector": "AI Software / Government & Enterprise",
+      "thesis": "AIP (AI Platform) capturing U.S. government + commercial spend. Q1 +85% YoY, U.S. Army $10B/10yr contract. 2026 revenue guide raised to $7.65B (+71%).",
+      "bull": "Government AI monopoly position; commercial AIP accelerating; 51% profit margins",
+      "bear": "Rich valuation (100x+ revenue); stock -18% YTD; geopolitical risk; CEO concentration risk",
+      "ai_exposure": 85,
+      "latest_news": [{"title": "PLTR Q1 2026: $1.63B revenue +85% YoY, $10B Army contract, 2026 guide raised to $7.65B", "url": "https://www.cnbc.com/2026/05/04/palantir-pltr-q1-earnings-report-2026.html"}]
+    },
+    {
+      "ticker": "SMCI",
+      "sector": "AI Servers / Infrastructure",
+      "thesis": "AI server integrator — Blackwell/Hopper rack assembly for hyperscalers. Q3 EPS $0.84 beat. $38.9-40.4B FY2026 guide. But legal/accounting cloud persists.",
+      "bull": "6,000 racks/month capacity by FY2026 end; $13B+ Blackwell Ultra orders; liquid cooling scale",
+      "bear": "Down 77% from ATH; co-founder smuggling allegations; revenue recognition delays; audit risk",
+      "ai_exposure": 80,
+      "latest_news": [{"title": "SMCI Q3 beat: EPS $0.84 vs $0.62 est, stock +18% after-hours despite legal overhang", "url": "https://www.cnbc.com/2026/05/05/super-micro-smci-q3-earnings-report-2026.html"}]
+    },
+    {
+      "ticker": "MSFT",
+      "sector": "Cloud / AI Platform",
+      "thesis": "Azure AI infrastructure + Copilot ecosystem. Annualized AI revenue $37B (+123%). Azure +40% YoY. But stock -12% YTD on $190B capex guidance concern.",
+      "bull": "AI revenue compounding 100%+ YoY; Copilot enterprise adoption accelerating; Azure #2 cloud",
+      "bear": "$190B capex 2026 — investors worried about AI ROI timing; stock -12% YTD on spending fear",
+      "ai_exposure": 75,
+      "latest_news": [{"title": "MSFT Q3 FY2026: Azure +40%, AI revenue $37B annualized — stock fell on $190B capex guidance", "url": "https://www.cnbc.com/2026/04/29/microsoft-msft-q3-earnings-report-2026.html"}]
+    },
+    {
+      "ticker": "ADBE",
+      "sector": "AI Creative Software",
+      "thesis": "Firefly AI monetization building ($250M ARR, 3x YoY). Acrobat AI Assistant 3x YoY. But -37-46% from peak on Canva/Sora disruption fear + CEO transition.",
+      "bull": "AI-first ARR tripling; $10B+ buyback; 12% revenue growth; leader in enterprise creative",
+      "bear": "CEO Narayen stepping down; Canva/OpenAI Sora disruption; standalone stock declining; valuation reset",
+      "ai_exposure": 60,
+      "latest_news": [{"title": "ADBE Q1 FY2026: Firefly ARR $250M+, AI-first ARR 3x, but stock -43% from peak on AI disruption fears", "url": "https://futurumgroup.com/insights/adobe-q1-fy-2026-earnings-show-ai-monetization-progress-amid-ceo-transition/"}]
+    },
+    {
+      "ticker": "BTC-USD",
+      "sector": "Crypto",
+      "thesis": "Consolidating $80-85K. Prediction markets favor $85K by end of May. Wide 2026 range $70K-$110K. Post-halving supply dynamics supportive.",
+      "bull": "Post-halving supply squeeze; institutional ETF inflows via IBIT; $85-100K near-term targets",
+      "bear": "Regulatory risk; macro tightening; correlation to risk assets in selloffs; BITI position hedges upside",
+      "ai_exposure": 5,
+      "latest_news": [{"title": "BTC consolidating $80-85K in May 2026 — prediction markets favor $85K by month-end", "url": "https://www.startuphub.ai/ai-news/prediction-markets/2026/bitcoin-price-bets-in-may-2026"}]
+    },
+    {
+      "ticker": "SQQQ",
+      "sector": "Inverse ETF — 3x Short Nasdaq-100",
+      "thesis": "HELD ALONGSIDE QQQ — contradictory position. SQQQ decays daily vs QQQ in any flat/up market. Review intent: active hedge or legacy position?",
+      "bull": "Provides downside protection if Nasdaq drops sharply (e.g. -30%+ scenario)",
+      "bear": "Daily decay mechanism erodes value continuously; held with QQQ = paying for hedge that cancels gains",
+      "ai_exposure": -90,
+      "latest_news": [{"title": "SQQQ+QQQ: self-cancelling pair — daily decay on 3x inverse destroys value in sideways markets", "url": "https://www.stocktitan.net/articles/leveraged-etfs-how-they-work"}]
+    },
+    {
+      "ticker": "BITI",
+      "sector": "Inverse ETF — Short Bitcoin",
+      "thesis": "HELD ALONGSIDE BTC — contradictory position. BITI uses futures and decays. Effectively neutralises $5,628 BTC position. Review intent.",
+      "bull": "Provides BTC crash protection for the $257 cost",
+      "bear": "Futures-based ETF with decay; $257 BITI vs $5,628 BTC = asymmetric drag; costs premium even when BTC flat",
+      "ai_exposure": -5,
+      "latest_news": [{"title": "Inverse ETF risks: BITI futures decay means losses even when BTC moves sideways", "url": "https://www.proshares.com/our-etfs/leveraged-and-inverse/sqqq"}]
     }
-  ],
-  "takeaways": [
-    "CSX: Yahoo recommendation key is 'buy'; treat as context, not proof.",
-    "NVDA: high beta (2.24); returns must be judged on beta-adjusted alpha.",
-    "NVDA: revenue growth is strong (73.2%); verify whether valuation already prices it in.",
-    "NVDA: high profit margin (55.6%); research moat durability.",
-    "NVDA: Yahoo recommendation key is 'strong_buy'; treat as context, not proof.",
-    "MU: high beta (1.92); returns must be judged on beta-adjusted alpha.",
-    "MU: revenue growth is strong (196.3%); verify whether valuation already prices it in.",
-    "MU: high profit margin (41.5%); research moat durability.",
-    "MU: Yahoo recommendation key is 'strong_buy'; treat as context, not proof.",
-    "TSM: revenue growth is strong (35.1%); verify whether valuation already prices it in.",
-    "TSM: high profit margin (46.5%); research moat durability.",
-    "TSM: Yahoo recommendation key is 'strong_buy'; treat as context, not proof."
-  ],
-  "risk_flags": [
-    "NVDA: beta above 2; position size and options exposure must stay capped.",
-    "WDC: beta above 2; position size and options exposure must stay capped."
   ]
 }
